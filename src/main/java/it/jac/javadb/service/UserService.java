@@ -18,7 +18,7 @@ import it.jac.javadb.entity.User;
 // Classe utilizzata per verificare le credenziali inserite dall'utente in fase di login
 
 @Service
-public class CustomUserDetailService implements UserDetailsService {
+public class UserService implements UserDetailsService {
 
 	@Autowired
 	private UserRepository userRepository;

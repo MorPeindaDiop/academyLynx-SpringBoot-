@@ -1,49 +1,31 @@
 package it.jac.javadb.entity;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-/* Le entità rappresentano quelle che sono le tabelle nel nostro DB
- * in spirng, per indicare l'entità si utilizza l'annotazione @Entity,
- * che contiene le varie annotazioni @Table che indica il nome che avrà la 
- * tabella in DB, e @Column che indica il nome che avrà la colonna nella tabella
- * 
- *  Vi sono poi altre annotazioni che indicano la chiave primaria e le varie caratteristiche che
- *  deve avere l'attributo, come lunghezza, ecc*/
-
 @Entity
-@Table(name = "prodotto")
-public class Prodotto {
-
+@Table(name = "seniority")
+public class Seniority {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
 
-	@Column(name = "cod_prod", length = 45)
-	private String codProd;
+	@Column(name = "description")
+	private String description;
 
-	@Column(name = "prezzo", length = 45)
-	private Integer prezzo;
-
-	@Temporal(TemporalType.DATE)
-	@Column(name = "data_arr")
-	private Date dataArr;
-
+	@Column(name = "years")
+	private int years;
+	
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "creation_time")
 	private Date creationTime;
@@ -60,7 +42,7 @@ public class Prodotto {
 	
 	@Override
 	public String toString() {
-		return "Prodotto [id=" + id + ", codProd=" + codProd + ", prezzo=" + prezzo + ", dataArr=" + dataArr + "]";
+		return "Seniority [Description=" + description + ", years of experience=" + years + "]";
 	}
 
 	public int getId() {
@@ -71,28 +53,20 @@ public class Prodotto {
 		this.id = id;
 	}
 
-	public String getCodProd() {
-		return codProd;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setCodProd(String codProd) {
-		this.codProd = codProd;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-	public Integer getPrezzo() {
-		return prezzo;
+	public int getYears() {
+		return years;
 	}
 
-	public void setPrezzo(Integer prezzo) {
-		this.prezzo = prezzo;
-	}
-
-	public Date getDataArr() {
-		return dataArr;
-	}
-
-	public void setDataArr(Date dataArr) {
-		this.dataArr = dataArr;
+	public void setYears(int years) {
+		this.years = years;
 	}
 
 	public Date getCreationTime() {
@@ -126,5 +100,5 @@ public class Prodotto {
 	public void setUpdateUser(String updateUser) {
 		this.updateUser = updateUser;
 	}
-
+	
 }

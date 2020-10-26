@@ -1,17 +1,21 @@
 package it.jac.javadb.entity;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-/* Classe creata per utilizzare un'utente inserito da noi in DB, utilizzando le proprie credenziali
- * è possibile richiedere il token che ti permette di superare il filtro tra le richieste
- * HTTP e gli endpoint
- */
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
+@Table(name = "user")
 public class User {
 
 	@Id
@@ -19,19 +23,30 @@ public class User {
 	@Column(name = "id")
 	private int id;
 
-	@Column(name = "username")
-	private String username;
+	@Column(name = "name")
+	private String name;
 
-	@Column(name = "password")
-	private String password;
+	@Column(name = "surname")
+	private String surname;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "dataTest")
+	private Date dataTest;
 
-	@Column(name = "roles")
-	private String roles;
-	/* I ruoli in DB vanno messi divisi con punto e virgola, es. ROLE_USER;ROLE_EDIT;ROLE_DELETE
-	 * il metodo nel service CustomUserDetailService si occuperà di separarli per permettere che le varie
-	 * chiamate possano essere filtrate, in base al ruolo, nel controller, che al suo interno, tramite l'annotazione
-	 * @Secured, indica quale ruolo bisogna avere per poter effettuare quella specifica chiamata HTTP
-	 */
+	@OneToMany(fetch = FetchType.EAGER)
+	@JoinColumn(name = "idSeniority")
+	private Seniority idSeniority;
+
+	@Column(name = "score")
+	private int score;
+
+	@Column(name = "time")
+	private int time;
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + ", surname=" + surname + "]";
+	}
 
 	public int getId() {
 		return id;
@@ -41,33 +56,44 @@ public class User {
 		this.id = id;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getName() {
+		return name;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getSurname() {
+		return surname;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setSurname(String surname) {
+		this.surname = surname;
 	}
 
-	public String getRoles() {
-		return roles;
+	public Seniority getIdSeniority() {
+		return idSeniority;
 	}
 
-	public void setRoles(String roles) {
-		this.roles = roles;
+	public void setIdSeniority(Seniority idSeniority) {
+		this.idSeniority = idSeniority;
+	}
+	
+	public int getScore() {
+		return score;
 	}
 
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password=" + password + ", roles=" + roles + "]";
+	public void setScore(int score) {
+		this.score = score;
+	}
+
+	public int getTime() {
+		return time;
+	}
+
+	public void setTime(int time) {
+		this.time = time;
 	}
 	
 }

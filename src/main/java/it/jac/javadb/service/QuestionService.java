@@ -15,20 +15,20 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import it.jac.javadb.dao.ProdottoRepository;
+import it.jac.javadb.dao.QuestionRepository;
 import it.jac.javadb.dao.UserActivityRepository;
-import it.jac.javadb.dto.ProdottoDTO;
-import it.jac.javadb.entity.Prodotto;
+import it.jac.javadb.dto.QuestionDTO;
+import it.jac.javadb.entity.Question;
 import it.jac.javadb.entity.UserActivity;
 
 //Annotazione che indica a spring che questo bean è un service
 @Service
-public class ProdottoService {
+public class QuestionService {
 
-	private static final Logger log = LogManager.getLogger(ProdottoService.class);
+	private static final Logger log = LogManager.getLogger(QuestionService.class);
 
 	@Autowired
-	private ProdottoRepository repository;
+	private QuestionRepository repository;
 	/* @Autoweird è l'annotazione utilizzata da spring per creare i vari collegamenti tra tutti
 	 * gli oggetti del nostro applicativo.
 	 * in questo caso crea il primo collegamento alla Repository, quello con il service
@@ -39,7 +39,7 @@ public class ProdottoService {
 	private UserActivityRepository userActivityRepository;
 
 
-	public String testConnessione() {
+	/*public String testConnessione() {
 
 		log.info("Test connessione");
 
@@ -48,19 +48,19 @@ public class ProdottoService {
 			log.info("Test OK");
 		}
 		return test ? "ok" : "ko";
-	}
+	}*/
 
-	public List<ProdottoDTO> findAll(String username) {
+	public List<QuestionDTO> findAll(String username) {
 
 		log.info("Tutti i prodotti");
-		List<ProdottoDTO> result = new ArrayList<>();
+		List<QuestionDTO> result = new ArrayList<>();
 		//creiao un Array nel quale poi aggiungiamo ogni riga rilevata dal nostro db
 
-		Iterator<Prodotto> iterator = this.repository.findAll().iterator();
+		Iterator<Question> iterator = this.repository.findAll().iterator();
 		while(iterator.hasNext()) {
 
-			Prodotto prodotto = iterator.next();
-			result.add(ProdottoDTO.build(prodotto));
+			Question prodotto = iterator.next();
+			result.add(QuestionDTO.build(prodotto));
 		}
 
 		//User activity
@@ -70,25 +70,25 @@ public class ProdottoService {
 		return result;
 	}
 
-	public ProdottoDTO findProdottoById(Integer id, String username) {
+	public QuestionDTO findProdottoById(Integer id, String username) {
 
 		log.info("Trova prodotto attraverso Id");
-		Prodotto entity = this.repository.findById(id).get();
+		Question entity = this.repository.findById(id).get();
 
 		//User activity
 		String descrizione = "Richiesto dettaglio prodotto con id: " + id;
 		attivitaUtente(username, descrizione);
 
-		return ProdottoDTO.build(entity);
+		return QuestionDTO.build(entity);
 	}
 
 	//metodo utilizzato all'interno dei metodi di modifica/delete
-	public ProdottoDTO findProdottoById(Integer id) {
+	public QuestionDTO findProdottoById(Integer id) {
 
 		log.info("Trova prodotto attraverso Id");
-		Prodotto entity = this.repository.findById(id).get();
+		Question entity = this.repository.findById(id).get();
 
-		return ProdottoDTO.build(entity);
+		return QuestionDTO.build(entity);
 	}
 
 	/* Con l'annotazione Transactionl possiamo stabilire se bloccare o meno l'autocommit
@@ -98,7 +98,7 @@ public class ProdottoService {
 	 * Queste vengono chiamate operazioni atomiche.
 	 */
 	@Transactional(propagation = Propagation.REQUIRED)
-	public void creaProdotto(Prodotto prod) {
+	public void creaProdotto(Question prod) {
 
 		this.repository.save(prod);
 
@@ -116,7 +116,7 @@ public class ProdottoService {
 			Date updateTime,
 			String updateUser) {
 
-		Prodotto prod = this.repository.findById(id).get();
+		Question prod = this.repository.findById(id).get();
 
 		if (codProd != null)
 			prod.setCodProd(codProd);

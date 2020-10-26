@@ -2,7 +2,7 @@ package it.jac.javadb.dto;
 
 // Classe utilizzata nel controlle in caso di risposta positiva della chiamata HTTP.
 
-public class ProdResponseMessage {
+public class ResponseMessage {
 
 	private int responseCode;
 
@@ -10,9 +10,9 @@ public class ProdResponseMessage {
 
 	private int prodId = -1;
 
-	public static ProdResponseMessage ok(int prodId) {
+	public static ResponseMessage ok(int prodId) {
 		
-		ProdResponseMessage result = new ProdResponseMessage();
+		ResponseMessage result = new ResponseMessage();
 		
 		result.responseCode = 100;
 		result.responseMessage = "No errors";

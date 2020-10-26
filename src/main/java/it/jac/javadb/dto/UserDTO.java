@@ -1,31 +1,34 @@
 package it.jac.javadb.dto;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-
-import javax.persistence.Column;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import org.springframework.beans.BeanUtils;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
-import it.jac.javadb.entity.Prodotto;
-/* Classe non per forza necessaria in quanto nel nostrp caso non implementiamo alcun metodo
- * che ci chieda la manipolazione dei dati utente (es. rappresentazione, modifica, ecc)
- */
+import it.jac.javadb.entity.User;
 
 public class UserDTO {
 
 	private int id;
 
-	private String username;
+	private String name;
 
-	private String password;
+	private String surname;
+	
+	private Date dataTest;
 
-	private String roles;
+	private int idSeniority;
+
+	private int score;
+
+	private int time;
+
+	public static UserDTO build(User user) {
+
+		UserDTO result = new UserDTO();
+		BeanUtils.copyProperties(user, result);
+
+		return result;
+	}
 
 	public int getId() {
 		return id;
@@ -35,29 +38,52 @@ public class UserDTO {
 		this.id = id;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getName() {
+		return name;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getSurname() {
+		return surname;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setSurname(String surname) {
+		this.surname = surname;
 	}
 
-	public String getRoles() {
-		return roles;
+	public int getIdSeniority() {
+		return idSeniority;
 	}
 
-	public void setRoles(String roles) {
-		this.roles = roles;
+	public void setIdSeniority(int idSeniority) {
+		this.idSeniority = idSeniority;
 	}
-	
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}
+
+	public int getTime() {
+		return time;
+	}
+
+	public void setTime(int time) {
+		this.time = time;
+	}
+
+	public Date getDataTest() {
+		return dataTest;
+	}
+
+	public void setDataTest(Date dataTest) {
+		this.dataTest = dataTest;
+	}
 	
 }
