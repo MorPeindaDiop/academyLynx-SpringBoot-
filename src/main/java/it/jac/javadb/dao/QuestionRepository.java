@@ -1,5 +1,7 @@
 package it.jac.javadb.dao;
 
+import java.util.List;
+
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -9,8 +11,8 @@ import it.jac.javadb.entity.Seniority;
 @Repository
 public interface QuestionRepository extends CrudRepository<Question, Integer> {
 	
-	public Question findByIdSeniority(Seniority idSeniority);
+	public List<Question> findByDifficulty(int difficulty);
 	
-	public Question findByType(String type);
+	public List<Question> findByType(String type);
 	
 }

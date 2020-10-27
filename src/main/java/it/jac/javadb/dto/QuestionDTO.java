@@ -27,7 +27,7 @@ public class QuestionDTO {
 	private List<String> wrongAnswers = new ArrayList<>();
 	//per le checkbox
 
-	private int score;
+	private int difficulty;
 
 	private Date creationTime;
 
@@ -93,24 +93,16 @@ public class QuestionDTO {
 		this.correctAnswerText = correctAnswerText;
 	}
 
-	public List<String> getWrongAnswer() {
-		return wrongAnswers;
-	}
-
-	public void setWrongAnswer(List<String> wrongAnswer) {
-		this.wrongAnswers = wrongAnswer;
-	}
-
-	public int getScore() {
-		return score;
-	}
-
-	public void setScore(int score) {
-		this.score = score;
-	}
-
 	public List<String> getWrongAnswers() {
 		return wrongAnswers;
+	}
+
+	public int getDifficulty() {
+		return difficulty;
+	}
+
+	public void setDifficulty(int difficulty) {
+		this.difficulty = difficulty;
 	}
 
 	public void setWrongAnswers(List<String> wrongAnswers) {

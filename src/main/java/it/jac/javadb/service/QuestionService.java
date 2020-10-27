@@ -32,30 +32,7 @@ public class QuestionService {
 	private QuestionRepository questionRepository;
 
 	@Autowired
-	private SeniorityRepository seniorityRepository;
-
-	@Autowired
 	private UserActivityRepository userActivityRepository;
-
-
-	/*public List<QuestionDTO> findAll(String username) {
-
-		log.info("Tutti i prodotti");
-		List<QuestionDTO> result = new ArrayList<>();
-
-		Iterator<Question> iterator = this.questionRepository.findAll().iterator();
-		while(iterator.hasNext()) {
-
-			Question prodotto = iterator.next();
-			result.add(QuestionDTO.build(prodotto));
-		}
-
-		//User activity
-		String descrizione = "Richiesta lista di tutti i prodotti";
-		attivitaUtente(username, descrizione);
-
-		return result;
-	}*/
 
 	public List<QuestionDTO> findAll() {
 
@@ -79,15 +56,13 @@ public class QuestionService {
 
 		return QuestionDTO.build(question);
 	}
-	
-	public List<QuestionDTO> findQuestionByIdSeniority(Seniority idSeniority) {
 
-		log.info("Tutte le domande tramite Id Seniority");
+	public List<QuestionDTO> findQuestionByDifficulty(int difficulty) {
+
+		log.info("Tutte le domande tramite la difficoltà");
 		List<QuestionDTO> result = new ArrayList<>();
-		
-		//Question question = this.questionRepository.findById(idSeniority).get();
-		
-		Iterator<Question> iterator = this.questionRepository.findByIdSeniority(idSeniority).iterator();
+
+		Iterator<Question> iterator = this.questionRepository.findByDifficulty(difficulty).iterator();
 		while(iterator.hasNext()) {
 
 			Question question = iterator.next();
@@ -96,93 +71,68 @@ public class QuestionService {
 
 		return result;
 	}
-	
-	public QuestionDTO findQuestionByType(String type) {
 
-		log.info("Trova question attraverso Id");
-		Question questionType = this.questionRepository.findByType(type).get;
+	public List<QuestionDTO> findQuestionByType(String type) {
 
-		return QuestionDTO.build(question);
-	}
-	
+		log.info("Tutte le domande tramite il tipo");
+		List<QuestionDTO> result = new ArrayList<>();
 
-	@Transactional(propagation = Propagation.REQUIRED)
-	public void creaProdotto(Question prod) {
+		Iterator<Question> iterator = this.questionRepository.findByType(type).iterator();
+		while(iterator.hasNext()) {
 
-		this.questionRepository.save(prod);
-
-		//User activity
-		String descrizione = "Inserito prodotto con id: " + prod.getId();
-		attivitaUtente(prod.getCreationUser(), descrizione, prod.getCreationTime());
-
-	}
-
-	public void modificaProdotto(
-			int id,
-			String codProd,
-			Integer prezzo,
-			Date dataArr,
-			Date updateTime,
-			String updateUser) {
-
-		Question prod = this.questionRepository.findById(id).get();
-
-		if (codProd != null)
-			prod.setCodProd(codProd);
-
-		if (prezzo != null)
-			prod.setPrezzo(prezzo);
-
-		if (dataArr != null)
-			prod.setDataArr(dataArr);
-
-		//Se non è stata apportata alcuna modifica, non modifica gli attibuti updateTime e updateUser
-		if (codProd != null || prezzo != null || dataArr != null) {
-			prod.setUpdateTime(updateTime);
-			prod.setUpdateUser(updateUser);
+			Question question = iterator.next();
+			result.add(QuestionDTO.build(question));
 		}
 
-		this.questionRepository.save(prod);
+		return result;
+	}
 
-		//User activity
-		String descrizione = "Modificato prodotto con id: " + prod.getId();
-		attivitaUtente(updateUser, descrizione, updateTime);
+
+
+	@Transactional(propagation = Propagation.REQUIRED)
+	public void createQuestion(Question question) {
+
+		this.questionRepository.save(question);
 
 	}
 
-	public void deleteProdotto(int id, String username) {
+	public void updateQuestion(
+			int id,
+			String newType,
+			String newQuestion,
+			String newCorrectAnswerBoolean,
+			String newCorrectAnswerText,
+			List<String> newWrongAnswers,
+			int newDifficulty) {
+
+		Question question = this.questionRepository.findById(id).get();
+
+		if (newType != null)
+			question.setType(newType);
+
+		if (question != null)
+			question.setQuestion(newQuestion);
+
+		if (newCorrectAnswerBoolean != null)
+			question.setCorrectAnswerBoolean(newCorrectAnswerBoolean.equalsIgnoreCase("true") ? true : false);
+
+		if (newCorrectAnswerText != null)
+			question.setCorrectAnswerText(newCorrectAnswerText);
+
+		if (newWrongAnswers.size() != 0)
+			question.setWrongAnswers(newWrongAnswers);
+		
+		if (newDifficulty >=1 || newDifficulty <=10)
+			question.setDifficulty(newDifficulty);
+
+		this.questionRepository.save(question);
+
+	}
+
+	public void deleteQuestion(int id) {
 
 		this.questionRepository.delete(this.questionRepository.findById(id).get());
 
-		//User activity
-		String descrizione = "Eliminato prodotto con id: " + id;
-		attivitaUtente(username, descrizione);
-
-	}
-
-	//metodi per inserire le informazioni nella tabella user_activity
-	//senza data come parametro
-	private UserActivity attivitaUtente(String username, String descrizione) {
-		UserActivity attivitaUtente = new UserActivity();
-		attivitaUtente.setUsername(username);
-		attivitaUtente.setActivityDesc(descrizione);
-		attivitaUtente.setActivityTime(new Date());
-
-		log.info("Aggiunta attività nella tabella user_activity");
-
-		return this.userActivityRepository.save(attivitaUtente);
-	}
-
-	//con data come parametro
-	private UserActivity attivitaUtente(String username, String descrizione, Date data) {
-		UserActivity attivitaUtente = new UserActivity();
-		attivitaUtente.setUsername(username);
-		attivitaUtente.setActivityDesc(descrizione);
-		attivitaUtente.setActivityTime(data);
-
-		log.info("Aggiunta attività nella tabella user_activity");
-
-		return this.userActivityRepository.save(attivitaUtente);
 	}
 
 }

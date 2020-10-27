@@ -22,9 +22,12 @@ public class Seniority {
 
 	@Column(name = "description")
 	private String description;
-
-	@Column(name = "years")
-	private int years;
+	
+	@Column(name = "minDifficulty")
+	private int minDifficulty;
+	
+	@Column(name = "maxDifficulty")
+	private int maxDifficulty;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "creation_time")
@@ -42,7 +45,7 @@ public class Seniority {
 	
 	@Override
 	public String toString() {
-		return "Seniority [Description=" + description + ", years of experience=" + years + "]";
+		return "Seniority [Description=" + description + ", min difficulty=" + minDifficulty + ", max difficulty=" + maxDifficulty + "]";
 	}
 
 	public int getId() {
@@ -61,12 +64,20 @@ public class Seniority {
 		this.description = description;
 	}
 
-	public int getYears() {
-		return years;
+	public int getMinDifficulty() {
+		return minDifficulty;
 	}
 
-	public void setYears(int years) {
-		this.years = years;
+	public void setMinDifficulty(int minDifficulty) {
+		this.minDifficulty = minDifficulty;
+	}
+
+	public int getMaxDifficulty() {
+		return maxDifficulty;
+	}
+
+	public void setMaxDifficulty(int maxDifficulty) {
+		this.maxDifficulty = maxDifficulty;
 	}
 
 	public Date getCreationTime() {

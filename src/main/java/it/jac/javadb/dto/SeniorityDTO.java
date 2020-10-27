@@ -10,8 +10,10 @@ public class SeniorityDTO {
 	private int id;
 
 	private String description;
-
-	private Integer years;
+	
+	private int minDifficulty;
+	
+	private int maxDifficulty;
 
 	private Date creationTime;
 
@@ -45,12 +47,20 @@ public class SeniorityDTO {
 		this.description = description;
 	}
 
-	public Integer getYears() {
-		return years;
+	public int getMinDifficulty() {
+		return minDifficulty;
 	}
 
-	public void setYears(Integer years) {
-		this.years = years;
+	public void setMinDifficulty(int minDifficulty) {
+		this.minDifficulty = minDifficulty;
+	}
+
+	public int getMaxDifficulty() {
+		return maxDifficulty;
+	}
+
+	public void setMaxDifficulty(int maxDifficulty) {
+		this.maxDifficulty = maxDifficulty;
 	}
 
 	public Date getCreationTime() {

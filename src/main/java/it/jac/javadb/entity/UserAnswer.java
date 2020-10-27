@@ -19,15 +19,13 @@ public class UserAnswer {
 	@Column(name = "idQuestion")
 	private Question idQuestion;
 
-	@Column(name = "answerBoolean")
-	private boolean answerBoolean;
+	@Column(name = "answer")
+	private boolean answer;
 
-	@Column(name = "answerText", length = 45)
-	private String answerText;
 	
 	@Override
 	public String toString() {
-		return "User Answer [id utente=" + idUser + ", id question=" + idQuestion + ", answer=" + (answerText != "" ? answerText : answerBoolean) +  "]";
+		return "User Answer [id utente=" + idUser + ", id question=" + idQuestion + ", answer=" + answer +  "]";
 	}
 
 	public User getIdUser() {
@@ -46,20 +44,12 @@ public class UserAnswer {
 		this.idQuestion = idQuestion;
 	}
 
-	public boolean isAnswerBoolean() {
-		return answerBoolean;
+	public boolean isAnswer() {
+		return answer;
 	}
 
-	public void setAnswerBoolean(boolean answerBoolean) {
-		this.answerBoolean = answerBoolean;
+	public void setAnswer(boolean answer) {
+		this.answer = answer;
 	}
-
-	public String getAnswerText() {
-		return answerText;
-	}
-
-	public void setAnswerText(String answerText) {
-		this.answerText = answerText;
-	}
-
+	
 }

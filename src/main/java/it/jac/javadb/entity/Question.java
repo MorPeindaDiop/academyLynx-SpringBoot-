@@ -22,9 +22,6 @@ public class Question {
 	@Column(name = "id")
 	private int id;
 
-	@Column(name = "idSeniority")
-	private Seniority idSeniority;
-
 	@Column(name = "type")
 	private String type;
 
@@ -37,12 +34,12 @@ public class Question {
 	@Column(name = "correctAnswerText")
 	private String correctAnswerText;
 
-	@Column(name = "wrongAnswer")
+	@Column(name = "wrongAnswers")
 	private List<String> wrongAnswers = new ArrayList<>();
 	//per le checkbox
 
-	@Column(name = "score")
-	private int score;
+	@Column(name = "difficulty")
+	private int difficulty;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "creation_time")
@@ -60,7 +57,7 @@ public class Question {
 	
 	@Override
 	public String toString() {
-		return "Question [id=" + id + ", question type=" + type + ", question text=" + question + ", correct answer=" + (correctAnswerText != "" ? correctAnswerText : correctAnswerBoolean) + ", score=" + score + "]";
+		return "Question [id=" + id + ", question type=" + type + ", question text=" + question + ", correct answer=" + (correctAnswerText != "" ? correctAnswerText : correctAnswerBoolean) + ", difficulty=" + difficulty + "]";
 	}
 
 	public int getId() {
@@ -69,14 +66,6 @@ public class Question {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public Seniority getIdSeniority() {
-		return idSeniority;
-	}
-
-	public void setIdSeniority(Seniority idSeniority) {
-		this.idSeniority = idSeniority;
 	}
 
 	public String getType() {
@@ -111,20 +100,20 @@ public class Question {
 		this.correctAnswerText = correctAnswerText;
 	}
 
-	public List<String> getWrongAnswer() {
+	public List<String> getWrongAnswers() {
 		return wrongAnswers;
 	}
 
-	public void setWrongAnswer(List<String> wrongAnswer) {
-		this.wrongAnswers = wrongAnswer;
+	public void setWrongAnswers(List<String> wrongAnswers) {
+		this.wrongAnswers = wrongAnswers;
 	}
 
-	public int getScore() {
-		return score;
+	public int getDifficulty() {
+		return difficulty;
 	}
 
-	public void setScore(int score) {
-		this.score = score;
+	public void setDifficulty(int difficulty) {
+		this.difficulty = difficulty;
 	}
 
 	public Date getCreationTime() {

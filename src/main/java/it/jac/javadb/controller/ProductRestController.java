@@ -128,7 +128,7 @@ public class ProductRestController {
 		log.info("Rilevata data di creazione");
 		prodotto.setCreationUser(getUsername(req));
 
-		this.service.creaProdotto(prodotto);
+		this.service.createQuestion(prodotto);
 
 		return ResponseEntity.ok(ResponseMessage.ok(prodotto.getId()));
 	}
@@ -157,7 +157,7 @@ public class ProductRestController {
 			return ResponseEntity.notFound().build();
 		}
 
-		service.modificaProdotto(id, codProd, prezzo, dataArr, updateTime, updateUser);
+		service.updateQuestion(id, codProd, prezzo, dataArr, updateTime, updateUser);
 
 		return ResponseEntity.ok(ResponseMessage.ok(prodotto.getId()));
 	}
@@ -177,7 +177,7 @@ public class ProductRestController {
 			return ResponseEntity.notFound().build();
 		}
 
-		service.deleteProdotto(id, getUsername(req));
+		service.deleteQuestion(id, getUsername(req));
 
 		return ResponseEntity.ok(ResponseMessage.ok(prodotto.getId()));
 	}
