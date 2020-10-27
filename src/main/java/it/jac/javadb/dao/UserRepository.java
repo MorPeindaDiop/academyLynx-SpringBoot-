@@ -9,7 +9,7 @@ import it.jac.javadb.entity.User;
 public interface UserRepository extends CrudRepository<User, Integer> {
 
 	public User findByUsername(String username);
-	/* Creiamo il metodo pubblico che ci permette di cercare il nostro utente tramite 
-	 * lo username.
-	 */
+	
+	public User findByUsernameAndName(String username, String name);
+
 }

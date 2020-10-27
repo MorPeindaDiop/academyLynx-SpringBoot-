@@ -93,7 +93,7 @@ public class ProductRestController {
 		
 		log.info("Rilevato utente che ha eseguito la richiesta di dettaglio");
 
-		QuestionDTO prodotto = service.findProdottoById(id, getUsername(req));
+		QuestionDTO prodotto = service.findQuestionById(id, getUsername(req));
 
 		if (prodotto == null) {
 			log.info("Nessun prodotto con id = " + id + " rilevato");

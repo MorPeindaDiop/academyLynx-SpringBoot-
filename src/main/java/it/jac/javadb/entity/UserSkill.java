@@ -1,11 +1,9 @@
 package it.jac.javadb.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -14,13 +12,11 @@ import javax.persistence.Table;
 public class UserSkill {
 
 	@Id
-	@OneToMany(fetch = FetchType.EAGER)
-	@JoinColumn(name = "idUser")
+	@Column(name = "idUser")
 	private User idUser;
 
 	@Id
-	@OneToMany(fetch = FetchType.EAGER)
-	@JoinColumn(name = "idSkill")
+	@Column(name = "idSkill")
 	private Skill idSkill;
 
 	@Override
