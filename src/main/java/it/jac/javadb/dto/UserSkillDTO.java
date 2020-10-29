@@ -5,8 +5,9 @@ import org.springframework.beans.BeanUtils;
 import it.jac.javadb.entity.Skill;
 import it.jac.javadb.entity.User;
 import it.jac.javadb.entity.UserSkill;
+import lombok.Data;
 
-public class UserSkillDTO {
+public @Data class UserSkillDTO {
 
 	private User idUser;
 
@@ -19,21 +20,5 @@ public class UserSkillDTO {
 
 		return result;
 	}
-
-	public User getIdUser() {
-		return idUser;
-	}
-
-	public void setIdUser(User idUser) {
-		this.idUser = idUser;
-	}
-
-	public Skill getIdSkill() {
-		return idSkill;
-	}
-
-	public void setIdSkill(Skill idSkill) {
-		this.idSkill = idSkill;
-	}
-
+	
 }

@@ -52,9 +52,11 @@ public class QuestionService {
 	public QuestionDTO findQuestionById(Integer id) {
 
 		log.info("Trova question attraverso Id");
-		Question question = this.questionRepository.findById(id).get();
-
-		return QuestionDTO.build(question);
+		Optional<Question> question = this.questionRepository.findById(id);
+		if (question.isPresent())
+			return QuestionDTO.build(question.get());
+		
+		return 
 	}
 
 	public List<QuestionDTO> findQuestionByDifficulty(int difficulty) {

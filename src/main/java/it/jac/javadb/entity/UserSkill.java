@@ -6,10 +6,12 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.Table;
 
+import lombok.Data;
+
 @Entity
 @Table(name = "userSkill")
 @IdClass(PkUserSkill.class)
-public class UserSkill {
+public @Data class UserSkill {
 
 	@Id
 	@Column(name = "idUser")
@@ -23,22 +25,5 @@ public class UserSkill {
 	public String toString() {
 		return "User Skill [id utente=" + idUser + ", id skill=" + idSkill + "]";
 	}
-
-	public User getIdUser() {
-		return idUser;
-	}
-
-	public void setIdUser(User idUser) {
-		this.idUser = idUser;
-	}
-
-	public Skill getIdSkill() {
-		return idSkill;
-	}
-
-	public void setIdSkill(Skill idSkill) {
-		this.idSkill = idSkill;
-	}
-
 	
 }

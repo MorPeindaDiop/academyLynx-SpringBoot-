@@ -1,15 +1,19 @@
 package it.jac.javadb.entity;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.Table;
 
+import lombok.Data;
+
 @Entity
 @Table(name = "userAnswer")
 @IdClass(PkUserAnswer.class)
-public class UserAnswer {
+public @Data class UserAnswer {
 
 	@Id
 	@Column(name = "idUser")
@@ -26,30 +30,6 @@ public class UserAnswer {
 	@Override
 	public String toString() {
 		return "User Answer [id utente=" + idUser + ", id question=" + idQuestion + ", answer=" + answer +  "]";
-	}
-
-	public User getIdUser() {
-		return idUser;
-	}
-
-	public void setIdUser(User idUser) {
-		this.idUser = idUser;
-	}
-
-	public Question getIdQuestion() {
-		return idQuestion;
-	}
-
-	public void setIdQuestion(Question idQuestion) {
-		this.idQuestion = idQuestion;
-	}
-
-	public boolean isAnswer() {
-		return answer;
-	}
-
-	public void setAnswer(boolean answer) {
-		this.answer = answer;
 	}
 	
 }

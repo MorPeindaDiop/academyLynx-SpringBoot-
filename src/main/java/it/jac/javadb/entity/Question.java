@@ -13,9 +13,11 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import lombok.Data;
+
 @Entity
 @Table(name = "question")
-public class Question {
+public @Data class Question {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -58,94 +60,6 @@ public class Question {
 	@Override
 	public String toString() {
 		return "Question [id=" + id + ", question type=" + type + ", question text=" + question + ", correct answer=" + (correctAnswerText != "" ? correctAnswerText : correctAnswerBoolean) + ", difficulty=" + difficulty + "]";
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	public String getQuestion() {
-		return question;
-	}
-
-	public void setQuestion(String question) {
-		this.question = question;
-	}
-
-	public boolean isCorrectAnswerBoolean() {
-		return correctAnswerBoolean;
-	}
-
-	public void setCorrectAnswerBoolean(boolean correctAnswerBoolean) {
-		this.correctAnswerBoolean = correctAnswerBoolean;
-	}
-
-	public String getCorrectAnswerText() {
-		return correctAnswerText;
-	}
-
-	public void setCorrectAnswerText(String correctAnswerText) {
-		this.correctAnswerText = correctAnswerText;
-	}
-
-	public List<String> getWrongAnswers() {
-		return wrongAnswers;
-	}
-
-	public void setWrongAnswers(List<String> wrongAnswers) {
-		this.wrongAnswers = wrongAnswers;
-	}
-
-	public int getDifficulty() {
-		return difficulty;
-	}
-
-	public void setDifficulty(int difficulty) {
-		this.difficulty = difficulty;
-	}
-
-	public Date getCreationTime() {
-		return creationTime;
-	}
-
-	public void setCreationTime(Date creationTime) {
-		this.creationTime = creationTime;
-	}
-
-	public Date getUpdateTime() {
-		return updateTime;
-	}
-
-	public void setUpdateTime(Date updateTime) {
-		this.updateTime = updateTime;
-	}
-
-	public String getCreationUser() {
-		return creationUser;
-	}
-
-	public void setCreationUser(String creationUser) {
-		this.creationUser = creationUser;
-	}
-
-	public String getUpdateUser() {
-		return updateUser;
-	}
-
-	public void setUpdateUser(String updateUser) {
-		this.updateUser = updateUser;
 	}
 
 }

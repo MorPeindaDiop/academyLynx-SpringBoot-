@@ -1,9 +1,5 @@
 package it.jac.javadb.entity;
 
-/* Bean utilizzato per create la tabella user_activity, che terrà il registro di tutte le richieste http, 
- * includenso sia quelle di modifica del db, sia quelle di semplice lettura, riposrtando una breve descrizione e 
- * l'utente che ha effettuato l'attività con relativa ora
- */
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -15,9 +11,11 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import lombok.Data;
+
 @Entity
 @Table(name = "user_activity")
-public class UserActivity {
+public @Data class UserActivity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,37 +31,5 @@ public class UserActivity {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "activity_time")
 	private Date activityTime;
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getActivityDesc() {
-		return activityDesc;
-	}
-
-	public void setActivityDesc(String activityDesc) {
-		this.activityDesc = activityDesc;
-	}
-
-	public Date getActivityTime() {
-		return activityTime;
-	}
-
-	public void setActivityTime(Date activityTime) {
-		this.activityTime = activityTime;
-	}
 
 }

@@ -5,8 +5,9 @@ import org.springframework.beans.BeanUtils;
 import it.jac.javadb.entity.Question;
 import it.jac.javadb.entity.User;
 import it.jac.javadb.entity.UserAnswer;
+import lombok.Data;
 
-public class UserAnswerDTO {
+public @Data class UserAnswerDTO {
 
 	private User idUser;
 
@@ -23,39 +24,5 @@ public class UserAnswerDTO {
 
 		return result;
 	}
-
-	public User getIdUser() {
-		return idUser;
-	}
-
-	public void setIdUser(User idUser) {
-		this.idUser = idUser;
-	}
-
-	public Question getIdQuestion() {
-		return idQuestion;
-	}
-
-	public void setIdQuestion(Question idQuestion) {
-		this.idQuestion = idQuestion;
-	}
-
-	public boolean isAnswerBoolean() {
-		return answerBoolean;
-	}
-
-	public void setAnswerBoolean(boolean answerBoolean) {
-		this.answerBoolean = answerBoolean;
-	}
-
-	public String getAnswerText() {
-		return answerText;
-	}
-
-	public void setAnswerText(String answerText) {
-		answerText = answerText;
-	}
-
 	
-
 }

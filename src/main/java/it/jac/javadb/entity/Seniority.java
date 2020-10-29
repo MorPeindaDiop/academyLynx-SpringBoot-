@@ -11,9 +11,11 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import lombok.Data;
+
 @Entity
 @Table(name = "seniority")
-public class Seniority {
+public @Data class Seniority {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,70 +48,6 @@ public class Seniority {
 	@Override
 	public String toString() {
 		return "Seniority [Description=" + description + ", min difficulty=" + minDifficulty + ", max difficulty=" + maxDifficulty + "]";
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public int getMinDifficulty() {
-		return minDifficulty;
-	}
-
-	public void setMinDifficulty(int minDifficulty) {
-		this.minDifficulty = minDifficulty;
-	}
-
-	public int getMaxDifficulty() {
-		return maxDifficulty;
-	}
-
-	public void setMaxDifficulty(int maxDifficulty) {
-		this.maxDifficulty = maxDifficulty;
-	}
-
-	public Date getCreationTime() {
-		return creationTime;
-	}
-
-	public void setCreationTime(Date creationTime) {
-		this.creationTime = creationTime;
-	}
-
-	public Date getUpdateTime() {
-		return updateTime;
-	}
-
-	public void setUpdateTime(Date updateTime) {
-		this.updateTime = updateTime;
-	}
-
-	public String getCreationUser() {
-		return creationUser;
-	}
-
-	public void setCreationUser(String creationUser) {
-		this.creationUser = creationUser;
-	}
-
-	public String getUpdateUser() {
-		return updateUser;
-	}
-
-	public void setUpdateUser(String updateUser) {
-		this.updateUser = updateUser;
 	}
 	
 }
