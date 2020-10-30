@@ -11,7 +11,8 @@ import it.jac.javadb.entity.Seniority;
 import it.jac.javadb.entity.Skill;
 import lombok.Data;
 
-public @Data class QuestionDTO {
+@Data
+public class QuestionDTO {
 
 	private int id;
 

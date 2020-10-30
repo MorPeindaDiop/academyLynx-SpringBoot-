@@ -29,7 +29,20 @@ public class UserService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-		User user = userRepository.findByUsername(username);
+		Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
+        String roles = "ROLE_USER;ROLE_EDIT;ROLE_DELETE";
+        String[] tokens = roles.split(";");
+        for(String role : tokens) {
+        	grantedAuthorities.add(new SimpleGrantedAuthority(role));
+        }
+        // ROLE_USER
+        // ROLE_READONLY
+        return new org.springframework.security.core.userdetails.User("user1", bCryptPasswordEncoder.encode("123"), grantedAuthorities);
+		
+        
+        
+        
+        /*User user = userRepository.findByUsername(username);
         if (user == null) {
         	throw new UsernameNotFoundException(username);
         }
@@ -42,6 +55,6 @@ public class UserService implements UserDetailsService {
         for(String role : tokens) {
         	grantedAuthorities.add(new SimpleGrantedAuthority(role));
         }
-        return new org.springframework.security.core.userdetails.User(user.getUsername(), bCryptPasswordEncoder.encode(user.getPassword()), grantedAuthorities);    
+        return new org.springframework.security.core.userdetails.User(user.getUsername(), bCryptPasswordEncoder.encode(user.getPassword()), grantedAuthorities);*/    
 	}
 }

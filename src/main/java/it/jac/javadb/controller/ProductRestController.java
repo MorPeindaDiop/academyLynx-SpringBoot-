@@ -33,26 +33,19 @@ import it.jac.javadb.entity.Question;
 import it.jac.javadb.service.QuestionService;
 import it.jac.javadb.util.JwtTokenUtil;
 
-/* Annotazione che indica a spring che questo bean è di tipo RestController
- * accessibile dal path localhost:8080/esame/rest
- * la prima parte del path è stato impostato nel file application.properties
- */
 @RestController
 @RequestMapping("/rest")
 @Secured("ROLE_USER")
 public class ProductRestController {
 
 	private static Logger log = LoggerFactory.getLogger(ProductRestController.class);
-
+/*
 	@Autowired
 	private JwtTokenUtil jwtTokenUtil;
 
-	// Il repository comunica con il service, che a sua volta comunica con il controller
-	//sempre con l'Autowired creiamo questo legame tra service e controller
 	@Autowired
 	private QuestionService service;
 	
-	//metodo per rilevare l'utente dal token di autenticazione
 	private String getUsername(HttpServletRequest req) {
 		final String requestTokenHeader = req.getHeader("Authorization");
 		String jwtToken = requestTokenHeader.substring("Bearer ".length());
@@ -61,13 +54,6 @@ public class ProductRestController {
 		return username;
 	}
 
-	//@Secured --> autorizzazione ulteriore ad una serie di API, perchè una volta che sei loggato e va tutto bene
-	//non è detto che si possa fare tutto nell'applicativo
-	//si assegnano dei ruoli all'utente
-	//quindi per fare questa operazione vi è bisogno di avere quel ruolo come utente
-
-	//i path inseriti all'inizio di ogni richiesta saranno da aggiungere a quello principale
-	//localhost:8080/esame/rest
 	@GetMapping(path = "/allProducts")
 	public ResponseEntity<List<QuestionDTO>> allProducts(HttpServletRequest req) {
 
@@ -76,7 +62,7 @@ public class ProductRestController {
 		String username = getUsername(req);
 		log.info("Rilevato utente che ha eseguito la richiesta");
 		
-		List<QuestionDTO> prodotto = service.findAll(username);
+		List<QuestionDTO> prodotto = service.findAll();
 
 		if (prodotto == null) {
 			log.info("Lista prodotti vuota");
@@ -87,13 +73,12 @@ public class ProductRestController {
 
 	@GetMapping(path = "/detail/{id}")
 	public ResponseEntity<QuestionDTO> detail(@PathVariable(name = "id") Integer id, HttpServletRequest req) {
-		//con l'annotazione @PathVarible indichiamo che quel parametro del metono deve essere preso dall'url
-
+		
 		log.info("Ricevuta richiesta di dettaglio di un prodotto");
 		
 		log.info("Rilevato utente che ha eseguito la richiesta di dettaglio");
 
-		QuestionDTO prodotto = service.findQuestionById(id, getUsername(req));
+		QuestionDTO prodotto = service.findQuestionById(id);
 
 		if (prodotto == null) {
 			log.info("Nessun prodotto con id = " + id + " rilevato");
@@ -110,15 +95,11 @@ public class ProductRestController {
 			@RequestParam int prezzo,
 			@RequestParam Date dataArr,
 			HttpServletRequest req) {
-		//con l'annotazione @RequestParam indichiamo che quel parametro deve essere passato come parametro nell'url, 
-		//con l'utilizzo dei query params, ad esempio-->create?codProd=ciao
-
+		
 		log.info("Ricevuta richiesta di creazione nuovo prodotto");
 
 		log.info("Rilevato utente di creazione");
-		/* Con le tre righe sopra prendiamo le informazioni inerenti all'utente che sono necessarie
-		 * per settare l'attributo creationUser e successivamente updateUser
-		 */
+		
 
 		Question prodotto = new Question();
 		//prodotto.setCodProd(codProd);
@@ -150,14 +131,14 @@ public class ProductRestController {
 		Date updateTime = new Date();
 		log.info("Rilevata data di modifica");
 
-		QuestionDTO prodotto = service.findProdottoById(id);
+		QuestionDTO prodotto = service.findQuestionById(id);
 
 		if (prodotto == null) {
 			log.info("Nessun prodotto con id = " + id + " rilevato");
 			return ResponseEntity.notFound().build();
 		}
 
-		service.updateQuestion(id, codProd, prezzo, dataArr, updateTime, updateUser);
+		//service.updateQuestion(id, codProd, prezzo, dataArr, updateTime, updateUser);
 
 		return ResponseEntity.ok(ResponseMessage.ok(prodotto.getId()));
 	}
@@ -170,16 +151,16 @@ public class ProductRestController {
 		
 		log.info("Rilevato utente di modifica");
 
-		QuestionDTO prodotto = service.findProdottoById(id);
+		QuestionDTO prodotto = service.findQuestionById(id);
 
 		if (prodotto == null) {
 			log.info("Nessun prodotto con id = " + id + " rilevato");
 			return ResponseEntity.notFound().build();
 		}
 
-		service.deleteQuestion(id, getUsername(req));
+		service.deleteQuestion(id);
 
 		return ResponseEntity.ok(ResponseMessage.ok(prodotto.getId()));
 	}
-
+*/
 }
