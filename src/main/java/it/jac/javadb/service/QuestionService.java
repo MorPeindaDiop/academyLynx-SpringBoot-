@@ -127,10 +127,18 @@ public class QuestionService {
 
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	public void createQuestion(Question question) {
+	public Response<Boolean> createQuestion(Question question) {
 
-		this.questionRepository.save(question);
+		Response<Boolean> response = new Response<Boolean>();
+		
+		try {
+			this.questionRepository.save(question);
+			response.setResult(true);
+		} catch (Exception e) {
+			response.setError("Nessun elemento trovato.");
+		}
 
+		return response;
 	}
 
 	public void updateQuestion(

@@ -18,7 +18,7 @@ public class QuestionServiceTest {
 		
 		service.createQuestion(question);
 		
-		assertEquals("id: 1", question);
+		assertEquals("Nessun elemento trovato.", service.createQuestion(question).getError());
 	}
 
 }
