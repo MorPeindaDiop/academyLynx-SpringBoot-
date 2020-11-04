@@ -27,12 +27,13 @@ public class SeniorityService {
 		try {
 			this.seniorityRepository.save(seniority);
 			response.setResult(true);
+			response.setResultTest(true);
 
 		}catch(Exception e) {
 			response.setError("Seniority non creata");
 		}
 
-		return null;
+		return response;
 	}
 
 	public Response<String> deleteSeniorityById(int id) {
