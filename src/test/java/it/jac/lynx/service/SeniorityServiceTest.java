@@ -25,5 +25,27 @@ public class SeniorityServiceTest {
 		assertEquals(true, seniorityService.createSeniority(seniority).isResultTest());
 	}
 	
+	@Test 
+	public void deleteSenioritylByIdTest() {
+	
+		assertEquals("Seniority eliminata.", seniorityService.deleteSeniorityById(2).getResult());
+		
+	}
+	@Test
+	public void findAllSeniorityTest() {
+		
+		assertEquals(true, seniorityService.findAllSeniority().isResultTest());
+	}
+	
+	
+	@Test
+	public void findSeniorityByIdTest() {
+		assertEquals(true, seniorityService.findSeniorityById(1).isResultTest());
+	}
+	
+	@Test
+	public void updateSeniorityTest(){
+		assertEquals(true, seniorityService.updateSeniorityDescription(1, "nuova descrizione").isResultTest());
+	}
 
 }

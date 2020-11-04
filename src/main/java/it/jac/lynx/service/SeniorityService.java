@@ -41,7 +41,7 @@ public class SeniorityService {
 		Response<String> response = new Response<String>();
 		try {
 			this.seniorityRepository.deleteById(id);
-			response.setResult("Skill eliminata.");
+			response.setResult("Seniority eliminata.");
 			response.setResultTest(true);
 		}catch(Exception e){
 			response.setError("Seniority non eliminata correttamente.");
