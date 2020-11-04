@@ -1,11 +1,16 @@
 package it.jac.lynx.service;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
 import it.jac.lynx.dao.SkillRepository;
 import it.jac.lynx.dto.Response;
+import it.jac.lynx.dto.SkillDTO;
 import it.jac.lynx.entity.Skill;
 
 @Service
@@ -20,6 +25,7 @@ public class SkillService {
 		try {
 			this.skillRepository.save(skill);
 			response.setResult(true);
+			
 		} catch (Exception e) {
 			response.setError("Elemento non creato.");
 		}
@@ -34,11 +40,38 @@ public class SkillService {
 		try {
 			this.skillRepository.deleteById(id);
 			response.setResult("Skill eliminata.");
+			response.setResultTest(true);
 		}catch(Exception e){
 			response.setError("Skill non eliminata correttamente.");
 		}
 		return response;
 		
 	}
+	
+	public Response<List<SkillDTO>> findAllSkills() {
+
+		Response<List<SkillDTO>> response = new Response<List<SkillDTO>>();
+
+		List<SkillDTO> result = new ArrayList<>();
+
+		try {
+			Iterator<Skill> iterator = this.skillRepository.findAll().iterator();
+			while(iterator.hasNext()) {
+
+				Skill skill = iterator.next();
+				result.add(SkillDTO.build(skill));
+			}
+			response.setResult(result);
+			response.setResultTest(true);
+		} catch (Exception e) {
+			response.setError("Nessun elemento trovato.");
+		}
+
+		return response;
+	}
+	
+	
+	
+	
 
 }

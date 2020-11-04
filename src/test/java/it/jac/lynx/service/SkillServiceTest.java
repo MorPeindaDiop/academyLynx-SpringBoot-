@@ -29,7 +29,16 @@ public class SkillServiceTest {
 	@Test 
 	public void deleteSkillByIdTest() {
 	
-		assertEquals("Skill eliminata.", skillService.deleteSkillById(2).getResult());
+		assertEquals("Skill eliminata.", skillService.deleteSkillById(1).getResult());
 		
 	}
+	
+	@Test
+	public void findAllSkillsTest() {
+		
+		assertEquals(true, skillService.findAllSkills().isResultTest());
+		
+	}
+	
+	
 }
