@@ -1,6 +1,7 @@
 package it.jac.lynx.entity;
 
 import java.util.Date;
+import java.util.Iterator;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -44,5 +45,7 @@ public class Skill {
 	public String toString() {
 		return "Skill [id=" + id + ", description=" + description + "]";
 	}
+
+	
 
 }

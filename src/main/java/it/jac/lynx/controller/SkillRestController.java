@@ -56,6 +56,21 @@ public class SkillRestController {
 		return skillService.findAllSkills();
 		
 	}
+	
+	@GetMapping(path="/findById/{id}")
+	public Response<?> findSkillById(@RequestParam int id){
+		log.info("trova da id");
+		
+		return skillService.findSkillById(id);
+	}
+	
+	@GetMapping(path="/findByDescription/{descriprion}")
+	public Response<?> findSkillByDescription(@RequestParam String description){
+		log.info("richiesta di ricerca da descrizione");
+		
+		return skillService.findSkillByDescription(description);
+	}
+	
 
 
 }

@@ -39,6 +39,15 @@ public class SkillServiceTest {
 		assertEquals(true, skillService.findAllSkills().isResultTest());
 		
 	}
+	@Test
+	public void findSkillByIdTest() {
+		assertEquals(true, skillService.findSkillById(2).isResultTest());
+	}
+	
+	@Test
+	public void updateSkillTest(){
+		assertEquals(true, skillService.updateSkill(2, "nuova descrizione").isResultTest());
+	}
 	
 	
 }
