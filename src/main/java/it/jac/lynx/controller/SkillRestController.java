@@ -32,7 +32,7 @@ public class SkillRestController {
 	public Response<?> createSkill(
 			@RequestParam String description) {
 
-		log.info("Ricevuta richiesta di creazione nuovo prodotto");
+		log.info("Ricevuta richiesta di creazione nuova skill");
 		
 		Skill skill = new Skill();
 		skill.setDescription(description);
