@@ -3,6 +3,7 @@ package it.jac.lynx.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import it.jac.lynx.dao.SkillRepository;
 import it.jac.lynx.dto.Response;
 import it.jac.lynx.entity.Skill;
@@ -25,6 +26,19 @@ public class SkillService {
 
 		return response;
 
+	}
+	
+	
+	public Response<String> deleteSkillById(int id) {
+		Response<String> response = new Response<String>();
+		try {
+			this.skillRepository.deleteById(id);
+			response.setResult("Skill eliminata.");
+		}catch(Exception e){
+			response.setError("Skill non eliminata correttamente.");
+		}
+		return response;
+		
 	}
 
 }

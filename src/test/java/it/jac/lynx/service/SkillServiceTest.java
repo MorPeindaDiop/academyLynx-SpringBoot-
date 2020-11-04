@@ -25,4 +25,11 @@ public class SkillServiceTest {
 		
 		assertEquals(true, skillService.createSkill(skill).getResult());
 	}
+	
+	@Test 
+	public void deleteSkillByIdTest() {
+	
+		assertEquals("Skill eliminata.", skillService.deleteSkillById(2).getResult());
+		
+	}
 }
