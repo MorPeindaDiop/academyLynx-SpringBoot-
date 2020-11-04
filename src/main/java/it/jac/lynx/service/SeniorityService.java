@@ -47,7 +47,7 @@ public class SeniorityService {
 		return response;
 	}
 
-	public Response<List<SeniorityDTO>> findAllSkills() {
+	public Response<List<SeniorityDTO>> findAllSeniority() {
 
 		Response<List<SeniorityDTO>> response = new Response<List<SeniorityDTO>>();
 
@@ -57,8 +57,8 @@ public class SeniorityService {
 			Iterator<Seniority> iterator = this.seniorityRepository.findAll().iterator();
 			while(iterator.hasNext()) {
 
-				Seniority skill = iterator.next();
-				result.add(SeniorityDTO.build(skill));
+				Seniority seniority = iterator.next();
+				result.add(SeniorityDTO.build(seniority));
 			}
 
 			response.setResult(result);
@@ -75,10 +75,10 @@ public class SeniorityService {
 
 		Response<SeniorityDTO> response = new Response<SeniorityDTO>();
 
-		Optional<Seniority> skill = this.seniorityRepository.findById(id);
+		Optional<Seniority> seniority = this.seniorityRepository.findById(id);
 		try {
-			if (skill.isPresent()) {
-				response.setResult(SeniorityDTO.build(skill.get()));
+			if (seniority.isPresent()) {
+				response.setResult(SeniorityDTO.build(seniority.get()));
 				response.setResultTest(true);
 			}
 
@@ -100,8 +100,8 @@ public class SeniorityService {
 			Iterator<Seniority> iterator = this.seniorityRepository.findByDescription(description).iterator();
 			while(iterator.hasNext()) {
 
-				Seniority skill = iterator.next();
-				result.add(SeniorityDTO.build(skill));
+				Seniority seniority = iterator.next();
+				result.add(SeniorityDTO.build(seniority));
 			}
 
 			response.setResult(result);
@@ -117,18 +117,18 @@ public class SeniorityService {
 
 
 
-	public Response<SeniorityDTO> updateSkill(int id, String description) {
+	public Response<SeniorityDTO> updateSeniorityDescription(int id, String description) {
 
 		Response<SeniorityDTO> response = new Response<SeniorityDTO>();
 
 		try {
-			Seniority skill = this.seniorityRepository.findById(id).get();
+			Seniority seniority = this.seniorityRepository.findById(id).get();
 
 			if (description != null)
-				skill.setDescription(description);
+				seniority.setDescription(description);
 
-			this.seniorityRepository.save(skill);
-			response.setResult(SeniorityDTO.build(skill));
+			this.seniorityRepository.save(seniority);
+			response.setResult(SeniorityDTO.build(seniority));
 			response.setResultTest(true);
 
 		}catch (Exception e){
@@ -139,6 +139,58 @@ public class SeniorityService {
 
 
 	}
+	
+	//da qua 
+	public Response<List<SeniorityDTO>> findSeniorityByMinDifficuly(int difficulty) {
+
+		Response<List<SeniorityDTO>> response = new Response<List<SeniorityDTO>>();
+
+		List<SeniorityDTO> result = new ArrayList<>();
+
+		try {
+
+			Iterator<Seniority> iterator = this.seniorityRepository.findByMinDifficulty(difficulty).iterator();
+			while(iterator.hasNext()) {
+
+				Seniority seniority = iterator.next();
+				result.add(SeniorityDTO.build(seniority));
+			}
+
+			response.setResult(result);
+			response.setResultTest(true);
+
+		} catch (Exception e ) {
+			response.setError("Nessun elemento trovato.");
+		}
+
+		return response;
+	}
+	
+	public Response<List<SeniorityDTO>> findSeniorityByMaxDifficuly(int difficulty) {
+
+		Response<List<SeniorityDTO>> response = new Response<List<SeniorityDTO>>();
+
+		List<SeniorityDTO> result = new ArrayList<>();
+
+		try {
+
+			Iterator<Seniority> iterator = this.seniorityRepository.findByMaxDifficulty(difficulty).iterator();
+			while(iterator.hasNext()) {
+
+				Seniority seniority = iterator.next();
+				result.add(SeniorityDTO.build(seniority));
+			}
+
+			response.setResult(result);
+			response.setResultTest(true);
+
+		} catch (Exception e ) {
+			response.setError("Nessun elemento trovato.");
+		}
+
+		return response;
+	}
+
 	
 	
 	
