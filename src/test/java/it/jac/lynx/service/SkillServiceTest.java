@@ -18,7 +18,7 @@ public class SkillServiceTest {
 	public void createSkillTest() {
 		
 		Skill skill = new Skill();
-		skill.setId(2);
+		skill.setId(5);
 		skill.setDescription("Java");
 		
 		//skillService.save(skill);

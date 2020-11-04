@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import it.jac.lynx.dao.SeniorityRepository;
 import it.jac.lynx.dto.Response;
@@ -13,7 +14,7 @@ import it.jac.lynx.dto.SeniorityDTO;
 
 import it.jac.lynx.entity.Seniority;
 
-
+@Service
 public class SeniorityService {
 
 	@Autowired
