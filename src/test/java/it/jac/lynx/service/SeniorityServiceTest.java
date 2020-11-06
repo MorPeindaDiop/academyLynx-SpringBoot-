@@ -39,7 +39,7 @@ public class SeniorityServiceTest {
 	
 	@Test
 	public void updateSeniorityTest(){
-		assertEquals(true, seniorityService.updateSeniorityDescription(1, "nuova descrizione").isResultTest());
+		assertEquals(true, seniorityService.updateSeniority(1, "Junior", 1, 2).isResultTest());
 	}
 	
 	@Test
