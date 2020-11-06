@@ -15,9 +15,6 @@ import it.jac.lynx.dto.Response;
 import it.jac.lynx.entity.Candidate;
 
 
-
-
-
 @Service
 public class CandidateService {
 

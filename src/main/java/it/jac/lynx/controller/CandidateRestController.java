@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -39,7 +40,7 @@ public class CandidateRestController {
 	
 	
 	@DeleteMapping(path = "/delete/{id}")
-	public Response<?> deleteCandidateById(@RequestParam int id) {
+	public Response<?> deleteCandidateById(@PathVariable int id) {
 
 		log.info("Richiesta delete.");
 
@@ -57,14 +58,14 @@ public class CandidateRestController {
 	
 	
 	@GetMapping(path="/findById/{id}")
-	public Response<?> findSeniorityById(@RequestParam int id){
+	public Response<?> findSeniorityById(@PathVariable int id){
 		log.info("trova da id");
 		
 		return candidateService.findCandidateById(id);
 	}
 	
 	@GetMapping(path="/findBySeniority/{id}")
-	public Response<?> findCandidatesBySenioirty(@RequestParam int idSeniority){
+	public Response<?> findCandidatesBySenioirty(@PathVariable int idSeniority){
 		log.info("trova da seniority");
 		
 		return candidateService.findCandidatesByidSeniority(idSeniority);
