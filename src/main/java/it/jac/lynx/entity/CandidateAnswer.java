@@ -34,14 +34,7 @@ public class CandidateAnswer {
 		return "User Answer [id utente=" + idUser + ", id question=" + idQuestion + ", answer=" + answer +  "]";
 	}
 	
-	public PkUserAnswer getIdUserIdQuestionPk(int idUser, int idQuestion) {
-		
-	    PkUserAnswer pk=new PkUserAnswer();
-		
-		pk.setIdUser(idUser);
-		pk.setIdQuestion(idQuestion);
-		return pk;
-	}
+	
 	
 	
 }
