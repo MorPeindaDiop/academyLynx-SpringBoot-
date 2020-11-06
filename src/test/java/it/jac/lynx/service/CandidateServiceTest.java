@@ -2,9 +2,8 @@ package it.jac.lynx.service;
 
 import static org.junit.Assert.assertEquals;
 
-import org.junit.Rule;
+
 import org.junit.jupiter.api.Test;
-import org.junit.rules.ExpectedException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -14,9 +13,6 @@ import it.jac.lynx.entity.Candidate;
 
 @SpringBootTest
 public class CandidateServiceTest {
-
-	@Rule
-    public ExpectedException thrown = ExpectedException.none();
 
 	@Autowired
 	private CandidateService candidateService;

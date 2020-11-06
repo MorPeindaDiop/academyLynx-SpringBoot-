@@ -62,7 +62,7 @@ public class UserRestController {
 		return userService.findUserById(id);
 	}
 	
-	@GetMapping(path="/findById/{id}")
+	@GetMapping(path="/findByUsername/{username}")
 	public Response<?> findUserByUsername(@PathVariable String name){
 		log.info("trova da id");
 		
