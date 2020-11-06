@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -58,7 +59,7 @@ public class SkillRestController {
 	}
 	
 	@GetMapping(path="/findById/{id}")
-	public Response<?> findSkillById(@RequestParam int id){
+	public Response<?> findSkillById(@PathVariable(name = "id") Integer id){
 		log.info("trova da id");
 		
 		return skillService.findSkillById(id);

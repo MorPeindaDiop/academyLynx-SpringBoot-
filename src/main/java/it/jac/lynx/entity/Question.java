@@ -29,7 +29,7 @@ public class Question {
 	private String type;
 
 	@Column(name = "question")
-	private String question;
+	private String questionText;
 
 	@Column(name = "correctAnswerBoolean")
 	private boolean correctAnswerBoolean;
@@ -61,7 +61,7 @@ public class Question {
 	
 	@Override
 	public String toString() {
-		return "Question [id=" + id + ", question type=" + type + ", question text=" + question + ", correct answer=" + (correctAnswerText != "" ? correctAnswerText : correctAnswerBoolean) + ", difficulty=" + difficulty + "]";
+		return "Question [id=" + id + ", question type=" + type + ", question text=" + questionText + ", correct answer=" + (correctAnswerText != "" ? correctAnswerText : correctAnswerBoolean) + ", difficulty=" + difficulty + "]";
 	}
 
 }

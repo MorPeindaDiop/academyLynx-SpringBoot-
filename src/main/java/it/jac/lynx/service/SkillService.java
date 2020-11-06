@@ -59,16 +59,22 @@ public class SkillService {
 		List<SkillDTO> result = new ArrayList<>();
 
 		try {
+			
 			Iterator<Skill> iterator = this.skillRepository.findAll().iterator();
+			
 			while(iterator.hasNext()) {
 
 				Skill skill = iterator.next();
 				result.add(SkillDTO.build(skill));
 			}
+			
 			response.setResult(result);
 			response.setResultTest(true);
+			
 		} catch (Exception e) {
+			
 			response.setError("Nessun elemento trovato.");
+			
 		}
 
 		return response;
