@@ -1,5 +1,6 @@
 package it.jac.lynx.service;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -23,31 +24,45 @@ public class CandidateService {
 
 	public Response<Boolean> createCandidate(Candidate candidate){
 
-		Response<Boolean> response=new Response<Boolean>();
+		Response<Boolean> response = new Response<Boolean>();
 
 		try {
+
 			this.candidateRepository.save(candidate);
+
 			response.setResult(true);
 			response.setResultTest(true);
 
 		}catch(Exception e) {
+
 			response.setError("Candidato non creato");
+
 		}
 
 		return response;
+
 	}
 
 
 	public Response<String> deleteCandidateById(int id) {
+
 		Response<String> response = new Response<String>();
+
 		try {
+
 			this.candidateRepository.deleteById(id);
+
 			response.setResult("Candidato eliminato.");
 			response.setResultTest(true);
+
 		}catch(Exception e){
+
 			response.setError("Candidato non eliminato correttamente.");
+
 		}
+
 		return response;
+
 	}
 
 
@@ -58,62 +73,96 @@ public class CandidateService {
 		List<CandidateDTO> result = new ArrayList<>();
 
 		try {
+
 			Iterator<Candidate> iterator = this.candidateRepository.findAll().iterator();
+
 			while(iterator.hasNext()) {
 
 				Candidate candidate = iterator.next();
 				result.add(CandidateDTO.build(candidate));
+
 			}
 
 			response.setResult(result);
 			response.setResultTest(true);
+
 		} catch (Exception e) {
+
 			response.setError("Nessun elemento trovato.");
+
 		}
 
 		return response;
+
 	}
 
 	public Response<CandidateDTO> findCandidateById(int id) {
 
 		Response<CandidateDTO> response = new Response<CandidateDTO>();
 
-		Optional<Candidate> candidate = this.candidateRepository.findById(id);
+
 		try {
-			if (candidate.isPresent()) {
-				response.setResult(CandidateDTO.build(candidate.get()));
-				response.setResultTest(true);
-			}
+
+			Candidate candidate = this.candidateRepository.findById(id).get();
+
+			response.setResult(CandidateDTO.build(candidate));
+			response.setResultTest(true);
 
 		} catch (Exception e) {
+			
 			response.setError("Nessun elemento trovato.");
+			
 		}
 
 		return response;
+		
 	}
 
-	//da qua
-	//ho pensato che in una tabella candidato ci potesse stare aggiornare la sua seniority
-	public Response<CandidateDTO> updateCandidateSeniorityById(int id, int seniority) {
+	public Response<CandidateDTO> updateCandidate(
+			int id,
+			String name,
+			String surname,
+			Date dataTest,
+			int idSeniority,
+			int score,
+			int time
+			) {
 
 		Response<CandidateDTO> response = new Response<CandidateDTO>();
 
 		try {
 			Candidate candidate = this.candidateRepository.findById(id).get();
 
-			if (candidate != null)
-				candidate.setIdSeniority(seniority);
+			if (name != null)
+				candidate.setName(name);
+			
+			if (surname != null)
+				candidate.setSurname(surname);
+			
+			if (dataTest != null)
+				candidate.setDataTest(dataTest);
+			
+			if (idSeniority > 0)
+				candidate.setIdSeniority(idSeniority);
+			
+			if (score >= 0)
+				candidate.setScore(score);
+			
+			if (time >= 0)
+				candidate.setTime(time);
 
 			this.candidateRepository.save(candidate);
+			
 			response.setResult(CandidateDTO.build(candidate));
 			response.setResultTest(true);
 
-		}catch (Exception e){
+		} catch (Exception e) {
+			
 			response.setError("Nessun elemento trovato.");
+			
 		}	
 
 		return response;
-
 
 	}
 
@@ -121,26 +170,31 @@ public class CandidateService {
 	public Response<List<CandidateDTO>> findCandidatesByidSeniority(int seniority) {
 
 		Response<List<CandidateDTO>> response = new Response<List<CandidateDTO>>();
-		List<CandidateDTO> result = new ArrayList<>();
 		
+		List<CandidateDTO> result = new ArrayList<>();
+
 		try {
+			
 			Iterator<Candidate> iterator = this.candidateRepository.findByidSeniority(seniority).iterator();
+			
 			while(iterator.hasNext()) {
-	
+
 				Candidate candidate = iterator.next();
 				result.add(CandidateDTO.build(candidate));
+				
 			}
-	
+
 			response.setResult(result);
 			response.setResultTest(true);
 
 		} catch (Exception e ) {
-		response.setError("Nessun elemento trovato.");
+			
+			response.setError("Nessun elemento trovato.");
+			
 		}
 
-	return response;
-}
-
-
+		return response;
+		
+	}
 
 }

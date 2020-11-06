@@ -26,24 +26,33 @@ public class SeniorityService {
 		Response<Boolean> response=new Response<Boolean>();
 
 		try {
+
 			this.seniorityRepository.save(seniority);
+
 			response.setResult(true);
 			response.setResultTest(true);
 
-		}catch(Exception e) {
+		} catch (Exception e) {
+
 			response.setError("Seniority non creata");
 		}
 
 		return response;
+
 	}
 
 	public Response<String> deleteSeniorityById(int id) {
+
 		Response<String> response = new Response<String>();
+
 		try {
+
 			this.seniorityRepository.deleteById(id);
+
 			response.setResult("Seniority eliminata.");
 			response.setResultTest(true);
-		}catch(Exception e){
+
+		} catch (Exception e) {
 			response.setError("Seniority non eliminata correttamente.");
 		}
 		return response;
@@ -56,20 +65,27 @@ public class SeniorityService {
 		List<SeniorityDTO> result = new ArrayList<>();
 
 		try {
+
 			Iterator<Seniority> iterator = this.seniorityRepository.findAll().iterator();
+
 			while(iterator.hasNext()) {
 
 				Seniority seniority = iterator.next();
 				result.add(SeniorityDTO.build(seniority));
+
 			}
 
 			response.setResult(result);
 			response.setResultTest(true);
+
 		} catch (Exception e) {
+
 			response.setError("Nessun elemento trovato.");
+
 		}
 
 		return response;
+
 	}
 
 
@@ -77,18 +93,21 @@ public class SeniorityService {
 
 		Response<SeniorityDTO> response = new Response<SeniorityDTO>();
 
-		Optional<Seniority> seniority = this.seniorityRepository.findById(id);
 		try {
-			if (seniority.isPresent()) {
-				response.setResult(SeniorityDTO.build(seniority.get()));
-				response.setResultTest(true);
-			}
+
+			Seniority seniority = this.seniorityRepository.findById(id).get();
+
+			response.setResult(SeniorityDTO.build(seniority));
+			response.setResultTest(true);
 
 		} catch (Exception e) {
+
 			response.setError("Nessun elemento trovato.");
+
 		}
 
 		return response;
+
 	}
 
 	public Response<List<SeniorityDTO>> findSeniorityByDescription(String description) {
@@ -100,50 +119,60 @@ public class SeniorityService {
 		try {
 
 			Iterator<Seniority> iterator = this.seniorityRepository.findByDescription(description).iterator();
+
 			while(iterator.hasNext()) {
 
 				Seniority seniority = iterator.next();
 				result.add(SeniorityDTO.build(seniority));
+
 			}
 
 			response.setResult(result);
 			response.setResultTest(true);
 
-		} catch (Exception e ) {
+		} catch (Exception e) {
+
 			response.setError("Nessun elemento trovato.");
+
 		}
 
 		return response;
+
 	}
 
-
-
-
-	public Response<SeniorityDTO> updateSeniorityDescription(int id, String description) {
+	public Response<SeniorityDTO> updateSeniority(int id, String description, int minDifficulty, int maxDifficulty) {
 
 		Response<SeniorityDTO> response = new Response<SeniorityDTO>();
 
 		try {
+
 			Seniority seniority = this.seniorityRepository.findById(id).get();
 
 			if (description != null)
 				seniority.setDescription(description);
 
+			if (minDifficulty > 0 && minDifficulty < seniority.getMaxDifficulty())
+				seniority.setMinDifficulty(minDifficulty);
+
+			if (maxDifficulty > 0 && maxDifficulty > seniority.getMinDifficulty())
+				seniority.setMaxDifficulty(maxDifficulty);
+
 			this.seniorityRepository.save(seniority);
+
 			response.setResult(SeniorityDTO.build(seniority));
 			response.setResultTest(true);
 
-		}catch (Exception e){
+		} catch (Exception e) {
+
 			response.setError("Nessun elemento trovato.");
+
 		}	
 
 		return response;
 
-
 	}
-	
-	//da qua 
-	public Response<List<SeniorityDTO>> findSeniorityByMinDifficuly(int difficulty) {
+
+	public Response<List<SeniorityDTO>> findSeniorityByMinDifficuly(int minDifficulty) {
 
 		Response<List<SeniorityDTO>> response = new Response<List<SeniorityDTO>>();
 
@@ -151,23 +180,28 @@ public class SeniorityService {
 
 		try {
 
-			Iterator<Seniority> iterator = this.seniorityRepository.findByMinDifficulty(difficulty).iterator();
+			Iterator<Seniority> iterator = this.seniorityRepository.findByMinDifficulty(minDifficulty).iterator();
+			
 			while(iterator.hasNext()) {
 
 				Seniority seniority = iterator.next();
 				result.add(SeniorityDTO.build(seniority));
+			
 			}
 
 			response.setResult(result);
 			response.setResultTest(true);
 
 		} catch (Exception e ) {
+			
 			response.setError("Nessun elemento trovato.");
+			
 		}
 
 		return response;
+		
 	}
-	
+
 	public Response<List<SeniorityDTO>> findSeniorityByMaxDifficuly(int difficulty) {
 
 		Response<List<SeniorityDTO>> response = new Response<List<SeniorityDTO>>();
@@ -177,27 +211,25 @@ public class SeniorityService {
 		try {
 
 			Iterator<Seniority> iterator = this.seniorityRepository.findByMaxDifficulty(difficulty).iterator();
+			
 			while(iterator.hasNext()) {
 
 				Seniority seniority = iterator.next();
 				result.add(SeniorityDTO.build(seniority));
+				
 			}
 
 			response.setResult(result);
 			response.setResultTest(true);
 
-		} catch (Exception e ) {
+		} catch (Exception e) {
+			
 			response.setError("Nessun elemento trovato.");
+			
 		}
 
 		return response;
+		
 	}
-
-	
-	
-	
-	
-	
-
 
 }

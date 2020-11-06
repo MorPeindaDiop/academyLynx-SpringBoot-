@@ -46,9 +46,11 @@ public class QuestionService {
 		} catch (Exception e) {
 			
 			response.setError("Nessun elemento trovato.");
+		
 		}
 
 		return response;
+		
 	}
 
 	public Response<QuestionDTO> findQuestionById(Integer id) {
@@ -75,6 +77,7 @@ public class QuestionService {
 		}
 
 		return response;
+		
 	}
 
 	public Response<List<QuestionDTO>> findQuestionByDifficulty(int difficulty) {
@@ -101,9 +104,11 @@ public class QuestionService {
 		} catch (Exception e ) {
 			
 			response.setError("Nessun elemento trovato.");
+		
 		}
 
 		return response;
+		
 	}
 
 	public Response<List<QuestionDTO>> findQuestionByType(String type) {
@@ -115,6 +120,7 @@ public class QuestionService {
 		List<QuestionDTO> result = new ArrayList<>();
 
 		try  {
+			
 			Iterator<Question> iterator = this.questionRepository.findByType(type).iterator();
 			
 			while(iterator.hasNext()) {
@@ -134,6 +140,7 @@ public class QuestionService {
 		}
 
 		return response;
+		
 	}
 
 
@@ -143,13 +150,19 @@ public class QuestionService {
 		Response<Boolean> response = new Response<Boolean>();
 
 		try {
+			
 			this.questionRepository.save(question);
+			
 			response.setResult(true);
+			
 		} catch (Exception e) {
+			
 			response.setError("Nessun elemento trovato.");
+			
 		}
 
 		return response;
+		
 	}
 
 	public Response<QuestionDTO> updateQuestion(
@@ -193,20 +206,30 @@ public class QuestionService {
 		} catch (Exception e) {
 			
 			response.setError("Question non modificata.");
+		
 		}
 
 		return response;
+		
 	}
 	
 	public Response<String> deleteQuestionById(int id) {
+		
 		Response<String> response = new Response<String>();
+		
 		try {
+			
 			this.questionRepository.deleteById(id);
+			
 			response.setResult("Question eliminata.");
 			response.setResultTest(true);
-		}catch(Exception e){
+			
+		} catch (Exception e) {
+			
 			response.setError("Question non eliminata correttamente.");
+		
 		}
+		
 		return response;
 
 	}
