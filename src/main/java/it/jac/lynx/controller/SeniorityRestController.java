@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -39,7 +40,7 @@ public class SeniorityRestController {
 	}
 	
 	@DeleteMapping(path = "/delete/{id}")
-	public Response<?> deleteSeniorityById(@RequestParam int id) {
+	public Response<?> deleteSeniorityById(@PathVariable int id) {
 
 		log.info("Richiesta delete.");
 
@@ -54,7 +55,7 @@ public class SeniorityRestController {
 	}
 	
 	@GetMapping(path="/findById/{id}")
-	public Response<?> findSeniorityById(@RequestParam int id){
+	public Response<?> findSeniorityById(@PathVariable int id){
 		log.info("trova da id");
 		
 		return seniorityService.findSeniorityById(id);
@@ -62,13 +63,13 @@ public class SeniorityRestController {
 	
 	//da qua
 	@GetMapping(path="/findByMinDifficulty/{id}")
-	public Response<?> findSeniorityByMinDifficulty(@RequestParam int difficulty){
+	public Response<?> findSeniorityByMinDifficulty(@PathVariable int difficulty){
 		log.info("ricerca da minima difficoltà");
 		return seniorityService.findSeniorityByMinDifficuly(difficulty);
 	}
 	
 	@GetMapping(path="/findByMaxDifficulty/{id}")
-	public Response<?> findSeniorityByMaxnDifficulty(@RequestParam int difficulty){
+	public Response<?> findSeniorityByMaxnDifficulty(@PathVariable int difficulty){
 		log.info("ricerca da massima difficoltà");
 		return seniorityService.findSeniorityByMaxDifficuly(difficulty);
 	}
