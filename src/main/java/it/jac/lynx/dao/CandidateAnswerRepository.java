@@ -9,4 +9,5 @@ import it.jac.lynx.entity.CandidateAnswer;
 @Repository
 public interface CandidateAnswerRepository extends CrudRepository<CandidateAnswer, PkUserAnswer> {
 	
+	
 }

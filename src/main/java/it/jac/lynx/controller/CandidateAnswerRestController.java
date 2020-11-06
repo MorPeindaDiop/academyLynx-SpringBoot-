@@ -38,11 +38,16 @@ public class CandidateAnswerRestController {
 	
 	
 	@DeleteMapping(path = "/delete/{id}")
-	public Response<?> deleteCandidateAnswerById(@PathVariable PkUserAnswer id) {
+	public Response<?> deleteCandidateAnswerById(@RequestParam int idUtente, int idQuestion) {
 
 		log.info("Richiesta delete.");
+		
+		PkUserAnswer id=new PkUserAnswer();
+		
+		id.setIdUser(idUtente);
+		id.setIdQuestion(idQuestion);
 
-		return candidateAnswerService.deleteCandidateAnswerByIdQuestion(id);
+		return candidateAnswerService.deleteCandidateAnswerById(id);
 	}
 	
 	@GetMapping(path="/findAll")
