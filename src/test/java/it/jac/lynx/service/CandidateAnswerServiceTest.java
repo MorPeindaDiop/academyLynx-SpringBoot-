@@ -19,15 +19,18 @@ public class CandidateAnswerServiceTest {
 	@Test
 	public void createCandidateTest() {
 		CandidateAnswer candidateAnswer = new CandidateAnswer();
+		candidateAnswer.setIdUser(2);
+		candidateAnswer.setIdQuestion(1);
+		candidateAnswer.setAnswer(true);
 		assertEquals(true, candidateAnswerService.createCandidateAnswer(candidateAnswer).isResultTest());
 	}
 	
 	@Test 
-	public void deleteCandidateAnswerByIdTest() {	
+	public void deleteCandidateAnswerByIdQuestionTest() {	
 			PkUserAnswer pk=new PkUserAnswer();
 			pk.setIdQuestion(1);
-			pk.setIdUser(1);
-			assertEquals("Candidate eliminata.", candidateAnswerService.deleteCandidateAnswerByIdQuestion(pk).getResult());
+			pk.setIdUser(2);
+			assertEquals("Candidato eliminato.", candidateAnswerService.deleteCandidateAnswerById(pk).getResult());
 	}
 	
 	

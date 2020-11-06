@@ -1,4 +1,4 @@
-package it.jac.lynx.entity;
+ package it.jac.lynx.entity;
 
 import java.util.Date;
 

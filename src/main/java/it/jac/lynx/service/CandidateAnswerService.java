@@ -36,7 +36,7 @@ public class CandidateAnswerService {
 		return response;
 	}
 	
-	public Response<String> deleteCandidateAnswerByIdQuestion(PkUserAnswer id) {
+	public Response<String> deleteCandidateAnswerById(PkUserAnswer id) {
 		Response<String> response = new Response<String>();
 		try {
 			this.candidateAnswerRepository.deleteById(id);

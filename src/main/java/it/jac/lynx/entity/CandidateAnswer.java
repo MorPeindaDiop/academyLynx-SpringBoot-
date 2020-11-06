@@ -34,4 +34,7 @@ public class CandidateAnswer {
 		return "User Answer [id utente=" + idUser + ", id question=" + idQuestion + ", answer=" + answer +  "]";
 	}
 	
+	
+	
+	
 }
