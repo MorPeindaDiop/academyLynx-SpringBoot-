@@ -27,7 +27,7 @@ public class CandidateServiceTest {
 	}
 	
 	@Test 
-	public void deleteCandidatelByIdTest() {	
+	public void deleteCandidateByIdTest() {	
 			assertEquals("Candidate eliminata.", candidateService.deleteCandidateById(2).getResult());
 	}
 	
