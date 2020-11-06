@@ -33,7 +33,7 @@ public class SkillRestController {
 	public Response<?> createSkill(
 			@RequestParam String description) {
 
-		log.info("Ricevuta richiesta di creazione nuovo prodotto");
+		log.info("Ricevuta richiesta di creazione nuova skill");
 		
 		Skill skill = new Skill();
 		skill.setDescription(description);
@@ -42,7 +42,7 @@ public class SkillRestController {
 	}
 
 	@DeleteMapping(path = "/delete/{id}")
-	public Response<?> deleteSkillById(@RequestParam int id) {
+	public Response<?> deleteSkillById(@PathVariable int id) {
 
 		log.info("Richiesta delete.");
 
@@ -59,14 +59,13 @@ public class SkillRestController {
 	}
 	
 	@GetMapping(path="/findById/{id}")
-	public Response<?> findSkillById(@PathVariable(name = "id") Integer id){
-		log.info("trova da id");
+	public Response<?> findSkillById(@PathVariable(name = "id") Integer id){log.info("trova da id");
 		
 		return skillService.findSkillById(id);
 	}
 	
 	@GetMapping(path="/findByDescription/{descriprion}")
-	public Response<?> findSkillByDescription(@RequestParam String description){
+	public Response<?> findSkillByDescription(@PathVariable String description){
 		log.info("richiesta di ricerca da descrizione");
 		
 		return skillService.findSkillByDescription(description);
