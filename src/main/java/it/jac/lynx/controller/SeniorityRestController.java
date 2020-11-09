@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -46,6 +47,20 @@ public class SeniorityRestController {
 
 		return seniorityService.deleteSeniorityById(id);
 	}
+	
+//	@PutMapping(path = "/update/{id}")
+//	public Response<?> update(
+//			@PathVariable(name = "id") Integer id,
+//			@RequestParam (required = false) String type,
+//			@RequestParam (required = false) String questionText,
+//			@RequestParam (required = false) String correctAnswerBoolean,
+//			@RequestParam (required = false) String correctAnswerText,
+//			@RequestParam (required = false) String wrongAnswers,
+//			@RequestParam (required = false) int difficulty) {
+//
+//		return seniorityService.updateQuestion(id, type, questionText, correctAnswerBoolean, correctAnswerText, wrongAnswers, difficulty);
+//	}
+//	
 	@GetMapping(path="/findAll")
 	public Response<?> findAllSkills(){
 		
