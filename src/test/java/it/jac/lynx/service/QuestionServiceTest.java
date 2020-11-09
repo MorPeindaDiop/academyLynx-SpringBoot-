@@ -25,9 +25,9 @@ public class QuestionServiceTest {
 	}
 	
 	@Test 
-	public void deleteSkillByIdTest() {
+	public void deleteQuestionByIdTest() {
 	
-		assertEquals("Skill eliminata.", questionService.deleteQuestionById(1).getResult());
+		assertEquals("Question eliminata.", questionService.deleteQuestionById(1).getResult());
 		
 	}
 	
