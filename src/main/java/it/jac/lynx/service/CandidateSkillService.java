@@ -38,7 +38,7 @@ public class CandidateSkillService {
 			response.setResult(true);
 			response.setResultTest(true);
 
-		}catch(Exception e) {
+		} catch (Exception e) {
 
 			response.setError("Skill non creata");
 
@@ -60,7 +60,7 @@ public class CandidateSkillService {
 			response.setResult("Candidato eliminato.");
 			response.setResultTest(true);
 
-		}catch(Exception e){
+		} catch (Exception e) {
 
 			response.setError("Candidato non eliminato correttamente.");
 

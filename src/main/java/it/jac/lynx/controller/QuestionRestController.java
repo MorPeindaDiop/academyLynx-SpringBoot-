@@ -30,7 +30,7 @@ public class QuestionRestController {
 	private QuestionService questionService;
 	
 	@GetMapping(path = "/findAll")
-	public Response<?> allProducts() {
+	public Response<?> findAllQuestions() {
 
 		log.info("Ricevuta richiesta della lista di tutti i prodotti");
 		
@@ -61,8 +61,8 @@ public class QuestionRestController {
 		
 	}
 
-	@GetMapping(path = "/findById/{id}")
-	public Response<?> detail(@PathVariable(name = "id") Integer id) {
+	@GetMapping(path = "/detail/{id}")
+	public Response<?> detail(@PathVariable(name = "id") int id) {
 		
 		log.info("Ricevuta richiesta di dettaglio di un prodotto");
 		
@@ -72,7 +72,7 @@ public class QuestionRestController {
 
 	@PutMapping(path = "/update/{id}")
 	public Response<?> update(
-			@PathVariable(name = "id") Integer id,
+			@PathVariable(name = "id") int id,
 			@RequestParam (required = false) String type,
 			@RequestParam (required = false) String questionText,
 			@RequestParam (required = false) String correctAnswerBoolean,
@@ -81,14 +81,16 @@ public class QuestionRestController {
 			@RequestParam (required = false) int difficulty) {
 
 		return questionService.updateQuestion(id, type, questionText, correctAnswerBoolean, correctAnswerText, wrongAnswers, difficulty);
+	
 	}
+	
 	@DeleteMapping(path = "/delete/{id}")
 	public Response<?> delete(@PathVariable(name = "id") Integer id) {
 
 		log.info("Ricevuta richiesta di eliminazione di un prodotto");
 
 		return questionService.deleteQuestionById(id);
+		
 	}
-	
 	
 }

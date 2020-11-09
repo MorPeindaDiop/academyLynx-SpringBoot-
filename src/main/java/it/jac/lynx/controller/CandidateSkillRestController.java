@@ -50,7 +50,7 @@ private static Logger log = LoggerFactory.getLogger(CandidateSkillRestController
 	}
 	
 	@GetMapping(path="/findAll")
-	public Response<?> findAllCandidateSkillss(){
+	public Response<?> findAllCandidateSkills(){
 		
 		log.info("richiesta di find all.");
 		
