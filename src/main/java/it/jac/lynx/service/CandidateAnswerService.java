@@ -3,7 +3,7 @@ package it.jac.lynx.service;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Optional;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,7 @@ import it.jac.lynx.dao.CandidateAnswerRepository;
 import it.jac.lynx.dto.CandidateAnswerDTO;
 import it.jac.lynx.dto.Response;
 import it.jac.lynx.entity.CandidateAnswer;
-import it.jac.lynx.entity.PkUserAnswer;
+import it.jac.lynx.entity.PkCandidateAnswer;
 
 @Service
 public class CandidateAnswerService {
@@ -41,7 +41,7 @@ public class CandidateAnswerService {
 
 	}
 
-	public Response<String> deleteCandidateAnswerById(PkUserAnswer id) {
+	public Response<String> deleteCandidateAnswerById(PkCandidateAnswer id) {
 
 		Response<String> response = new Response<String>();
 
@@ -93,7 +93,7 @@ public class CandidateAnswerService {
 
 	}
 
-	public Response<CandidateAnswerDTO> findCandidateAnswerById(PkUserAnswer id) {
+	public Response<CandidateAnswerDTO> findCandidateAnswerById(PkCandidateAnswer id) {
 
 		Response<CandidateAnswerDTO> response = new Response<CandidateAnswerDTO>();
 
@@ -114,7 +114,7 @@ public class CandidateAnswerService {
 
 	}
 
-	public Response<CandidateAnswerDTO> updateCandidateAnswer(PkUserAnswer id, boolean answer) {
+	public Response<CandidateAnswerDTO> updateCandidateAnswer(PkCandidateAnswer id, boolean answer) {
 
 		Response<CandidateAnswerDTO> response = new Response<CandidateAnswerDTO>();
 

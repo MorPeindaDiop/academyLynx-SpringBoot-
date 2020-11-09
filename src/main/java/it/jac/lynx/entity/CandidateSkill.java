@@ -10,7 +10,7 @@ import lombok.Data;
 
 @Entity
 @Table(name = "candidateSkill")
-@IdClass(PkUserSkill.class)
+@IdClass(PkCandidateSkill.class)
 @Data
 public  class CandidateSkill {
 
