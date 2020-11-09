@@ -15,23 +15,55 @@ public class CandidateSkillServiceTest {
 	@Autowired
 	private CandidateSkillService candidateSkillService;
 	
-	
 	@Test
-	public void createCandidateTest() {
+	public void createCandidateSkillTest() {
+		
 		CandidateSkill candidateSkill = new CandidateSkill();
-		candidateSkill.setIdUser(2);
+		candidateSkill.setIdCandidate(2);
 		candidateSkill.setIdSkill(3);
+		
 		assertEquals(true, candidateSkillService.createCandidateSkill(candidateSkill).isResultTest());
+	
 	}
 	
 	@Test 
-	public void deleteCandidateAnswerByIdQuestionTest() {	
-			PkCandidateSkill pk=new PkCandidateSkill();
-			pk.setIdUser(2);
-			pk.setIdUser(3);
-			assertEquals("Candidato eliminato.", candidateSkillService.deleteCandidateSkillById(pk).getResult());
+	public void deleteCandidateSkillByIdQuestionTest() {	
+		
+			PkCandidateSkill pk = new PkCandidateSkill();
+			pk.setIdCandidate(2);
+			pk.setIdSkill(3);
+			
+			assertEquals(true, candidateSkillService.deleteCandidateSkillById(pk).isResultTest());
+	
 	}
 	
+	@Test
+	public void findAllCandidateSkillsTest() {
+
+		assertEquals(true, candidateSkillService.findAllCandidateSkills().isResultTest());
+
+	}
 	
+	@Test
+	public void findCandidateAnswerByIdTest() {
+		
+		PkCandidateSkill pk = new PkCandidateSkill();
+		pk.setIdCandidate(2);
+		pk.setIdSkill(1);
+
+		assertEquals(true, candidateSkillService.findCandidateSkillById(pk).isResultTest());
+
+	}
+	
+	@Test
+	public void updateCandidateSkillTest() {
+		
+		PkCandidateSkill pk = new PkCandidateSkill();
+		pk.setIdCandidate(2);
+		pk.setIdSkill(1);
+
+		assertEquals(true, candidateSkillService.updateCandidateSkill(pk, 3).isResultTest());
+	
+	}
 
 }

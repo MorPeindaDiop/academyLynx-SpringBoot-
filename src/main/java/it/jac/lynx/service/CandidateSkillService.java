@@ -9,16 +9,8 @@ import org.springframework.stereotype.Service;
 
 import it.jac.lynx.dao.CandidateSkillRepository;
 import it.jac.lynx.dto.CandidateSkillDTO;
-import it.jac.lynx.dto.CandidateSkillDTO;
-import it.jac.lynx.dto.CandidateSkillDTO;
 import it.jac.lynx.dto.Response;
 import it.jac.lynx.entity.CandidateSkill;
-import it.jac.lynx.entity.CandidateSkill;
-import it.jac.lynx.entity.PkCandidateSkill;
-import it.jac.lynx.entity.CandidateSkill;
-import it.jac.lynx.entity.PkCandidateSkill;
-import it.jac.lynx.entity.CandidateSkill;
-import it.jac.lynx.entity.PkCandidateSkill;
 import it.jac.lynx.entity.PkCandidateSkill;
 
 @Service
@@ -27,7 +19,7 @@ public class CandidateSkillService {
 	@Autowired
 	private CandidateSkillRepository candidateSkillRepository;
 
-	public Response<Boolean> createCandidateSkill(CandidateSkill candidateSkill){
+	public Response<Boolean> createCandidateSkill(CandidateSkill candidateSkill) {
 
 		Response<Boolean> response = new Response<Boolean>();
 
@@ -128,8 +120,7 @@ public class CandidateSkillService {
 
 			CandidateSkill candidateSkill = this.candidateSkillRepository.findById(id).get();
 
-			
-				candidateSkill.setIdSkill(idSkill);
+			candidateSkill.setIdSkill(idSkill);
 
 			this.candidateSkillRepository.save(candidateSkill);
 
@@ -145,6 +136,5 @@ public class CandidateSkillService {
 		return response;
 
 	}
-
 
 }

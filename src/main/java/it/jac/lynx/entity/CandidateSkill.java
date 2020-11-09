@@ -15,8 +15,8 @@ import lombok.Data;
 public  class CandidateSkill {
 
 	@Id
-	@Column(name = "idUser")
-	private int idUser;
+	@Column(name = "idCandidate")
+	private int idCandidate;
 	//private User idUser;
 
 	@Id
@@ -26,7 +26,7 @@ public  class CandidateSkill {
 
 	@Override
 	public String toString() {
-		return "User Skill [id utente=" + idUser + ", id skill=" + idSkill + "]";
+		return "User Skill [id utente=" + idCandidate + ", id skill=" + idSkill + "]";
 	}
 	
 }

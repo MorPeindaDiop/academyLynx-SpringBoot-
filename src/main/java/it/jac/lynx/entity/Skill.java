@@ -1,7 +1,6 @@
 package it.jac.lynx.entity;
 
 import java.util.Date;
-import java.util.Iterator;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

@@ -29,64 +29,74 @@ public class SeniorityRestController {
 
 
 	@PostMapping("/create")
-	public Response<?> createSeniority(@RequestParam int id){
+	public Response<?> createSeniority(
+			@RequestParam String description,
+			@RequestParam int minDifficulty,
+			@RequestParam int maxDifficulty) {
 
 		log.info("Ricevuta richiesta di creazione nuova seniority");
 
 		Seniority seniority= new Seniority();
-		seniority.setId(id);
+		seniority.setDescription(description);
+		seniority.setMinDifficulty(minDifficulty);
+		seniority.setMaxDifficulty(maxDifficulty);
 
 		return seniorityService.createSeniority(seniority);
 
 	}
 	
 	@DeleteMapping(path = "/delete/{id}")
-	public Response<?> deleteSeniorityById(@PathVariable int id) {
+	public Response<?> deleteSeniorityById(@PathVariable(name = "id") int id) {
 
 		log.info("Richiesta delete.");
 
 		return seniorityService.deleteSeniorityById(id);
 	}
 	
-//	@PutMapping(path = "/update/{id}")
-//	public Response<?> update(
-//			@PathVariable(name = "id") Integer id,
-//			@RequestParam (required = false) String type,
-//			@RequestParam (required = false) String questionText,
-//			@RequestParam (required = false) String correctAnswerBoolean,
-//			@RequestParam (required = false) String correctAnswerText,
-//			@RequestParam (required = false) String wrongAnswers,
-//			@RequestParam (required = false) int difficulty) {
-//
-//		return seniorityService.updateQuestion(id, type, questionText, correctAnswerBoolean, correctAnswerText, wrongAnswers, difficulty);
-//	}
-//	
+	@PutMapping(path = "/update/{id}")
+	public Response<?> update(
+			@PathVariable(name = "id") int id,
+			@RequestParam (required = false) String description,
+			@RequestParam (required = false) int minDifficulty,
+			@RequestParam (required = false) int maxDifficulty) {
+
+		return seniorityService.updateSeniority(id, description, minDifficulty, maxDifficulty);
+	
+	}
+	
 	@GetMapping(path="/findAll")
-	public Response<?> findAllSkills(){
+	public Response<?> findAllSkills() {
 		
 		log.info("richiesta di find all.");
 		
-		return seniorityService.findAllSeniority();
+		return seniorityService.findAllSeniorities();
 	}
 	
-	@GetMapping(path="/findById/{id}")
-	public Response<?> findSeniorityById(@PathVariable int id){
+	@GetMapping(path="/detail/{id}")
+	public Response<?> findSeniorityById(@PathVariable(name = "id") int id) {
+		
 		log.info("trova da id");
 		
 		return seniorityService.findSeniorityById(id);
+	
 	}
 	
-	//da qua
-	@GetMapping(path="/findByMinDifficulty/{id}")
-	public Response<?> findSeniorityByMinDifficulty(@PathVariable int difficulty){
+	@GetMapping(path="/findByMinDifficulty/{minDifficulty}")
+	public Response<?> findSeniorityByMinDifficulty(@PathVariable(name = "minDifficulty") int minDifficulty) {
+		
 		log.info("ricerca da minima difficoltà");
-		return seniorityService.findSeniorityByMinDifficuly(difficulty);
+		
+		return seniorityService.findSeniorityByMinDifficuly(minDifficulty);
+	
 	}
 	
-	@GetMapping(path="/findByMaxDifficulty/{id}")
-	public Response<?> findSeniorityByMaxnDifficulty(@PathVariable int difficulty){
+	@GetMapping(path="/findByMaxDifficulty/{maxDifficulty}")
+	public Response<?> findSeniorityByMaxnDifficulty(@PathVariable(name = "maxDifficulty") int maxDifficulty){
+		
 		log.info("ricerca da massima difficoltà");
-		return seniorityService.findSeniorityByMaxDifficuly(difficulty);
+		
+		return seniorityService.findSeniorityByMaxDifficuly(maxDifficulty);
+	
 	}
 
 }

@@ -18,10 +18,7 @@ public class SkillServiceTest {
 	public void createSkillTest() {
 		
 		Skill skill = new Skill();
-		skill.setId(5);
 		skill.setDescription("Java");
-		
-		//skillService.save(skill);
 		
 		assertEquals(true, skillService.createSkill(skill).getResult());
 	}
@@ -39,15 +36,19 @@ public class SkillServiceTest {
 		assertEquals(true, skillService.findAllSkills().isResultTest());
 		
 	}
+	
 	@Test
 	public void findSkillByIdTest() {
+		
 		assertEquals(true, skillService.findSkillById(2).isResultTest());
+	
 	}
 	
 	@Test
 	public void updateSkillTest(){
+		
 		assertEquals(true, skillService.updateSkill(2, "nuova descrizione").isResultTest());
-	}
 	
+	}
 	
 }

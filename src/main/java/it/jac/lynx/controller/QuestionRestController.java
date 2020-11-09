@@ -1,11 +1,8 @@
 package it.jac.lynx.controller;
 
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import it.jac.lynx.dto.QuestionDTO;
 import it.jac.lynx.dto.Response;
 import it.jac.lynx.entity.Question;
 import it.jac.lynx.service.QuestionService;
@@ -62,7 +58,7 @@ public class QuestionRestController {
 	}
 
 	@GetMapping(path = "/detail/{id}")
-	public Response<?> detail(@PathVariable(name = "id") int id) {
+	public Response<?> findQuestionById(@PathVariable(name = "id") int id) {
 		
 		log.info("Ricevuta richiesta di dettaglio di un prodotto");
 		
@@ -71,7 +67,7 @@ public class QuestionRestController {
 	}
 
 	@PutMapping(path = "/update/{id}")
-	public Response<?> update(
+	public Response<?> updateQuestion(
 			@PathVariable(name = "id") int id,
 			@RequestParam (required = false) String type,
 			@RequestParam (required = false) String questionText,
@@ -85,7 +81,7 @@ public class QuestionRestController {
 	}
 	
 	@DeleteMapping(path = "/delete/{id}")
-	public Response<?> delete(@PathVariable(name = "id") Integer id) {
+	public Response<?> deleteQuestion(@PathVariable(name = "id") Integer id) {
 
 		log.info("Ricevuta richiesta di eliminazione di un prodotto");
 

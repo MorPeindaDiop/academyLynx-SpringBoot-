@@ -165,7 +165,7 @@ public class CandidateService {
 	}
 
 
-	public Response<List<CandidateDTO>> findCandidatesByidSeniority(int seniority) {
+	public Response<List<CandidateDTO>> findCandidatesByIdSeniority(int seniority) {
 
 		Response<List<CandidateDTO>> response = new Response<List<CandidateDTO>>();
 		
