@@ -101,5 +101,15 @@ public class CandidateRestController {
 		return candidateService.findCandidatesByIdSeniority(idSeniority);
 		
 	}
+	
+	@PutMapping(path = "/updateDataTest/{id}")
+	public Response<?> setCandidateScoreAndTime(
+			@PathVariable(name = "id") int id,
+			@RequestParam int score,
+			@RequestParam int time) {
 
+		return candidateService.setCandidateScoreAndTime(id, score, time);
+	
+	}
+	
 }

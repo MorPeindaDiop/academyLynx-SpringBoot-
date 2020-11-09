@@ -194,5 +194,36 @@ public class CandidateService {
 		return response;
 		
 	}
+	
+	public Response<CandidateDTO> setCandidateScoreAndTime(
+			int id,
+			int score,
+			int time) {
+
+		Response<CandidateDTO> response = new Response<CandidateDTO>();
+
+		try {
+			Candidate candidate = this.candidateRepository.findById(id).get();
+
+			if (score > 0)
+				candidate.setScore(score);
+			
+			if (time > 0)
+				candidate.setTime(time);
+
+			this.candidateRepository.save(candidate);
+			
+			response.setResult(CandidateDTO.build(candidate));
+			response.setResultTest(true);
+
+		} catch (Exception e) {
+			
+			response.setError("Nessun elemento trovato.");
+			
+		}	
+
+		return response;
+
+	}
 
 }
