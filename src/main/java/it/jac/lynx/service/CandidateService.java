@@ -1,10 +1,9 @@
 package it.jac.lynx.service;
 
-import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,7 +21,7 @@ public class CandidateService {
 	@Autowired
 	private CandidateRepository candidateRepository;
 
-	public Response<Boolean> createCandidate(Candidate candidate){
+	public Response<Boolean> createCandidate(Candidate candidate) {
 
 		Response<Boolean> response = new Response<Boolean>();
 
@@ -125,8 +124,7 @@ public class CandidateService {
 			Date dataTest,
 			int idSeniority,
 			int score,
-			int time
-			) {
+			int time) {
 
 		Response<CandidateDTO> response = new Response<CandidateDTO>();
 
@@ -145,10 +143,10 @@ public class CandidateService {
 			if (idSeniority > 0)
 				candidate.setIdSeniority(idSeniority);
 			
-			if (score >= 0)
+			if (score > 0)
 				candidate.setScore(score);
 			
-			if (time >= 0)
+			if (time > 0)
 				candidate.setTime(time);
 
 			this.candidateRepository.save(candidate);
