@@ -22,7 +22,6 @@ public class QuestionServiceTest {
 		question.setType("aperta");
 		
 		assertEquals(true, questionService.createQuestion(question).getResult());
-	
 	}
 	
 	@Test 
