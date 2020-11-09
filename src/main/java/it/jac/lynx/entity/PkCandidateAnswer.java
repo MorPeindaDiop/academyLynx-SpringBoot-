@@ -5,7 +5,7 @@ import java.io.Serializable;
 import lombok.Data;
 
 @Data
-public  class PkUserAnswer implements Serializable {
+public  class PkCandidateAnswer implements Serializable {
 	
 	//private User idUser;
 

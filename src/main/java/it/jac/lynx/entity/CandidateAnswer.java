@@ -11,7 +11,7 @@ import lombok.Data;
 
 @Entity
 @Table(name = "candidateAnswer")
-@IdClass(PkUserAnswer.class)
+@IdClass(PkCandidateAnswer.class)
 @Data
 public class CandidateAnswer {
 

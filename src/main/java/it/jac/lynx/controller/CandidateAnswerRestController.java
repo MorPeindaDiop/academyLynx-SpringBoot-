@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import it.jac.lynx.dto.Response;
 import it.jac.lynx.entity.CandidateAnswer;
-import it.jac.lynx.entity.PkUserAnswer;
+import it.jac.lynx.entity.PkCandidateAnswer;
 import it.jac.lynx.service.CandidateAnswerService;
 
 @RestController
@@ -42,7 +42,7 @@ public class CandidateAnswerRestController {
 
 		log.info("Richiesta delete.");
 		
-		PkUserAnswer id=new PkUserAnswer();
+		PkCandidateAnswer id=new PkCandidateAnswer();
 		
 		id.setIdUser(idUtente);
 		id.setIdQuestion(idQuestion);
@@ -60,7 +60,7 @@ public class CandidateAnswerRestController {
 	
 	
 	@GetMapping(path="/findById/{id}")
-	public Response<?> findSeniorityById(@PathVariable PkUserAnswer id){
+	public Response<?> findSeniorityById(@PathVariable PkCandidateAnswer id){
 		log.info("trova da id");
 		
 		return candidateAnswerService.findCandidateAnswerById(id);

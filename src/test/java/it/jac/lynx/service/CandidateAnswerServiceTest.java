@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import it.jac.lynx.entity.CandidateAnswer;
-import it.jac.lynx.entity.PkUserAnswer;
+import it.jac.lynx.entity.PkCandidateAnswer;
 
 @SpringBootTest
 public class CandidateAnswerServiceTest {
@@ -27,7 +27,7 @@ public class CandidateAnswerServiceTest {
 	
 	@Test 
 	public void deleteCandidateAnswerByIdQuestionTest() {	
-			PkUserAnswer pk=new PkUserAnswer();
+			PkCandidateAnswer pk=new PkCandidateAnswer();
 			pk.setIdQuestion(1);
 			pk.setIdUser(2);
 			assertEquals("Candidato eliminato.", candidateAnswerService.deleteCandidateAnswerById(pk).getResult());
