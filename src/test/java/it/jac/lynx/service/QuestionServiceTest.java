@@ -22,10 +22,11 @@ public class QuestionServiceTest {
 		question.setType("aperta");
 		
 		assertEquals(true, questionService.createQuestion(question).getResult());
+	
 	}
 	
 	@Test 
-	public void deleteSkillByIdTest() {
+	public void deleteQuestionByIdTest() {
 	
 		assertEquals("Skill eliminata.", questionService.deleteQuestionById(1).getResult());
 		
@@ -37,15 +38,19 @@ public class QuestionServiceTest {
 		assertEquals(true, questionService.findAllQuestions().isResultTest());
 		
 	}
+	
 	@Test
 	public void findQuestionByIdTest() {
+		
 		assertEquals(true, questionService.findQuestionById(2).isResultTest());
+	
 	}
 	
 	@Test
-	public void updateQuestionTest(){
+	public void updateQuestionTest() {
+		
 		assertEquals(true, questionService.updateQuestion(2, "nuova descrizione", null, null, null, null, 0).isResultTest());
-	}
 	
+	}
 	
 }

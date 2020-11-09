@@ -53,7 +53,7 @@ public class QuestionService {
 		
 	}
 
-	public Response<QuestionDTO> findQuestionById(Integer id) {
+	public Response<QuestionDTO> findQuestionById(int id) {
 
 		log.info("Trova question attraverso Id");
 		

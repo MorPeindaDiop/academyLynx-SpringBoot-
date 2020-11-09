@@ -20,7 +20,7 @@ public class CandidateAnswerService {
 	@Autowired
 	private CandidateAnswerRepository candidateAnswerRepository;
 
-	public Response<Boolean> createCandidateAnswer(CandidateAnswer candidateAnswer){
+	public Response<Boolean> createCandidateAnswer(CandidateAnswer candidateAnswer) {
 
 		Response<Boolean> response = new Response<Boolean>();
 
@@ -31,7 +31,7 @@ public class CandidateAnswerService {
 			response.setResult(true);
 			response.setResultTest(true);
 
-		}catch(Exception e) {
+		} catch (Exception e) {
 
 			response.setError("Answer non creata");
 
@@ -52,7 +52,7 @@ public class CandidateAnswerService {
 			response.setResult("Candidato eliminato.");
 			response.setResultTest(true);
 
-		}catch(Exception e){
+		} catch (Exception e) {
 
 			response.setError("Candidato non eliminato correttamente.");
 

@@ -11,7 +11,7 @@ public class PkCandidateSkill implements Serializable {
 
 	//private Question idSkill;
 
-	private int idUser;
+	private int idCandidate;
 
 	private int idSkill;
 

@@ -3,7 +3,6 @@ package it.jac.lynx.service;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,10 +19,9 @@ public class SeniorityService {
 	@Autowired
 	private SeniorityRepository seniorityRepository;
 
+	public Response<Boolean> createSeniority(Seniority seniority) {
 
-	public Response<Boolean> createSeniority(Seniority seniority){
-
-		Response<Boolean> response=new Response<Boolean>();
+		Response<Boolean> response = new Response<Boolean>();
 
 		try {
 
@@ -35,6 +33,7 @@ public class SeniorityService {
 		} catch (Exception e) {
 
 			response.setError("Seniority non creata");
+			
 		}
 
 		return response;
@@ -53,12 +52,16 @@ public class SeniorityService {
 			response.setResultTest(true);
 
 		} catch (Exception e) {
+			
 			response.setError("Seniority non eliminata correttamente.");
+			
 		}
+		
 		return response;
+		
 	}
 
-	public Response<List<SeniorityDTO>> findAllSeniority() {
+	public Response<List<SeniorityDTO>> findAllSeniorities() {
 
 		Response<List<SeniorityDTO>> response = new Response<List<SeniorityDTO>>();
 
@@ -87,7 +90,6 @@ public class SeniorityService {
 		return response;
 
 	}
-
 
 	public Response<SeniorityDTO> findSeniorityById(int id) {
 

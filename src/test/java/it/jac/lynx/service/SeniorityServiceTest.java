@@ -17,39 +17,56 @@ public class SeniorityServiceTest {
 	
 	@Test
 	public void createSeniorityTest() {
+		
 		Seniority seniority = new Seniority();
 		seniority.setDescription("difficile");
+		seniority.setMinDifficulty(2);
+		seniority.setMaxDifficulty(5);
+		
 		assertEquals(true, seniorityService.createSeniority(seniority).isResultTest());
+	
 	}
 	
 	@Test 
-	public void deleteSenioritylByIdTest() {
+	public void deleteSeniorityByIdTest() {
+		
 		assertEquals("Seniority eliminata.", seniorityService.deleteSeniorityById(2).getResult());
+	
 	}
 	
 	@Test
-	public void findAllSeniorityTest() {
-		assertEquals(true, seniorityService.findAllSeniority().isResultTest());
+	public void findAllSenioritiesTest() {
+		
+		assertEquals(true, seniorityService.findAllSeniorities().isResultTest());
+	
 	}
 	
 	@Test
 	public void findSeniorityByIdTest() {
+		
 		assertEquals(true, seniorityService.findSeniorityById(1).isResultTest());
+	
 	}
 	
 	@Test
-	public void updateSeniorityTest(){
+	public void updateSeniorityTest() {
+		
 		assertEquals(true, seniorityService.updateSeniority(1, "Junior", 1, 2).isResultTest());
+	
 	}
 	
 	@Test
-	public void findSeniorityByMinDifficulty(){
+	public void findSeniorityByMinDifficultyTest() {
+		
 		assertEquals(true, seniorityService.findSeniorityByMinDifficuly(1).isResultTest());
+	
 	}
 	
 	@Test
-	public void findSeniorityByMaxDifficulty(){
+	public void findSeniorityByMaxDifficultyTest() {
+		
 		assertEquals(true, seniorityService.findSeniorityByMaxDifficuly(1).isResultTest());
+	
 	}
 	
 	

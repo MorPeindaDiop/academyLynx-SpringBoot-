@@ -80,7 +80,7 @@ public class CandidateRestController {
 	}
 	
 	@PutMapping(path = "/update/{id}")
-	public Response<?> update(
+	public Response<?> updateCandidate(
 			@PathVariable(name = "id") int id,
 			@RequestParam String name,
 			@RequestParam String surname,
@@ -93,12 +93,12 @@ public class CandidateRestController {
 	
 	}
 	
-	@GetMapping(path="/findBySeniority/{id}")
-	public Response<?> findCandidatesBySenioirty(@PathVariable(name = "id") int idSeniority) {
+	@GetMapping(path="/findByIdSeniority/{id}")
+	public Response<?> findCandidatesByIdSenioirty(@PathVariable(name = "id") int idSeniority) {
 		
 		log.info("trova da seniority");
 		
-		return candidateService.findCandidatesByidSeniority(idSeniority);
+		return candidateService.findCandidatesByIdSeniority(idSeniority);
 		
 	}
 

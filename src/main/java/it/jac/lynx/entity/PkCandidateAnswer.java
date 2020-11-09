@@ -7,11 +7,7 @@ import lombok.Data;
 @Data
 public  class PkCandidateAnswer implements Serializable {
 	
-	//private User idUser;
-
-	//private Question idQuestion;
-	
-	private int idUser;
+	private int idCandidate;
 
 	private int idQuestion;
 

@@ -50,7 +50,7 @@ public class CandidateServiceTest {
 
 	@Test
 	public void findCandidatesByIdSeniority() {
-		assertEquals(true, candidateService.findCandidatesByidSeniority(3).isResultTest());
+		assertEquals(true, candidateService.findCandidatesByIdSeniority(3).isResultTest());
 	}
 
 }
