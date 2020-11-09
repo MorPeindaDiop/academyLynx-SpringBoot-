@@ -37,8 +37,9 @@ public class CandidateAnswerRestController {
 	}
 	
 	
-	@DeleteMapping(path = "/delete/{id}")
-	public Response<?> deleteCandidateAnswerById(@RequestParam int idUtente, int idQuestion) {
+	//@DeleteMapping(path = "/delete/{id}")
+	@DeleteMapping(path = "/delete")
+	public Response<?> deleteCandidateAnswerById(@RequestParam int idUtente, @RequestParam int idQuestion) {
 
 		log.info("Richiesta delete.");
 		
