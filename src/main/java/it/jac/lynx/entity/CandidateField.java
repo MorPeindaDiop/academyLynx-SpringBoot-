@@ -28,7 +28,7 @@ public  class CandidateField {
 
 	@Override
 	public String toString() {
-		return "Candidate Field [id utente=" + idCandidate + ", id skill=" + idField + "]";
+		return "Candidate Field [id candidate=" + idCandidate + ", id field=" + idField + "]";
 	}
 	
 }
