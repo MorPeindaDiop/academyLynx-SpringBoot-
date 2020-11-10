@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import it.jac.lynx.dto.Response;
 import it.jac.lynx.entity.CandidateSkill;
-import it.jac.lynx.entity.PkCandidateSkill;
+import it.jac.lynx.pk.PkCandidateSkill;
 import it.jac.lynx.service.CandidateSkillService;
 
 @RestController

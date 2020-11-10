@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import it.jac.lynx.entity.CandidateAnswer;
-import it.jac.lynx.entity.PkCandidateAnswer;
+import it.jac.lynx.pk.PkCandidateAnswer;
 
 @SpringBootTest
 public class CandidateAnswerServiceTest {

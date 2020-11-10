@@ -12,7 +12,7 @@ import it.jac.lynx.dao.CandidateAnswerRepository;
 import it.jac.lynx.dto.CandidateAnswerDTO;
 import it.jac.lynx.dto.Response;
 import it.jac.lynx.entity.CandidateAnswer;
-import it.jac.lynx.entity.PkCandidateAnswer;
+import it.jac.lynx.pk.PkCandidateAnswer;
 
 @Service
 public class CandidateAnswerService {
