@@ -1,8 +1,6 @@
 package it.jac.lynx.entity;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,18 +27,16 @@ public class Question {
 	private String type;
 
 	@Column(name = "question")
-	private String question;
+	private String questionText;
 
-	@Column(name = "correctAnswerBoolean")
+	@Column(name = "correct_answer_boolean")
 	private boolean correctAnswerBoolean;
 
-	@Column(name = "correctAnswerText")
+	@Column(name = "correct_answer_text")
 	private String correctAnswerText;
 
-	@Column(name = "wrongAnswers")
+	@Column(name = "wrong_answers")
 	private String wrongAnswers;
-	//private List<String> wrongAnswers = new ArrayList<>();
-	//per le checkbox
 
 	@Column(name = "difficulty")
 	private int difficulty;
@@ -61,7 +57,7 @@ public class Question {
 	
 	@Override
 	public String toString() {
-		return "Question [id=" + id + ", question type=" + type + ", question text=" + question + ", correct answer=" + (correctAnswerText != "" ? correctAnswerText : correctAnswerBoolean) + ", difficulty=" + difficulty + "]";
+		return "Question [id=" + id + ", question type=" + type + ", question text=" + questionText + ", correct answer=" + (correctAnswerText != "" ? correctAnswerText : correctAnswerBoolean) + ", difficulty=" + difficulty + "]";
 	}
 
 }

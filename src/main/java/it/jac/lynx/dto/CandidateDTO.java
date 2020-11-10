@@ -16,18 +16,18 @@ public class CandidateDTO {
 
 	private String surname;
 	
-	private Date dataTest;
-
 	private int idSeniority;
+	
+	private Date dataTest;
 
 	private int score;
 
 	private int time;
 
-	public static CandidateDTO build(Candidate user) {
+	public static CandidateDTO build(Candidate candidate) {
 
 		CandidateDTO result = new CandidateDTO();
-		BeanUtils.copyProperties(user, result);
+		BeanUtils.copyProperties(candidate, result);
 
 		return result;
 	}

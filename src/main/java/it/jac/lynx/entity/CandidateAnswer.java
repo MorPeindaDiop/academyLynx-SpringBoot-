@@ -1,6 +1,5 @@
 package it.jac.lynx.entity;
 
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,31 +7,29 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.Table;
 
+import it.jac.lynx.pk.PkCandidateAnswer;
 import lombok.Data;
 
 @Entity
-@Table(name = "candidateAnswer")
-@IdClass(PkUserAnswer.class)
+@Table(name = "candidate_answer")
+@IdClass(PkCandidateAnswer.class)
 @Data
 public class CandidateAnswer {
 
 	@Id
-	@Column(name = "idUser")
-	private int idUser;
-	//private User idUser;
+	@Column(name = "id_candidate")
+	private int idCandidate;
 
 	@Id
-	@Column(name = "idQuestion")
+	@Column(name = "id_question")
 	private int idQuestion;
-	//private Question idQuestion;
 
 	@Column(name = "answer")
 	private boolean answer;
-
 	
 	@Override
 	public String toString() {
-		return "User Answer [id utente=" + idUser + ", id question=" + idQuestion + ", answer=" + answer +  "]";
+		return "Candidate Answer [id candidate=" + idCandidate + ", id question=" + idQuestion + ", answer=" + answer +  "]";
 	}
 	
 }

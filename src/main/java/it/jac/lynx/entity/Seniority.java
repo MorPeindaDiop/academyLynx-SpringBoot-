@@ -26,10 +26,10 @@ public class Seniority {
 	@Column(name = "description")
 	private String description;
 	
-	@Column(name = "minDifficulty")
+	@Column(name = "min_difficulty")
 	private int minDifficulty;
 	
-	@Column(name = "maxDifficulty")
+	@Column(name = "max_difficulty")
 	private int maxDifficulty;
 	
 	@Temporal(TemporalType.TIMESTAMP)

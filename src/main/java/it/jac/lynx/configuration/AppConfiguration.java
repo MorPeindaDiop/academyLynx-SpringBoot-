@@ -20,8 +20,8 @@ public class AppConfiguration extends WebSecurityConfigurerAdapter implements We
         http
         	.csrf().disable()
             .authorizeRequests()
-                .antMatchers("/auth/token").permitAll()//end point senza controllo di nessun tipo, quindi accessibile ad ogni client
-                .anyRequest().authenticated()
+                .antMatchers().permitAll()//end point senza controllo di nessun tipo, quindi accessibile ad ogni client
+                .anyRequest().permitAll()
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         
     }
