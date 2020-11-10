@@ -3,7 +3,6 @@ package it.jac.lynx.service;
 import static org.junit.Assert.assertEquals;
 
 import java.util.Date;
-import java.util.HashMap;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
