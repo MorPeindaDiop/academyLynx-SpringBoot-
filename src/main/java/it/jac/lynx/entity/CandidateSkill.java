@@ -10,17 +10,17 @@ import it.jac.lynx.pk.PkCandidateSkill;
 import lombok.Data;
 
 @Entity
-@Table(name = "candidateSkill")
+@Table(name = "candidate_skill")
 @IdClass(PkCandidateSkill.class)
 @Data
 public  class CandidateSkill {
 
 	@Id
-	@Column(name = "idCandidate")
+	@Column(name = "id_candidate")
 	private int idCandidate;
 
 	@Id
-	@Column(name = "idSkill")
+	@Column(name = "id_skill")
 	private int idSkill;
 
 	@Override

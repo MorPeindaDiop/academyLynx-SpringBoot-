@@ -11,17 +11,17 @@ import it.jac.lynx.pk.PkCandidateAnswer;
 import lombok.Data;
 
 @Entity
-@Table(name = "candidateAnswer")
+@Table(name = "candidate_answer")
 @IdClass(PkCandidateAnswer.class)
 @Data
 public class CandidateAnswer {
 
 	@Id
-	@Column(name = "idCandidate")
+	@Column(name = "id_candidate")
 	private int idCandidate;
 
 	@Id
-	@Column(name = "idQuestion")
+	@Column(name = "id_question")
 	private int idQuestion;
 
 	@Column(name = "answer")

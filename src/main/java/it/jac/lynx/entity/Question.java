@@ -29,13 +29,13 @@ public class Question {
 	@Column(name = "question")
 	private String questionText;
 
-	@Column(name = "correctAnswerBoolean")
+	@Column(name = "correct_answer_boolean")
 	private boolean correctAnswerBoolean;
 
-	@Column(name = "correctAnswerText")
+	@Column(name = "correct_answer_text")
 	private String correctAnswerText;
 
-	@Column(name = "wrongAnswers")
+	@Column(name = "wrong_answers")
 	private String wrongAnswers;
 
 	@Column(name = "difficulty")

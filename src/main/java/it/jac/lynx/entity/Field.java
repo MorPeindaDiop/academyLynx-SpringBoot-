@@ -22,7 +22,7 @@ public class Field {
 	@Column(name = "page")
 	private String page;
 
-	@Column(name = "fieldName")
+	@Column(name = "field_name")
 	private String fieldName;
 	
 	@Column(name = "reg_exp")

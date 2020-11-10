@@ -30,7 +30,7 @@ public class Candidate {
 	@Column(name = "surname")
 	private String surname;
 	
-	@Column(name = "idSeniority")
+	@Column(name = "id_seniority")
 	private int idSeniority;
 	
 	@Temporal(TemporalType.TIMESTAMP)
