@@ -1,6 +1,7 @@
 package it.jac.lynx.dto;
 
 import java.util.Date;
+import java.util.HashMap;
 
 import org.springframework.beans.BeanUtils;
 
@@ -16,18 +17,20 @@ public class CandidateDTO {
 
 	private String surname;
 	
-	private Date dataTest;
-
 	private int idSeniority;
+	
+	private Date dataTest;
 
 	private int score;
 
 	private int time;
+	
+	HashMap<Integer, String> fields = new HashMap<>();
 
-	public static CandidateDTO build(Candidate user) {
+	public static CandidateDTO build(Candidate candidate) {
 
 		CandidateDTO result = new CandidateDTO();
-		BeanUtils.copyProperties(user, result);
+		BeanUtils.copyProperties(candidate, result);
 
 		return result;
 	}

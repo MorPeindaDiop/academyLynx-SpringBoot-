@@ -1,12 +1,14 @@
  package it.jac.lynx.entity;
 
 import java.util.Date;
+import java.util.HashMap;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -29,15 +31,12 @@ public class Candidate {
 	@Column(name = "surname")
 	private String surname;
 	
+	@Column(name = "idSeniority")
+	private int idSeniority;
+	
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "dataTest")
 	private Date dataTest;
-
-	//@Column(name = "idSeniority")
-	//private Seniority idSeniority;
-
-	@Column(name = "idSeniority")
-	private int idSeniority;
 	
 	@Column(name = "score")
 	private int score;
@@ -45,9 +44,12 @@ public class Candidate {
 	@Column(name = "time")
 	private int time;
 
+	@Column(name = "fields")
+	HashMap<Integer, String> fields = new HashMap<>();
+	
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", surname=" + surname + "]";
+		return "Candidate [id=" + id + ", name=" + name + ", surname=" + surname + "]";
 	}
-	
+
 }
