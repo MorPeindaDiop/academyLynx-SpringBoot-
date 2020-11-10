@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 import org.junit.jupiter.api.Test;
+import org.mockito.internal.util.reflection.Fields;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -84,10 +85,18 @@ public class CandidateServiceTest {
 		candidate.setDataTest(new Date());
 		candidate.setIdSeniority(3);
 		
-		HashMap<Integer, String> campi = new HashMap<>();
-		campi.put(1, "ciao");
+		Field field=new Field();
+		field.setEnabled(false);
+		field.setFieldName("campo1");
+		field.setId(4);
+		field.setPage("index.html");
+		field.setReg_exp("A-Za-z");
+		
+		HashMap<Field, String> campi = new HashMap<>();
+		campi.put(field, "ciao");
 		
 		candidate.setFields(campi);
+		
 		
 		assertEquals(true, candidateService.createCandidate(candidate).isResultTest());
 	

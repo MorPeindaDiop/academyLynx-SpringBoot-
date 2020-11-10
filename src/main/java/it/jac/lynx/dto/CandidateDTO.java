@@ -6,6 +6,7 @@ import java.util.HashMap;
 import org.springframework.beans.BeanUtils;
 
 import it.jac.lynx.entity.Candidate;
+import it.jac.lynx.entity.Field;
 import lombok.Data;
 
 @Data
@@ -25,7 +26,7 @@ public class CandidateDTO {
 
 	private int time;
 	
-	HashMap<Integer, String> fields = new HashMap<>();
+	HashMap<Field, String> fields = new HashMap<>();
 
 	public static CandidateDTO build(Candidate candidate) {
 

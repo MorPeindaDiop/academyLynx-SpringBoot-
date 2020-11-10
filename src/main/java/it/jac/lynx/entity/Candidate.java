@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.IdClass;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -45,7 +44,7 @@ public class Candidate {
 	private int time;
 
 	@Column(name = "fields")
-	HashMap<Integer, String> fields = new HashMap<>();
+	HashMap<Field, String> fields = new HashMap<>();
 	
 	@Override
 	public String toString() {
