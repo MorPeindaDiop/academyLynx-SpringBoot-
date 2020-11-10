@@ -10,14 +10,14 @@ import lombok.Data;
 @Data
 public class CandidateSkillDTO {
 
-	private Candidate idUser;
+	private Candidate idCandidate;
 
 	private Skill idSkill;
 
-	public static CandidateSkillDTO build(CandidateSkill userSkill) {
+	public static CandidateSkillDTO build(CandidateSkill candidateSkill) {
 
 		CandidateSkillDTO result = new CandidateSkillDTO();
-		BeanUtils.copyProperties(userSkill, result);
+		BeanUtils.copyProperties(candidateSkill, result);
 
 		return result;
 	}

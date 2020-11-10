@@ -31,7 +31,7 @@ public class CandidateAnswer {
 	
 	@Override
 	public String toString() {
-		return "User Answer [id utente=" + idCandidate + ", id question=" + idQuestion + ", answer=" + answer +  "]";
+		return "Candidate Answer [id utente=" + idCandidate + ", id question=" + idQuestion + ", answer=" + answer +  "]";
 	}
 	
 	

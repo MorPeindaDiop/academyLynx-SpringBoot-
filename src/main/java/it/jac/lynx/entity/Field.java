@@ -28,12 +28,12 @@ public class Field {
 	@Column(name = "reg_exp")
 	private String reg_exp;
 	
-	@Column(name = "enabled")
-	private boolean enabled;
+	@Column(name = "isEnabled")
+	private boolean isEnabled;
 
 	@Override
 	public String toString() {
-		return "Field [id=" + id + ", field name=" + fieldName + ", enabled=" + enabled + "]";
+		return "Field [id=" + id + ", field name=" + fieldName + ", enabled=" + isEnabled + "]";
 	}
 
 }
