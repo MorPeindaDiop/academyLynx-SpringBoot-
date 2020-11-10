@@ -89,7 +89,6 @@ public class CandidateServiceTest {
 		candidate.setFields(campi);
 		
 		assertEquals(true, candidateService.createCandidate(candidate).isResultTest());
-	
 	}
 
 }
