@@ -3,12 +3,14 @@ package it.jac.lynx.service;
 import static org.junit.Assert.assertEquals;
 
 import java.util.Date;
+import java.util.HashMap;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import it.jac.lynx.entity.Candidate;
+import it.jac.lynx.entity.Field;
 
 
 
@@ -70,6 +72,24 @@ public class CandidateServiceTest {
 	public void setCandidateScoreAndTimeTest() {
 		
 		assertEquals(true, candidateService.setCandidateScoreAndTime(1, 150, 20).isResultTest());
+	
+	}
+	
+	@Test
+	public void createCandidateTest1() {
+		
+		Candidate candidate = new Candidate();
+		candidate.setName("Andrea");
+		candidate.setSurname("pluto");
+		candidate.setDataTest(new Date());
+		candidate.setIdSeniority(3);
+		
+		HashMap<Integer, String> campi = new HashMap<>();
+		campi.put(1, "ciao");
+		
+		candidate.setFields(campi);
+		
+		assertEquals(true, candidateService.createCandidate(candidate).isResultTest());
 	
 	}
 
