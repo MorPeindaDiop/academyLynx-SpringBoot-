@@ -24,8 +24,6 @@ public class CandidateDTO {
 	private int score;
 
 	private int time;
-	
-	HashMap<Integer, String> fields = new HashMap<>();
 
 	public static CandidateDTO build(Candidate candidate) {
 

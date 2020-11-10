@@ -18,23 +18,17 @@ public class CandidateAnswer {
 	@Id
 	@Column(name = "idCandidate")
 	private int idCandidate;
-	//private User idUser;
 
 	@Id
 	@Column(name = "idQuestion")
 	private int idQuestion;
-	//private Question idQuestion;
 
 	@Column(name = "answer")
 	private boolean answer;
-
 	
 	@Override
 	public String toString() {
 		return "Candidate Answer [id utente=" + idCandidate + ", id question=" + idQuestion + ", answer=" + answer +  "]";
 	}
-	
-	
-	
 	
 }

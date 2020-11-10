@@ -37,8 +37,6 @@ public class Question {
 
 	@Column(name = "wrongAnswers")
 	private String wrongAnswers;
-	//private List<String> wrongAnswers = new ArrayList<>();
-	//per le checkbox
 
 	@Column(name = "difficulty")
 	private int difficulty;

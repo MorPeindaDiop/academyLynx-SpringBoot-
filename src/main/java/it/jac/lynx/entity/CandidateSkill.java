@@ -17,12 +17,10 @@ public  class CandidateSkill {
 	@Id
 	@Column(name = "idCandidate")
 	private int idCandidate;
-	//private User idUser;
 
 	@Id
 	@Column(name = "idSkill")
 	private int idSkill;
-	//private Skill idSkill;
 
 	@Override
 	public String toString() {

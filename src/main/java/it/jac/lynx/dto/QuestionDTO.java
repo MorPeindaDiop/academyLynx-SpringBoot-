@@ -15,7 +15,7 @@ public class QuestionDTO {
 
 	private int id;
 
-	private Seniority idSeniority;
+	private int idSeniority;
 
 	private String type;
 	//tipo di domanda, se crocette, aperta, ecc
@@ -26,7 +26,7 @@ public class QuestionDTO {
 
 	private String correctAnswerText;
 
-	private List<String> wrongAnswers = new ArrayList<>();
+	private String wrongAnswers;
 	//per le checkbox
 
 	private int difficulty;

@@ -6,17 +6,17 @@ import it.jac.lynx.entity.CandidateAnswer;
 import lombok.Data;
 
 @Data
-public class CandidateAnswerDTO {
+public class CandidateFieldDTO {
 
 	private int idCandidate;
 
-	private int idQuestion;
+	private int idField;
 
-	private boolean answer;
+	private String value;
 
-	public static CandidateAnswerDTO build(CandidateAnswer candidateAnswer) {
+	public static CandidateFieldDTO build(CandidateAnswer candidateAnswer) {
 
-		CandidateAnswerDTO result = new CandidateAnswerDTO();
+		CandidateFieldDTO result = new CandidateFieldDTO();
 		BeanUtils.copyProperties(candidateAnswer, result);
 
 		return result;
