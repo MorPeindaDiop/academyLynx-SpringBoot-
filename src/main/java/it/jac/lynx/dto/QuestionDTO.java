@@ -1,13 +1,10 @@
 package it.jac.lynx.dto;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import org.springframework.beans.BeanUtils;
 
 import it.jac.lynx.entity.Question;
-import it.jac.lynx.entity.Seniority;
 import lombok.Data;
 
 @Data
