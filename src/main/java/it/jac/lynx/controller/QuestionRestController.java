@@ -88,5 +88,13 @@ public class QuestionRestController {
 		return questionService.deleteQuestionById(id);
 		
 	}
+	@GetMapping(path = "/check/{id}")
+	public Response<?> checkQuestionAnswerById(@PathVariable(name = "id") int id) {
+		
+		log.info("Ricevuta richiesta di controllo risposta");
+		
+		return questionService.checkQuestionAnswerById(id);
+		
+	}
 	
 }

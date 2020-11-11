@@ -34,7 +34,10 @@ public class Question {
 
 	@Column(name = "correct_answer_text")
 	private String correctAnswerText;
-
+	
+	@Column(name = "answer")
+	private String answer;
+	
 	@Column(name = "wrong_answers")
 	private String wrongAnswers;
 

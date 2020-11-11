@@ -18,6 +18,8 @@ public class QuestionDTO {
 	//tipo di domanda, se crocette, aperta, ecc
 
 	private String question;
+	
+	private String answer;
 
 	private boolean correctAnswerBoolean;
 

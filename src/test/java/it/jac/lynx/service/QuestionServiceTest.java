@@ -18,8 +18,10 @@ public class QuestionServiceTest {
 	public void createQuestionTest() {
 		
 		Question question = new Question();
-		question.setQuestionText("ciao");
+		question.setQuestionText("4*3= ?");
 		question.setType("aperta");
+		question.setAnswer("14");
+		question.setCorrectAnswerText("12");
 		
 		assertEquals(true, questionService.createQuestion(question).getResult());
 	
@@ -50,6 +52,13 @@ public class QuestionServiceTest {
 	public void updateQuestionTest() {
 		
 		assertEquals(true, questionService.updateQuestion(2, "nuova descrizione", null, null, null, null, 0).isResultTest());
+	
+	}
+	
+	@Test
+	public void checkAnswerQuestionByIdTest() {
+		
+		assertEquals(true, questionService.checkQuestionAnswerById(3).isResultTest());
 	
 	}
 	
