@@ -6,26 +6,29 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.Table;
 
-import it.jac.lynx.pk.PkCandidateSkill;
+import it.jac.lynx.pk.PkCandidateField;
 import lombok.Data;
 
 @Entity
-@Table(name = "candidate_skill")
-@IdClass(PkCandidateSkill.class)
+@Table(name = "candidate_field")
+@IdClass(PkCandidateField.class)
 @Data
-public  class CandidateSkill {
+public  class CandidateField {
 
 	@Id
 	@Column(name = "id_candidate")
 	private int idCandidate;
 
 	@Id
-	@Column(name = "id_skill")
-	private int idSkill;
+	@Column(name = "id_field")
+	private int idField;
+	
+	@Column(name = "value")
+	private String value;
 
 	@Override
 	public String toString() {
-		return "Candidate Skill [id candidate=" + idCandidate + ", id skill=" + idSkill + "]";
+		return "Candidate Field [id candidate=" + idCandidate + ", id field=" + idField + "]";
 	}
 	
 }

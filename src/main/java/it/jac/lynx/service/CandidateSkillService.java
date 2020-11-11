@@ -11,7 +11,7 @@ import it.jac.lynx.dao.CandidateSkillRepository;
 import it.jac.lynx.dto.CandidateSkillDTO;
 import it.jac.lynx.dto.Response;
 import it.jac.lynx.entity.CandidateSkill;
-import it.jac.lynx.entity.PkCandidateSkill;
+import it.jac.lynx.pk.PkCandidateSkill;
 
 @Service
 public class CandidateSkillService {

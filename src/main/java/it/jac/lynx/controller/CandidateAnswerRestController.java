@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import it.jac.lynx.dto.Response;
 import it.jac.lynx.entity.CandidateAnswer;
-import it.jac.lynx.entity.PkCandidateAnswer;
+import it.jac.lynx.pk.PkCandidateAnswer;
 import it.jac.lynx.service.CandidateAnswerService;
 
 @RestController
@@ -21,7 +21,11 @@ import it.jac.lynx.service.CandidateAnswerService;
 public class CandidateAnswerRestController {
 
 	private static Logger log = LoggerFactory.getLogger(CandidateAnswerRestController.class);
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> branch 'campiDinamici' of https://github.com/MorPeindaDiop/academyLynxSpringBoot
 	@Autowired
 	private CandidateAnswerService candidateAnswerService;
 

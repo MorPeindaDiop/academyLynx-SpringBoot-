@@ -1,4 +1,4 @@
-package it.jac.lynx.entity;
+package it.jac.lynx.pk;
 
 import java.io.Serializable;
 
@@ -7,10 +7,6 @@ import lombok.Data;
 @Data
 public class PkCandidateSkill implements Serializable {
 	
-	//private User idUser;
-
-	//private Question idSkill;
-
 	private int idCandidate;
 
 	private int idSkill;

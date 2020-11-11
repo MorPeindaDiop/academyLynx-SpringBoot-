@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.IdClass;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -31,7 +30,7 @@ public class Candidate {
 	@Column(name = "surname")
 	private String surname;
 	
-	@Column(name = "idSeniority")
+	@Column(name = "id_seniority")
 	private int idSeniority;
 	
 	@Temporal(TemporalType.TIMESTAMP)

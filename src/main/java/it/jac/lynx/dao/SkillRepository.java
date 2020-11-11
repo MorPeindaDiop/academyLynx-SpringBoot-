@@ -11,4 +11,5 @@ import it.jac.lynx.entity.Skill;
 public interface SkillRepository extends CrudRepository<Skill, Integer> {
 	
 	public List<Skill> findByDescription(String description);
+	
 }

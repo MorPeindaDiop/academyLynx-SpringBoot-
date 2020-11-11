@@ -7,34 +7,29 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.Table;
 
+import it.jac.lynx.pk.PkCandidateAnswer;
 import lombok.Data;
 
 @Entity
-@Table(name = "candidateAnswer")
+@Table(name = "candidate_answer")
 @IdClass(PkCandidateAnswer.class)
 @Data
 public class CandidateAnswer {
 
 	@Id
-	@Column(name = "idCandidate")
+	@Column(name = "id_candidate")
 	private int idCandidate;
-	//private User idUser;
 
 	@Id
-	@Column(name = "idQuestion")
+	@Column(name = "id_question")
 	private int idQuestion;
-	//private Question idQuestion;
 
 	@Column(name = "answer")
 	private boolean answer;
-
 	
 	@Override
 	public String toString() {
-		return "User Answer [id utente=" + idCandidate + ", id question=" + idQuestion + ", answer=" + answer +  "]";
+		return "Candidate Answer [id candidate=" + idCandidate + ", id question=" + idQuestion + ", answer=" + answer +  "]";
 	}
-	
-	
-	
 	
 }

@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import it.jac.lynx.entity.CandidateAnswer;
-import it.jac.lynx.entity.PkCandidateAnswer;
+import it.jac.lynx.pk.PkCandidateAnswer;
 
 @SpringBootTest
 public class CandidateAnswerServiceTest {
@@ -20,8 +20,8 @@ public class CandidateAnswerServiceTest {
 	public void createCandidateTest() {
 
 		CandidateAnswer candidateAnswer = new CandidateAnswer();
-		candidateAnswer.setIdCandidate(2);
-		candidateAnswer.setIdQuestion(1);
+		candidateAnswer.setIdCandidate(3);
+		candidateAnswer.setIdQuestion(8);
 		candidateAnswer.setAnswer(true);
 
 		assertEquals(true, candidateAnswerService.createCandidateAnswer(candidateAnswer).isResultTest());

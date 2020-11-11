@@ -3,7 +3,6 @@ package it.jac.lynx.service;
 import static org.junit.Assert.assertEquals;
 
 import java.util.Date;
-import java.util.HashMap;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,6 +72,7 @@ public class CandidateServiceTest {
 		assertEquals(true, candidateService.setCandidateScoreAndTime(1, 150, 20).isResultTest());
 	
 	}
+<<<<<<< HEAD
 	
 	@Test
 	public void createCandidateTest1() {
@@ -90,5 +90,7 @@ public class CandidateServiceTest {
 		
 		assertEquals(true, candidateService.createCandidate(candidate).isResultTest());
 	}
+=======
+>>>>>>> branch 'campiDinamici' of https://github.com/MorPeindaDiop/academyLynxSpringBoot
 
 }
