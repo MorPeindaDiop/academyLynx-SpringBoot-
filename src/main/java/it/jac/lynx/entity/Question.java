@@ -46,7 +46,7 @@ public class Question {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "creation_time")
-	private Date creationTime;
+	private String creationTime;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "update_time")

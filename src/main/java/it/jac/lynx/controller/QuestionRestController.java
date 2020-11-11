@@ -1,5 +1,9 @@
 package it.jac.lynx.controller;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,21 +23,24 @@ import it.jac.lynx.service.QuestionService;
 @RestController
 @RequestMapping("/rest/question")
 public class QuestionRestController {
-	
+
 	private static Logger log = LoggerFactory.getLogger(QuestionRestController.class);
-	
+
 	@Autowired
 	private QuestionService questionService;
-	
+
+	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+	Date date = new Date();
+
 	@GetMapping(path = "/findAll")
 	public Response<?> findAllQuestions() {
 
 		log.info("Ricevuta richiesta della lista di tutti i prodotti");
-		
+
 		return questionService.findAllQuestions();
-		
+
 	}
-	
+
 	@PostMapping("/create")
 	public Response<?> createQuestion(
 			@RequestParam String type,
@@ -42,9 +49,9 @@ public class QuestionRestController {
 			@RequestParam (required = false) String correctAnswerText,
 			@RequestParam (required = false) String wrongAnswers,
 			@RequestParam int difficulty) {
-		
+
 		log.info("Ricevuta richiesta di creazione nuovo prodotto");
-		
+
 		Question question = new Question();
 		question.setType(type);
 		question.setDifficulty(difficulty);
@@ -52,18 +59,18 @@ public class QuestionRestController {
 		question.setCorrectAnswerBoolean(correctAnswerBoolean.equalsIgnoreCase("true") ? true : false);
 		question.setCorrectAnswerText(correctAnswerText);
 		question.setWrongAnswers(wrongAnswers);
-		
+		question.setCreationTime(dateFormat.format(date).toString());
 		return questionService.createQuestion(question);
-		
+
 	}
 
 	@GetMapping(path = "/detail/{id}")
 	public Response<?> findQuestionById(@PathVariable(name = "id") int id) {
-		
+
 		log.info("Ricevuta richiesta di dettaglio di un prodotto");
-		
+
 		return questionService.findQuestionById(id);
-		
+
 	}
 
 	@PutMapping(path = "/update/{id}")
@@ -77,24 +84,24 @@ public class QuestionRestController {
 			@RequestParam (required = false) int difficulty) {
 
 		return questionService.updateQuestion(id, type, questionText, correctAnswerBoolean, correctAnswerText, wrongAnswers, difficulty);
-	
+
 	}
-	
+
 	@DeleteMapping(path = "/delete/{id}")
 	public Response<?> deleteQuestion(@PathVariable(name = "id") Integer id) {
 
 		log.info("Ricevuta richiesta di eliminazione di un prodotto");
 
 		return questionService.deleteQuestionById(id);
-		
+
 	}
 	@GetMapping(path = "/check/{id}")
 	public Response<?> checkQuestionAnswerById(@PathVariable(name = "id") int id) {
-		
+
 		log.info("Ricevuta richiesta di controllo risposta");
-		
+
 		return questionService.checkQuestionAnswerById(id);
-		
+
 	}
-	
+
 }
