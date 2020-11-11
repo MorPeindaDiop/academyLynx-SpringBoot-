@@ -21,11 +21,7 @@ import it.jac.lynx.service.CandidateAnswerService;
 public class CandidateAnswerRestController {
 
 	private static Logger log = LoggerFactory.getLogger(CandidateAnswerRestController.class);
-<<<<<<< HEAD
-	
-=======
 
->>>>>>> branch 'campiDinamici' of https://github.com/MorPeindaDiop/academyLynxSpringBoot
 	@Autowired
 	private CandidateAnswerService candidateAnswerService;
 
