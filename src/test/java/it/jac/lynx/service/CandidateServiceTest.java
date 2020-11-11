@@ -11,7 +11,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import it.jac.lynx.entity.Candidate;
 
 
-
 @SpringBootTest
 public class CandidateServiceTest {
 
@@ -72,7 +71,7 @@ public class CandidateServiceTest {
 		assertEquals(true, candidateService.setCandidateScoreAndTime(1, 150, 20).isResultTest());
 	
 	}
-<<<<<<< HEAD
+
 	
 	@Test
 	public void createCandidateTest1() {
@@ -83,14 +82,9 @@ public class CandidateServiceTest {
 		candidate.setDataTest(new Date());
 		candidate.setIdSeniority(3);
 		
-		HashMap<Integer, String> campi = new HashMap<>();
-		campi.put(1, "ciao");
 		
-		candidate.setFields(campi);
 		
 		assertEquals(true, candidateService.createCandidate(candidate).isResultTest());
 	}
-=======
->>>>>>> branch 'campiDinamici' of https://github.com/MorPeindaDiop/academyLynxSpringBoot
 
 }
