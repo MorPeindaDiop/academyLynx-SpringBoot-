@@ -56,7 +56,7 @@ public class QuestionRestController {
 		question.setType(type);
 		question.setDifficulty(difficulty);
 		question.setQuestionText(questionText);
-		question.setCorrectAnswerBoolean(correctAnswerBoolean.equalsIgnoreCase("true") ? true : false);
+		question.setCorrectAnswerBoolean(correctAnswerBoolean.equalsIgnoreCase("true") ? "true" : "false");
 		question.setCorrectAnswerText(correctAnswerText);
 		question.setWrongAnswers(wrongAnswers);
 		question.setCreationTime(dateFormat.format(date).toString());
@@ -95,13 +95,6 @@ public class QuestionRestController {
 		return questionService.deleteQuestionById(id);
 
 	}
-	@GetMapping(path = "/check/{id}")
-	public Response<?> checkQuestionAnswerById(@PathVariable(name = "id") int id) {
-
-		log.info("Ricevuta richiesta di controllo risposta");
-
-		return questionService.checkQuestionAnswerById(id);
-
-	}
+	
 
 }

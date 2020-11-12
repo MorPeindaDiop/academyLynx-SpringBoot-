@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 import it.jac.lynx.dao.CandidateAnswerRepository;
 import it.jac.lynx.dto.CandidateAnswerDTO;
@@ -16,7 +18,9 @@ import it.jac.lynx.pk.PkCandidateAnswer;
 
 @Service
 public class CandidateAnswerService {
-
+	
+	private static Logger log = LoggerFactory.getLogger(CandidateAnswerService.class);
+	
 	@Autowired
 	private CandidateAnswerRepository candidateAnswerRepository;
 
@@ -92,6 +96,45 @@ public class CandidateAnswerService {
 		return response;
 
 	}
+	
+	public Response<List<CandidateAnswerDTO>> findAllCandidateAnswersById(int idCandidate) {
+
+		Response<List<CandidateAnswerDTO>> response = new Response<List<CandidateAnswerDTO>>();
+		CandidateAnswer candidateAnswer=new CandidateAnswer();
+		List<CandidateAnswerDTO> result = new ArrayList<>();
+		
+		boolean flag=false;
+
+		try {
+
+			Iterator<CandidateAnswer> iterator = this.candidateAnswerRepository.findAll().iterator();
+
+			while(iterator.hasNext()) {
+				
+				if(candidateAnswer.getIdCandidate()==idCandidate) {
+					log.info("LOG SERVICE CANDIDATE ANSWER: "+CandidateAnswerDTO.build(candidateAnswer).toString());
+					result.add(CandidateAnswerDTO.build(candidateAnswer));	
+					flag=true;
+				}
+				candidateAnswer = iterator.next();
+
+			}
+			
+			if(flag)
+				response.setResultTest(true);
+			
+			response.setResult(result);
+			
+
+		} catch (Exception e) {
+			response.setResultTest(false);
+			response.setError("Nessun elemento trovato.");
+
+		}
+
+		return response;
+
+	}
 
 	public Response<CandidateAnswerDTO> findCandidateAnswerById(PkCandidateAnswer id) {
 
@@ -114,7 +157,7 @@ public class CandidateAnswerService {
 
 	}
 
-	public Response<CandidateAnswerDTO> updateCandidateAnswer(PkCandidateAnswer id, boolean answer) {
+	public Response<CandidateAnswerDTO> updateCandidateAnswer(PkCandidateAnswer id, String answer) {
 
 		Response<CandidateAnswerDTO> response = new Response<CandidateAnswerDTO>();
 
@@ -122,7 +165,7 @@ public class CandidateAnswerService {
 
 			CandidateAnswer candidateAnswer = this.candidateAnswerRepository.findById(id).get();
 
-			if (answer != candidateAnswer.isAnswer())
+			if (!answer.contentEquals(candidateAnswer.getAnswer())) //non so di preciso cazzo sia però occhei
 				candidateAnswer.setAnswer(answer);
 
 			this.candidateAnswerRepository.save(candidateAnswer);

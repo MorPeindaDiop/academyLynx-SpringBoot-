@@ -30,7 +30,7 @@ public class Question {
 	private String questionText;
 
 	@Column(name = "correct_answer_boolean")
-	private boolean correctAnswerBoolean;
+	private String correctAnswerBoolean;
 
 	@Column(name = "correct_answer_text")
 	private String correctAnswerText;
@@ -43,8 +43,7 @@ public class Question {
 
 	@Column(name = "difficulty")
 	private int difficulty;
-
-	@Temporal(TemporalType.TIMESTAMP)
+	
 	@Column(name = "creation_time")
 	private String creationTime;
 	

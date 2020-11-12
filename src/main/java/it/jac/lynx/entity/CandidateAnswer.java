@@ -25,7 +25,7 @@ public class CandidateAnswer {
 	private int idQuestion;
 
 	@Column(name = "answer")
-	private boolean answer;
+	private String answer;
 	
 	@Override
 	public String toString() {

@@ -53,48 +53,7 @@ public class QuestionService {
 
 	}
 
-	public Response<QuestionDTO> checkQuestionAnswerById(int id) {
-
-		log.info("Trova question attraverso Id");
-
-		Response<QuestionDTO> response = new Response<QuestionDTO>();
-
-		Optional<Question> question = this.questionRepository.findById(id);
-
-
-		try {
-
-			if (question.isPresent()) {
-				log.info("ricevuta richiesta check domanda");
-				log.info("risposta data: "+question.get().getAnswer());
-				log.info("risposta corretta: "+question.get().getCorrectAnswerText().toLowerCase());
-				String correctAnswer=question.get().getCorrectAnswerText().toLowerCase();
-				String candidateAnswer=question.get().getAnswer().toLowerCase();
-
-				if(candidateAnswer.equals(correctAnswer)) { //controlla se nella risposta del candidato è contenuta la risposta corretta
-					response.setResult(QuestionDTO.build(question.get()));
-					response.setResultTest(true);
-					question.get().setCorrectAnswerBoolean(true);
-					
-				}else {
-					response.setError("risposta errata");
-					response.setResultTest(false);
-				}
-
-
-
-			}
-
-		} catch (Exception e) {
-
-			response.setError("Nessun elemento trovato.");
-
-		}
-
-		return response;
-
-	}
-
+	
 	public Response<QuestionDTO> findQuestionById(int id) {
 
 		log.info("Trova question attraverso Id");
@@ -229,7 +188,7 @@ public class QuestionService {
 				question.setQuestionText(questionText);
 
 			if (correctAnswerBoolean != null)
-				question.setCorrectAnswerBoolean(correctAnswerBoolean.equalsIgnoreCase("true") ? true : false);
+				question.setCorrectAnswerBoolean(correctAnswerBoolean.equalsIgnoreCase("true") ? "true" : "false");
 
 			if (correctAnswerText != null)
 				question.setCorrectAnswerText(correctAnswerText);

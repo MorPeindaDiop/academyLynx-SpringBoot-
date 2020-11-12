@@ -21,7 +21,7 @@ public class QuestionDTO {
 	
 	private String answer;
 
-	private boolean correctAnswerBoolean;
+	private String correctAnswerBoolean;
 
 	private String correctAnswerText;
 

@@ -29,7 +29,7 @@ public class CandidateAnswerRestController {
 	public Response<?> createCandidateAnswer(
 			@RequestParam int idCandidate,
 			@RequestParam int idQuestion,
-			@RequestParam boolean answer) {
+			@RequestParam String answer) {
 
 		log.info("Ricevuta richiesta di creazione nuova domanda candidato");
 
@@ -87,7 +87,7 @@ public class CandidateAnswerRestController {
 	public Response<?> updateCandidateAnswer(
 			@RequestParam int idCandidate,
 			@RequestParam int idQuestion,
-			@RequestParam (required = false) boolean answer) {
+			@RequestParam (required = false) String answer) {
 
 		PkCandidateAnswer id = new PkCandidateAnswer();
 
