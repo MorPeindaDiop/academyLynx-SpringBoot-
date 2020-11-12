@@ -1,19 +1,21 @@
 package it.jac.lynx.service;
 
-import java.util.Optional;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-import it.jac.lynx.pk.PkCandidateAnswer;
-import it.jac.lynx.dao.CandidateAnswerRepository;
-import it.jac.lynx.dao.CandidateRepository;
-import it.jac.lynx.dao.QuestionRepository;
+
+import it.jac.lynx.dto.CandidateAnswerDTO;
+import it.jac.lynx.dto.CandidateResponseDTO;
 import it.jac.lynx.dto.QuestionDTO;
 import it.jac.lynx.dto.Response;
 import it.jac.lynx.entity.CandidateAnswer;
-import it.jac.lynx.entity.Question;
+
 
 @Service
 public class ResultService {
@@ -21,58 +23,68 @@ public class ResultService {
 	private static Logger log = LoggerFactory.getLogger(ResultService.class);
 
 	@Autowired
-	private QuestionRepository questionRepository;
+	private QuestionService questionService;
 	
 	@Autowired
-	private CandidateAnswerRepository candidateAnswerRepository;
+	private CandidateAnswerService candidateAnswerService;
 	
 	@Autowired
-	private CandidateRepository candidateRepository;
+	private CandidateService candidateService;
 	
 	
 	
 	
-	public Response<QuestionDTO> checkQuestionAnswerById(int idQuestion, PkCandidateAnswer pk) {
-
-		log.info("controlla se la risposta alla question è giusta attraverso Id");
-
-		Response<QuestionDTO> response = new Response<QuestionDTO>();
-
-		Optional<Question> question = this.questionRepository.findById(idQuestion);
-		Optional<CandidateAnswer> answer = this.candidateAnswerRepository.findById(pk);
+	public Response<List<CandidateAnswerDTO>> setCandidateResponse(List<CandidateResponseDTO> lista){
 		
-
-
-		try {
-
-			if (question.isPresent()) {
-				log.info("ricevuta richiesta check domanda");
-				log.info("risposta data: "+question.get().getAnswer());
-				log.info("risposta corretta: "+question.get().getCorrectAnswerText().toLowerCase());
-				String correctAnswer=question.get().getCorrectAnswerText().toLowerCase();
-				String candidateAnswer=question.get().getAnswer().toLowerCase();
-
-				if(candidateAnswer.equals(correctAnswer)) { //controlla se nella risposta del candidato è contenuta la risposta corretta					
-					response.setResultTest(true);
-					question.get().setCorrectAnswerBoolean("true");
-					response.setResult(QuestionDTO.build(question.get()));
-				}else {
-					response.setError("risposta errata");
-					response.setResultTest(false);
-					question.get().setCorrectAnswerBoolean("false");
-					response.setResult(QuestionDTO.build(question.get()));
-				}
+		Response<List<CandidateAnswerDTO>> response = new Response <List<CandidateAnswerDTO>>();
+		
+		List<CandidateAnswerDTO> listaReturn= new ArrayList<CandidateAnswerDTO>();
+		
+		
+		for (CandidateResponseDTO candidateResponseDTO : lista) {
+			CandidateAnswer ca=new CandidateAnswer();
+			QuestionDTO qDTO=questionService.findQuestionById(candidateResponseDTO.getIdQuestion()).getResult();
+			ca.setIdCandidate(1);
+			ca.setIdQuestion(qDTO.getId());
+			
+			if(candidateResponseDTO.getCandidateResponse().equalsIgnoreCase(qDTO.getCorrectAnswerText())) {
+				qDTO.setAnswer("true");
+			}else {
+				qDTO.setAnswer("false");
 			}
-
-		} catch (Exception e) {
-
-			response.setError("Nessun elemento trovato.");
-
+			
+			candidateAnswerService.createCandidateAnswer(ca);
+			listaReturn.add(CandidateAnswerDTO.build(ca));
 		}
-
+		
+		response.setResult(listaReturn);
+		response.setResultTest(true);
+		
+		
 		return response;
-
+		
 	}
+	
+	
+	
+//	public Response<ResultDTO> findCandidateMathScore(int idCandidate){
+//		Response<ResultDTO> result=new Response<ResultDTO>();
+//		
+//		CandidateAnswer ca=new CandidateAnswer();
+//		Response<List<CandidateAnswerDTO>> resCandAnsDTO = new Response<List<CandidateAnswerDTO>>();
+//		ca.setIdCandidate(idCandidate);
+//		
+//		//serve per ciclare
+//		resCandAnsDTO=candidateAnswerService.findAllCandidateAnswersById(idCandidate);
+//		
+//		log.info("LOG RISULTATO ris: "+resCandAnsDTO.getResult().get(0).getAnswer());
+//		
+//		
+//		result.setResultTest(true);
+//		
+//		return result;
+//		
+//	}
 
 	
 	
