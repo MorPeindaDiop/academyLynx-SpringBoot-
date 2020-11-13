@@ -69,6 +69,8 @@ public class ResultService {
 	
 	
 	public Response<ResultDTO> findCandidateMathScore(int idCandidate){
+		
+		log.info("inizio metodo");
 		Response<ResultDTO> result=new Response<ResultDTO>();
 		
 		CandidateAnswer ca=new CandidateAnswer();

@@ -33,7 +33,7 @@ public class CandidateServiceTest {
 	@Test
 	public void updateCandidateTest() {
 		
-		assertEquals(true, candidateService.updateCandidate(1, "ciao", null, null, 2, 0, 0).isResultTest());
+		assertEquals(true, candidateService.updateCandidate(1, "ciao", null, null, 2, 2, 0, 0).isResultTest());
 	
 	}
 
@@ -68,7 +68,7 @@ public class CandidateServiceTest {
 	@Test
 	public void setCandidateScoreAndTimeTest() {
 		
-		assertEquals(true, candidateService.setCandidateScoreAndTime(1, 150, 20).isResultTest());
+		assertEquals(true, candidateService.setCandidateScoreAndTime(1, 150, 20, 20).isResultTest());
 	
 	}
 

@@ -30,7 +30,11 @@ public class Question {
 	private String questionText;
 
 	@Column(name = "correct_answer_boolean")
+<<<<<<< HEAD
 	private String correctAnswerBoolean;
+=======
+	private Boolean correctAnswerBoolean;
+>>>>>>> branch 'campiDinamici' of https://github.com/MorPeindaDiop/academyLynxSpringBoot
 
 	@Column(name = "correct_answer_text")
 	private String correctAnswerText;

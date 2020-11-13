@@ -21,7 +21,11 @@ public class QuestionDTO {
 	
 	private String answer;
 
+<<<<<<< HEAD
 	private String correctAnswerBoolean;
+=======
+	private Boolean correctAnswerBoolean;
+>>>>>>> branch 'campiDinamici' of https://github.com/MorPeindaDiop/academyLynxSpringBoot
 
 	private String correctAnswerText;
 

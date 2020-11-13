@@ -18,7 +18,12 @@ public class QuestionServiceTest {
 	public void createQuestionTest() {
 		
 		Question question = new Question();
+<<<<<<< HEAD
 		question.setQuestionText("ti piace la nutella?");
+=======
+		question.setQuestionText("ciao");
+		question.setCorrectAnswerText("hola");
+>>>>>>> branch 'campiDinamici' of https://github.com/MorPeindaDiop/academyLynxSpringBoot
 		question.setType("aperta");
 		question.setAnswer("si");
 		question.setCorrectAnswerText("si");

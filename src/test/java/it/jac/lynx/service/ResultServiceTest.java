@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -16,7 +18,8 @@ public class ResultServiceTest {
 	
 	@Autowired
 	private ResultService resultService;
-	
+	private static Logger log = LoggerFactory.getLogger(ResultServiceTest.class);
+
 	@Test
 	public void setCandidateResponseTest() {
 		CandidateResponseDTO candidateResponseDTO=new CandidateResponseDTO();
@@ -39,6 +42,7 @@ public class ResultServiceTest {
 	@Test
 	public void findCandidateMathScoreTest() {
 		int id=1;
+		log.info("inizio test");
 		assertEquals(true, resultService.findCandidateMathScore(id).isResultTest());
 	}
 }
