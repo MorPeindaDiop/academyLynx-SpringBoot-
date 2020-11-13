@@ -12,12 +12,10 @@ public class QuestionDTO {
 
 	private int id;
 
-	private int idSeniority;
-
 	private String type;
 	//tipo di domanda, se crocette, aperta, ecc
 
-	private String question;
+	private String questionText;
 
 	private Boolean correctAnswerBoolean;
 

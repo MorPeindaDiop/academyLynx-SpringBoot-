@@ -15,7 +15,7 @@ public class QuestionServiceTest {
 	private QuestionService questionService;
 	
 	@Test
-	public void createQuestionTest() {
+	public void createQuestionApertaTest() {
 		
 		Question question = new Question();
 		question.setQuestionText("prosciutto?");
