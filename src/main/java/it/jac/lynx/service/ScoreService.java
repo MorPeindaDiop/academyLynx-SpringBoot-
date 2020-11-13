@@ -41,14 +41,17 @@ public class ScoreService {
 				ca.setIdCandidate(idCandidate);
 				ca.setIdQuestion(qDTO.getId());
 
-				if (candidateResponseDTO.getCandidateResponse().equalsIgnoreCase(qDTO.getCorrectAnswerText())) {
-
-					ca.setAnswer(true);
-
-				} else {
-
-					ca.setAnswer(false);
-
+				switch (qDTO.getType()) {
+				case "aperta":
+					ca.setAnswer(candidateResponseDTO.getCandidateResponse().equalsIgnoreCase(qDTO.getCorrectAnswerText()) ? true : false);
+					break;
+				case "vf":
+					Boolean answer = candidateResponseDTO.getCandidateResponse().equalsIgnoreCase("true") ? true : false;
+					ca.setAnswer(answer ? true : false);
+					break;
+				case "crocette":
+					ca.setAnswer(candidateResponseDTO.getCandidateResponse().equalsIgnoreCase(qDTO.getCorrectAnswerText()) ? true : false);
+					break;
 				}
 
 				candidateAnswerService.createCandidateAnswer(ca);
@@ -72,26 +75,45 @@ public class ScoreService {
 	public Response<CandidateDTO> setScoreCandidate(int idCandidate) {
 
 		Response<CandidateDTO> response = new Response <CandidateDTO>();
-		
+
 		List<CandidateAnswerDTO> candidateTest = new ArrayList<CandidateAnswerDTO>();
-		
+
 		int nCorrectAnswer = 0;
 
+		int weightedScore = 0;
+
+		int arithmeticScore = 0;
+
+		int totalWeightedScoreTest = 0;
+
 		try {
-			
+
 			CandidateDTO candidate = candidateService.findCandidateById(idCandidate).getResult();
-			
+
 			candidateTest = candidateAnswerService.findCandidateAnswerByIdCandidate(idCandidate).getResult();
-			
+
 			for (CandidateAnswerDTO answer: candidateTest) {
-				
-				if (answer.isAnswer())
+
+				QuestionDTO question = questionService.findQuestionById(answer.getIdQuestion()).getResult();
+
+				totalWeightedScoreTest += question.getDifficulty();
+
+				if (answer.isAnswer()) {
+
 					nCorrectAnswer += 1;
-				
+
+					weightedScore += question.getDifficulty();
+
+				}
+
 			}
-			
-			candidateService.setCandidateScoreAndTime(candidate.getId(), nCorrectAnswer, 20, 50);
-			
+
+			arithmeticScore = ( nCorrectAnswer / candidateTest.size() ) * 100;
+
+			weightedScore = ( weightedScore / totalWeightedScoreTest ) * 100;
+
+			candidateService.setCandidateScoreAndTime(candidate.getId(), nCorrectAnswer, (int) weightedScore, (int) arithmeticScore, 50);
+
 			response.setResult(candidate);
 			response.setResultTest(true);
 

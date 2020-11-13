@@ -42,6 +42,9 @@ public class Candidate {
 	
 	@Column(name = "weightedScore")
 	private int weightedScore;
+	
+	@Column(name = "arithmeticScore")
+	private int arithmeticScore;
 
 	@Column(name = "time")
 	private int time;

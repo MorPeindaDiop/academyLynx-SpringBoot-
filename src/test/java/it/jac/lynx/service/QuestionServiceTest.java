@@ -15,12 +15,40 @@ public class QuestionServiceTest {
 	private QuestionService questionService;
 	
 	@Test
-	public void createQuestionTest() {
+	public void createQuestionApertaTest() {
 		
 		Question question = new Question();
+		question.setType("aperta");
 		question.setQuestionText("ciao");
 		question.setCorrectAnswerText("hola");
-		question.setType("aperta");
+		question.setDifficulty(5);
+		
+		assertEquals(true, questionService.createQuestion(question).getResult());
+	
+	}
+	
+	@Test
+	public void createQuestionVFTest() {
+		
+		Question question = new Question();
+		question.setType("vf");
+		question.setQuestionText("ciao1");
+		question.setCorrectAnswerBoolean(true);
+		question.setDifficulty(3);
+		
+		assertEquals(true, questionService.createQuestion(question).getResult());
+	
+	}
+	
+	@Test
+	public void createQuestionCrocetteTest() {
+		
+		Question question = new Question();
+		question.setType("crocette");
+		question.setQuestionText("ciao2");
+		question.setDifficulty(9);
+		question.setCorrectAnswerText("hola2");
+		question.setWrongAnswers("hola3;hola4;hola5");
 		
 		assertEquals(true, questionService.createQuestion(question).getResult());
 	

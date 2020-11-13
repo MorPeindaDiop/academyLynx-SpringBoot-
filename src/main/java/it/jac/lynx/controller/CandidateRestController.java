@@ -90,9 +90,10 @@ public class CandidateRestController {
 			@RequestParam int idSeniority,
 			@RequestParam (required = false) int nCorrectAnswer,
 			@RequestParam (required = false) int weightedScore,
+			@RequestParam (required = false) int arithmeticScore,
 			@RequestParam (required = false) int time) {
 
-		return candidateService.updateCandidate(id, name, surname, dataTest, idSeniority, nCorrectAnswer, weightedScore, time);
+		return candidateService.updateCandidate(id, name, surname, dataTest, idSeniority, nCorrectAnswer, weightedScore, arithmeticScore, time);
 	
 	}
 	
@@ -110,9 +111,10 @@ public class CandidateRestController {
 			@PathVariable(name = "id") int id,
 			@RequestParam int nCorrectAnswer,
 			@RequestParam int weightedScore,
+			@RequestParam int arithmeticScore,
 			@RequestParam int time) {
 
-		return candidateService.setCandidateScoreAndTime(id, nCorrectAnswer, weightedScore, time);
+		return candidateService.setCandidateScoreAndTime(id, nCorrectAnswer, weightedScore, arithmeticScore, time);
 	
 	}
 	

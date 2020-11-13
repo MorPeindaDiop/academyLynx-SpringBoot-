@@ -26,20 +26,25 @@ public class ScoreServiceTest {
 		
 		CandidateResponseDTO candidateResponse2 = new CandidateResponseDTO();
 		candidateResponse2.setIdQuestion(2);
-		candidateResponse2.setCandidateResponse("hola");
+		candidateResponse2.setCandidateResponse("false");
+		
+		CandidateResponseDTO candidateResponse3 = new CandidateResponseDTO();
+		candidateResponse3.setIdQuestion(3);
+		candidateResponse3.setCandidateResponse("hola2");
 		
 		List<CandidateResponseDTO> lista = new ArrayList<CandidateResponseDTO>();
 		lista.add(candidateResponse);
 		lista.add(candidateResponse2);
+		lista.add(candidateResponse3);
 		
-		assertEquals(true, scoreService.setCandidateResponse(lista, 1).isResultTest());
+		assertEquals(true, scoreService.setCandidateResponse(lista, 2).isResultTest());
 	
 	}
 	
 	@Test
 	public void setScoreCandidateTest() {
 		
-		assertEquals(true, scoreService.setScoreCandidate(1).isResultTest());
+		assertEquals(true, scoreService.setScoreCandidate(2).isResultTest());
 	
 	}
 	

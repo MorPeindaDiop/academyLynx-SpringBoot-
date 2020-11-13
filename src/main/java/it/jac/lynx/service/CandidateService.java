@@ -125,6 +125,7 @@ public class CandidateService {
 			int idSeniority,
 			int nCorrectAnswer,
 			int weightedScore,
+			int arithmeticScore,
 			int time) {
 
 		Response<CandidateDTO> response = new Response<CandidateDTO>();
@@ -149,6 +150,9 @@ public class CandidateService {
 			
 			if (weightedScore > 0)
 				candidate.setWeightedScore(weightedScore);
+			
+			if (arithmeticScore > 0)
+				candidate.setArithmeticScore(arithmeticScore);
 			
 			if (time > 0)
 				candidate.setTime(time);
@@ -203,6 +207,7 @@ public class CandidateService {
 			int id,
 			int nCorrectAnswer,
 			int weightedScore,
+			int arithmeticScore,
 			int time) {
 
 		Response<CandidateDTO> response = new Response<CandidateDTO>();
@@ -215,6 +220,9 @@ public class CandidateService {
 			
 			if (weightedScore > 0)
 				candidate.setWeightedScore(weightedScore);
+			
+			if (arithmeticScore > 0)
+				candidate.setArithmeticScore(arithmeticScore);
 			
 			if (time > 0)
 				candidate.setTime(time);
