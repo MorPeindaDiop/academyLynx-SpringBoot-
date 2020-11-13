@@ -18,7 +18,7 @@ public class ResultServiceTest {
 	private ResultService resultService;
 	
 	@Test
-	public void findCandidateMathScoreTest() {
+	public void setCandidateResponseTest() {
 		CandidateResponseDTO candidateResponseDTO=new CandidateResponseDTO();
 		CandidateResponseDTO candidateResponseDTO2=new CandidateResponseDTO();
 		
@@ -35,10 +35,10 @@ public class ResultServiceTest {
 	
 	}
 	
-//	
-//	@Test
-//	public void findAllCandidateAnswersById() {
-//		int id=1;
-//		assertEquals(true, resultService.findAllCandidateAnswersById(id).isResultTest());
-//	}
+	
+	@Test
+	public void findCandidateMathScoreTest() {
+		int id=1;
+		assertEquals(true, resultService.findCandidateMathScore(id).isResultTest());
+	}
 }

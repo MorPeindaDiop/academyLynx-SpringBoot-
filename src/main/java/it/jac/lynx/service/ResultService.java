@@ -14,6 +14,7 @@ import it.jac.lynx.dto.CandidateAnswerDTO;
 import it.jac.lynx.dto.CandidateResponseDTO;
 import it.jac.lynx.dto.QuestionDTO;
 import it.jac.lynx.dto.Response;
+import it.jac.lynx.dto.ResultDTO;
 import it.jac.lynx.entity.CandidateAnswer;
 
 
@@ -67,24 +68,24 @@ public class ResultService {
 	
 	
 	
-//	public Response<ResultDTO> findCandidateMathScore(int idCandidate){
-//		Response<ResultDTO> result=new Response<ResultDTO>();
-//		
-//		CandidateAnswer ca=new CandidateAnswer();
-//		Response<List<CandidateAnswerDTO>> resCandAnsDTO = new Response<List<CandidateAnswerDTO>>();
-//		ca.setIdCandidate(idCandidate);
-//		
-//		//serve per ciclare
-//		resCandAnsDTO=candidateAnswerService.findAllCandidateAnswersById(idCandidate);
-//		
-//		log.info("LOG RISULTATO ris: "+resCandAnsDTO.getResult().get(0).getAnswer());
-//		
-//		
-//		result.setResultTest(true);
-//		
-//		return result;
-//		
-//	}
+	public Response<ResultDTO> findCandidateMathScore(int idCandidate){
+		Response<ResultDTO> result=new Response<ResultDTO>();
+		
+		CandidateAnswer ca=new CandidateAnswer();
+		Response<List<CandidateAnswerDTO>> resCandAnsDTO = new Response<List<CandidateAnswerDTO>>();
+		ca.setIdCandidate(idCandidate);
+		
+		//serve per ciclare
+		resCandAnsDTO=candidateAnswerService.findAllCandidateAnswersById(idCandidate);
+		
+		log.info("LOG RISULTATO ris: "+resCandAnsDTO.getResult().get(0).getAnswer());
+		
+		
+		result.setResultTest(true);
+		
+		return result;
+		
+	}
 
 	
 	
