@@ -16,10 +16,10 @@ public class UserDTO {
 
 	private String roles;
 	
-	public static UserDTO build(User admin) {
+	public static UserDTO build(User user) {
 
 		UserDTO result = new UserDTO();
-		BeanUtils.copyProperties(admin, result);
+		BeanUtils.copyProperties(user, result);
 
 		return result;
 	}

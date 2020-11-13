@@ -7,4 +7,6 @@ import it.jac.lynx.entity.UserActivity;
 //Repository per salvare le informazioni dell'attività utente
 
 @Repository
-public interface UserActivityRepository extends CrudRepository<UserActivity, Integer> {}
+public interface UserActivityRepository extends CrudRepository<UserActivity, Integer> {
+	
+}

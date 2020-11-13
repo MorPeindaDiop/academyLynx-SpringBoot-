@@ -45,4 +45,6 @@ public class Skill {
 		return "Skill [id=" + id + ", description=" + description + "]";
 	}
 
+	
+
 }

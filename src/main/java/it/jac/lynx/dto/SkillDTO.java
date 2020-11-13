@@ -20,10 +20,10 @@ public @Data class SkillDTO {
 
 	private String updateUser;
 
-	public static SkillDTO build(Skill skills) {
+	public static SkillDTO build(Skill skill) {
 
 		SkillDTO result = new SkillDTO();
-		BeanUtils.copyProperties(skills, result);
+		BeanUtils.copyProperties(skill, result);
 
 		return result;
 	}

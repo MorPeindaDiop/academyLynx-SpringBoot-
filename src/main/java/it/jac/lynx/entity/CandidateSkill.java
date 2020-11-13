@@ -6,27 +6,26 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.Table;
 
+import it.jac.lynx.pk.PkCandidateSkill;
 import lombok.Data;
 
 @Entity
-@Table(name = "candidateSkill")
-@IdClass(PkUserSkill.class)
+@Table(name = "candidate_skill")
+@IdClass(PkCandidateSkill.class)
 @Data
 public  class CandidateSkill {
 
 	@Id
-	@Column(name = "idUser")
-	private int idUser;
-	//private User idUser;
+	@Column(name = "id_candidate")
+	private int idCandidate;
 
 	@Id
-	@Column(name = "idSkill")
+	@Column(name = "id_skill")
 	private int idSkill;
-	//private Skill idSkill;
 
 	@Override
 	public String toString() {
-		return "User Skill [id utente=" + idUser + ", id skill=" + idSkill + "]";
+		return "Candidate Skill [id candidate=" + idCandidate + ", id skill=" + idSkill + "]";
 	}
 	
 }

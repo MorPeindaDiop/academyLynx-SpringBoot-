@@ -2,25 +2,22 @@ package it.jac.lynx.dto;
 
 import org.springframework.beans.BeanUtils;
 
-import it.jac.lynx.entity.Question;
-import it.jac.lynx.entity.Candidate;
 import it.jac.lynx.entity.CandidateAnswer;
 import lombok.Data;
 
-public @Data class CandidateAnswerDTO {
+@Data
+public class CandidateAnswerDTO {
 
-	private Candidate idUser;
+	private int idCandidate;
 
-	private Question idQuestion;
+	private int idQuestion;
 
-	private boolean answerBoolean;
+	private boolean answer;
 
-	private String answerText;
-
-	public static CandidateAnswerDTO build(CandidateAnswer userAnswer) {
+	public static CandidateAnswerDTO build(CandidateAnswer candidateAnswer) {
 
 		CandidateAnswerDTO result = new CandidateAnswerDTO();
-		BeanUtils.copyProperties(userAnswer, result);
+		BeanUtils.copyProperties(candidateAnswer, result);
 
 		return result;
 	}
