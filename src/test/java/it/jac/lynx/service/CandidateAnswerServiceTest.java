@@ -20,8 +20,8 @@ public class CandidateAnswerServiceTest {
 	public void createCandidateTest() {
 
 		CandidateAnswer candidateAnswer = new CandidateAnswer();
-		candidateAnswer.setIdCandidate(3);
-		candidateAnswer.setIdQuestion(8);
+		candidateAnswer.setIdCandidate(1);
+		candidateAnswer.setIdQuestion(1);
 		candidateAnswer.setAnswer(true);
 
 		assertEquals(true, candidateAnswerService.createCandidateAnswer(candidateAnswer).isResultTest());

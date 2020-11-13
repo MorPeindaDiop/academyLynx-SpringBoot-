@@ -18,8 +18,8 @@ public class QuestionServiceTest {
 	public void createQuestionTest() {
 		
 		Question question = new Question();
-		question.setQuestionText("ciao");
-		question.setCorrectAnswerText("hola");
+		question.setQuestionText("prosciutto?");
+		question.setCorrectAnswerText("formaggio!");
 		question.setType("aperta");
 		
 		assertEquals(true, questionService.createQuestion(question).getResult());
