@@ -139,4 +139,33 @@ public class CandidateAnswerService {
 		return response;
 
 	}
+	
+	public Response<List<CandidateAnswerDTO>> findCandidateAnswerByIdCandidate(int idCandidate) {
+
+		Response<List<CandidateAnswerDTO>> response = new Response<List<CandidateAnswerDTO>>();
+		
+		List<CandidateAnswerDTO> result = new ArrayList<CandidateAnswerDTO>();
+
+		try {
+
+			List<CandidateAnswer> candidateAnswerList = this.candidateAnswerRepository.findByIdCandidate(idCandidate);
+
+			for (CandidateAnswer candidateAnswer: candidateAnswerList) {
+				
+				result.add(CandidateAnswerDTO.build(candidateAnswer));
+				
+			}
+			
+			response.setResult(result);
+			response.setResultTest(true);
+
+		} catch (Exception e) {
+
+			response.setError("Nessun elemento trovato.");
+
+		}
+
+		return response;
+
+	}
 }
