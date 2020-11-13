@@ -22,11 +22,11 @@ public class ScoreServiceTest {
 		
 		CandidateResponseDTO candidateResponse = new CandidateResponseDTO();
 		candidateResponse.setIdQuestion(1);
-		candidateResponse.setCandidateResponse("ciao");
+		candidateResponse.setCandidateResponse("hola");
 		
 		CandidateResponseDTO candidateResponse2 = new CandidateResponseDTO();
 		candidateResponse2.setIdQuestion(2);
-		candidateResponse2.setCandidateResponse("ciao2");
+		candidateResponse2.setCandidateResponse("hola2");
 		
 		List<CandidateResponseDTO> lista = new ArrayList<CandidateResponseDTO>();
 		lista.add(candidateResponse);

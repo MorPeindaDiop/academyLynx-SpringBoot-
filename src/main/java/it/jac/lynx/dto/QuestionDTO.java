@@ -19,7 +19,7 @@ public class QuestionDTO {
 
 	private String question;
 
-	private boolean correctAnswerBoolean;
+	private Boolean correctAnswerBoolean;
 
 	private String correctAnswerText;
 

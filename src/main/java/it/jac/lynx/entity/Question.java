@@ -30,7 +30,7 @@ public class Question {
 	private String questionText;
 
 	@Column(name = "correct_answer_boolean")
-	private boolean correctAnswerBoolean;
+	private Boolean correctAnswerBoolean;
 
 	@Column(name = "correct_answer_text")
 	private String correctAnswerText;
