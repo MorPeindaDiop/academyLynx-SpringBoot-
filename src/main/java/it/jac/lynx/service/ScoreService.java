@@ -1,5 +1,8 @@
 package it.jac.lynx.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +18,7 @@ import it.jac.lynx.entity.CandidateAnswer;
 
 @Service
 public class ScoreService {
-	//private static Logger log = LoggerFactory.getLogger(ResultService.class);
+	private static Logger log = LoggerFactory.getLogger(ScoreService.class);
 
 	@Autowired
 	private QuestionService questionService;
@@ -78,13 +81,13 @@ public class ScoreService {
 
 		List<CandidateAnswerDTO> candidateTest = new ArrayList<CandidateAnswerDTO>();
 
-		int nCorrectAnswer = 0;
+		double nCorrectAnswer = 0;
 
-		int weightedScore = 0;
+		double weightedScore = 0;
 
-		int arithmeticScore = 0;
+		double arithmeticScore = 0;
 
-		int totalWeightedScoreTest = 0;
+		double totalWeightedScoreTest = 0;
 
 		try {
 
@@ -97,22 +100,29 @@ public class ScoreService {
 				QuestionDTO question = questionService.findQuestionById(answer.getIdQuestion()).getResult();
 
 				totalWeightedScoreTest += question.getDifficulty();
+				log.info(totalWeightedScoreTest + " totalWeightedScoreTes nel for");
 
 				if (answer.isAnswer()) {
 
 					nCorrectAnswer += 1;
 
 					weightedScore += question.getDifficulty();
+					log.info(weightedScore + " weightedScore nel for");
 
 				}
 
 			}
 
-			arithmeticScore = ( nCorrectAnswer / candidateTest.size() ) * 100;
+			log.info(candidateTest.size() + " candidateTest.size()");
+			log.info(arithmeticScore + " arithmeticScore");
+			log.info(nCorrectAnswer + " nCorrectAnswer");
+			arithmeticScore =  (( nCorrectAnswer / (double) candidateTest.size() ) * 100);
+			log.info(arithmeticScore + " arithmeticScore ricalcolato");
+			weightedScore =  (( weightedScore / totalWeightedScoreTest ) * 100);
+			log.info(totalWeightedScoreTest + " totalWeightedScoreTest");
+			log.info(weightedScore + " weightedScore ricalcolato");
 
-			weightedScore = ( weightedScore / totalWeightedScoreTest ) * 100;
-
-			candidateService.setCandidateScoreAndTime(candidate.getId(), nCorrectAnswer, (int) weightedScore, (int) arithmeticScore, 50);
+			candidateService.setCandidateScoreAndTime(candidate.getId(), (int) nCorrectAnswer, (int) weightedScore, (int) arithmeticScore, 50);
 
 			response.setResult(candidate);
 			response.setResultTest(true);

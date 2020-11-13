@@ -37,14 +37,14 @@ public class ScoreServiceTest {
 		lista.add(candidateResponse2);
 		lista.add(candidateResponse3);
 		
-		assertEquals(true, scoreService.setCandidateResponse(lista, 2).isResultTest());
+		assertEquals(true, scoreService.setCandidateResponse(lista, 1).isResultTest());
 	
 	}
 	
 	@Test
 	public void setScoreCandidateTest() {
 		
-		assertEquals(true, scoreService.setScoreCandidate(2).isResultTest());
+		assertEquals(true, scoreService.setScoreCandidate(1).isResultTest());
 	
 	}
 	
