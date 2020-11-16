@@ -1,12 +1,16 @@
 package it.jac.lynx.service;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 import it.jac.lynx.dao.CandidateRepository;
 import it.jac.lynx.dto.CandidateDTO;
@@ -17,7 +21,9 @@ import it.jac.lynx.entity.Candidate;
 
 @Service
 public class CandidateService {
-
+	
+	private static Logger log = LoggerFactory.getLogger(CandidateService.class);
+	
 	@Autowired
 	private CandidateRepository candidateRepository;
 
@@ -209,12 +215,21 @@ public class CandidateService {
 			int weightedScore,
 			int arithmeticScore,
 			int time) {
-
+		
+		log.info("PRIMO STEP DEL METODO");
 		Response<CandidateDTO> response = new Response<CandidateDTO>();
 
 		try {
+			
+			log.info("ENTRA NEL TRY");
+			log.info("id "+id);
+			log.info("n correct answer "+nCorrectAnswer);
+			log.info("weightedScore "+weightedScore);
+			log.info("arithmeticScore "+arithmeticScore);
+			log.info("time "+time);
+			
 			Candidate candidate = this.candidateRepository.findById(id).get();
-
+			log.info("TROVA CANDIDATO DA CANDIDATE REPOSITORY");
 			if (nCorrectAnswer > 0)
 				candidate.setNCorrectAnswer(nCorrectAnswer);
 			
@@ -224,14 +239,25 @@ public class CandidateService {
 			if (arithmeticScore > 0)
 				candidate.setArithmeticScore(arithmeticScore);
 			
-			if (time > 0)
-				candidate.setTime(time);
-
-			this.candidateRepository.save(candidate);
+			if (time > 0) {	
+				log.info("ENTRA IN TIME");
+				Calendar c = Calendar.getInstance();
+				double millsTime=c.getTime().getMinutes();
+				log.info("MILLIS: "+millsTime);
+				long testStart=candidate.getDataTest().getMinutes();
+				log.info("TEST START: "+testStart);
+				int effecctiveTime=(int)(testStart-millsTime);
+				log.info("EFFECTIVE TIME: "+effecctiveTime);
+				candidate.setTime(effecctiveTime);
+			}
+				
 			
+			this.candidateRepository.save(candidate);
+			log.info("CANDIDATE SALVATO NELLA REPOSITORY");
 			response.setResult(CandidateDTO.build(candidate));
+			log.info("CANDIDATO SALVATO IN DTO");
 			response.setResultTest(true);
-
+			log.info("RISULTATO SETTATO A TRUE");
 		} catch (Exception e) {
 			
 			response.setError("Nessun elemento trovato.");
