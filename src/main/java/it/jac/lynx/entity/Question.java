@@ -26,11 +26,11 @@ public class Question {
 	@Column(name = "type")
 	private String type;
 
-	@Column(name = "question")
+	@Column(name = "questionText")
 	private String questionText;
 
 	@Column(name = "correct_answer_boolean")
-	private boolean correctAnswerBoolean;
+	private Boolean correctAnswerBoolean;
 
 	@Column(name = "correct_answer_text")
 	private String correctAnswerText;

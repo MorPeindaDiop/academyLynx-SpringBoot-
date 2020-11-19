@@ -35,7 +35,8 @@ public class CandidateRestController {
 			@RequestParam String surname,
 			@RequestParam Date dataTest,
 			@RequestParam int idSeniority,
-			@RequestParam (required = false) int score,
+			@RequestParam (required = false) int nCorrectAnswer,
+			@RequestParam (required = false) int weightedScore,
 			@RequestParam (required = false) int time) {
 
 		log.info("Ricevuta richiesta di creazione nuovo candidato");
@@ -45,7 +46,8 @@ public class CandidateRestController {
 		candidate.setSurname(surname);
 		candidate.setDataTest(dataTest);
 		candidate.setIdSeniority(idSeniority);
-		candidate.setScore(score);
+		candidate.setNCorrectAnswer(nCorrectAnswer);
+		candidate.setWeightedScore(weightedScore);
 		candidate.setTime(time);
 
 		return candidateService.createCandidate(candidate);
@@ -86,10 +88,12 @@ public class CandidateRestController {
 			@RequestParam String surname,
 			@RequestParam Date dataTest,
 			@RequestParam int idSeniority,
-			@RequestParam (required = false) int score,
+			@RequestParam (required = false) int nCorrectAnswer,
+			@RequestParam (required = false) int weightedScore,
+			@RequestParam (required = false) int arithmeticScore,
 			@RequestParam (required = false) int time) {
 
-		return candidateService.updateCandidate(id, name, surname, dataTest, idSeniority, score, time);
+		return candidateService.updateCandidate(id, name, surname, dataTest, idSeniority, nCorrectAnswer, weightedScore, arithmeticScore, time);
 	
 	}
 	
@@ -105,10 +109,12 @@ public class CandidateRestController {
 	@PutMapping(path = "/updateDataTest/{id}")
 	public Response<?> setCandidateScoreAndTime(
 			@PathVariable(name = "id") int id,
-			@RequestParam int score,
+			@RequestParam int nCorrectAnswer,
+			@RequestParam int weightedScore,
+			@RequestParam int arithmeticScore,
 			@RequestParam int time) {
 
-		return candidateService.setCandidateScoreAndTime(id, score, time);
+		return candidateService.setCandidateScoreAndTime(id, nCorrectAnswer, weightedScore, arithmeticScore, time);
 	
 	}
 	

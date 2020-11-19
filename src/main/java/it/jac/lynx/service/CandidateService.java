@@ -123,7 +123,9 @@ public class CandidateService {
 			String surname,
 			Date dataTest,
 			int idSeniority,
-			int score,
+			int nCorrectAnswer,
+			int weightedScore,
+			int arithmeticScore,
 			int time) {
 
 		Response<CandidateDTO> response = new Response<CandidateDTO>();
@@ -143,8 +145,14 @@ public class CandidateService {
 			if (idSeniority > 0)
 				candidate.setIdSeniority(idSeniority);
 			
-			if (score > 0)
-				candidate.setScore(score);
+			if (nCorrectAnswer > 0)
+				candidate.setNCorrectAnswer(nCorrectAnswer);
+			
+			if (weightedScore > 0)
+				candidate.setWeightedScore(weightedScore);
+			
+			if (arithmeticScore > 0)
+				candidate.setArithmeticScore(arithmeticScore);
 			
 			if (time > 0)
 				candidate.setTime(time);
@@ -197,7 +205,9 @@ public class CandidateService {
 	
 	public Response<CandidateDTO> setCandidateScoreAndTime(
 			int id,
-			int score,
+			int nCorrectAnswer,
+			int weightedScore,
+			int arithmeticScore,
 			int time) {
 
 		Response<CandidateDTO> response = new Response<CandidateDTO>();
@@ -205,8 +215,14 @@ public class CandidateService {
 		try {
 			Candidate candidate = this.candidateRepository.findById(id).get();
 
-			if (score > 0)
-				candidate.setScore(score);
+			if (nCorrectAnswer > 0)
+				candidate.setNCorrectAnswer(nCorrectAnswer);
+			
+			if (weightedScore > 0)
+				candidate.setWeightedScore(weightedScore);
+			
+			if (arithmeticScore > 0)
+				candidate.setArithmeticScore(arithmeticScore);
 			
 			if (time > 0)
 				candidate.setTime(time);

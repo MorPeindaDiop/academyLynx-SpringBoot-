@@ -37,8 +37,14 @@ public class Candidate {
 	@Column(name = "dataTest")
 	private Date dataTest;
 	
-	@Column(name = "score")
-	private int score;
+	@Column(name = "nCorrectAnswer")
+	private int nCorrectAnswer;
+	
+	@Column(name = "weightedScore")
+	private int weightedScore;
+	
+	@Column(name = "arithmeticScore")
+	private int arithmeticScore;
 
 	@Column(name = "time")
 	private int time;
