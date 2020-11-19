@@ -6,6 +6,8 @@ import org.slf4j.LoggerFactory;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -76,7 +78,7 @@ public class ScoreService {
 	}
 
 	public Response<CandidateDTO> setScoreCandidate(int idCandidate) {
-
+		
 		Response<CandidateDTO> response = new Response <CandidateDTO>();
 
 		List<CandidateAnswerDTO> candidateTest = new ArrayList<CandidateAnswerDTO>();
@@ -100,27 +102,20 @@ public class ScoreService {
 				QuestionDTO question = questionService.findQuestionById(answer.getIdQuestion()).getResult();
 
 				totalWeightedScoreTest += question.getDifficulty();
-				log.info(totalWeightedScoreTest + " totalWeightedScoreTes nel for");
-
+				
 				if (answer.isAnswer()) {
 
 					nCorrectAnswer += 1;
 
 					weightedScore += question.getDifficulty();
-					log.info(weightedScore + " weightedScore nel for");
 
 				}
 
 			}
 
-			log.info(candidateTest.size() + " candidateTest.size()");
-			log.info(arithmeticScore + " arithmeticScore");
-			log.info(nCorrectAnswer + " nCorrectAnswer");
 			arithmeticScore =  (( nCorrectAnswer / (double) candidateTest.size() ) * 100);
-			log.info(arithmeticScore + " arithmeticScore ricalcolato");
+			
 			weightedScore =  (( weightedScore / totalWeightedScoreTest ) * 100);
-			log.info(totalWeightedScoreTest + " totalWeightedScoreTest");
-			log.info(weightedScore + " weightedScore ricalcolato");
 
 			candidateService.setCandidateScoreAndTime(candidate.getId(), (int) nCorrectAnswer, (int) weightedScore, (int) arithmeticScore, 50);
 

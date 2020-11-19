@@ -22,10 +22,14 @@ public class CandidateServiceTest {
 	public void createCandidateTest() {
 		
 		Candidate candidate = new Candidate();
-		candidate.setName("pippo");
-		candidate.setSurname("pluto");
+		candidate.setName("marco");
+		candidate.setSurname("rossi");
 		candidate.setDataTest(new Date());
 		candidate.setIdSeniority(3);
+		candidate.setArithmeticScore(60);
+		candidate.setWeightedScore(70);
+		candidate.setNCorrectAnswer(6);
+		
 		
 		assertEquals(true, candidateService.createCandidate(candidate).isResultTest());
 	
@@ -69,7 +73,7 @@ public class CandidateServiceTest {
 	@Test
 	public void setCandidateScoreAndTimeTest() {
 		
-		assertEquals(true, candidateService.setCandidateScoreAndTime(1, 150, 20, 5, 20).isResultTest());
+		assertEquals(true, candidateService.setCandidateScoreAndTime(2, 0, 0, 0, 1).isResultTest());
 	
 	}
 

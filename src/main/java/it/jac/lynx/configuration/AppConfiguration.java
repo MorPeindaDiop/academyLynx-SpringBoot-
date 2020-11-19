@@ -20,11 +20,9 @@ public class AppConfiguration extends WebSecurityConfigurerAdapter implements We
 	 public void addCorsMappings(CorsRegistry registry) {
 	  registry.addMapping("/rest/candidateAnswer/**").allowedMethods("GET", "POST");
 	  registry.addMapping("/rest/skill/**").allowedMethods("GET", "POST");
-//	  registry.addMapping("/utente/**").allowedMethods("GET", "POST");
-//	  registry.addMapping("/esercizio/**").allowedMethods("GET", "POST");
-//	  registry.addMapping("/esercizipercorso/**").allowedMethods("GET", "POST");
-//	  registry.addMapping("/partecipazionecorso/**").allowedMethods("GET", "POST");
-	 }
+//	  registry.addMapping("/rest/candidateAnswer/**").allowedMethods("GET", "POST").allowedOrigins("localhost:4200/**");
+//	  registry.addMapping("/rest/skill/**").allowedMethods("GET", "POST").allowedOrigins("localhost:4200/**");
+}
 
 	@Override
     protected void configure(HttpSecurity http) throws Exception {
