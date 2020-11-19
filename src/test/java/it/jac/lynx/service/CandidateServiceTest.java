@@ -22,8 +22,8 @@ public class CandidateServiceTest {
 	public void createCandidateTest() {
 		
 		Candidate candidate = new Candidate();
-		candidate.setName("topolino");
-		candidate.setSurname("disney");
+		candidate.setName("marco");
+		candidate.setSurname("rossi");
 		candidate.setDataTest(new Date());
 		candidate.setIdSeniority(3);
 		candidate.setArithmeticScore(60);
