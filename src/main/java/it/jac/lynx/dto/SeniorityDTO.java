@@ -10,6 +10,8 @@ public @Data class SeniorityDTO {
 
 	private int id;
 
+	private String level;
+	
 	private String description;
 	
 	private int minDifficulty;

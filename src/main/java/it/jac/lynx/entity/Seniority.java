@@ -23,6 +23,9 @@ public class Seniority {
 	@Column(name = "id")
 	private int id;
 
+	@Column(name = "level")
+	private String level;
+	
 	@Column(name = "description")
 	private String description;
 	
