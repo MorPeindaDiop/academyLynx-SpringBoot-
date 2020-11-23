@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import it.jac.lynx.dto.CandidateDTO;
 import it.jac.lynx.dto.Response;
 import it.jac.lynx.entity.Candidate;
 
@@ -29,26 +31,60 @@ public class CandidateRestController {
 	@Autowired
 	private CandidateService candidateService;
 	
-	@PostMapping("/create")
+	/*@PostMapping("/create")
 	public Response<?> createCandidate(
 			@RequestParam String name,
 			@RequestParam String surname,
-			@RequestParam Date dataTest,
 			@RequestParam int idSeniority,
 			@RequestParam (required = false) int nCorrectAnswer,
 			@RequestParam (required = false) int weightedScore,
-			@RequestParam (required = false) int time) {
+			@RequestParam (required = false) int time*) {
 
 		log.info("Ricevuta richiesta di creazione nuovo candidato");
 
 		Candidate candidate= new Candidate();
 		candidate.setName(surname);
 		candidate.setSurname(surname);
-		candidate.setDataTest(dataTest);
+		candidate.setDataTest(new Date());
 		candidate.setIdSeniority(idSeniority);
 		candidate.setNCorrectAnswer(nCorrectAnswer);
 		candidate.setWeightedScore(weightedScore);
 		candidate.setTime(time);
+
+		return candidateService.createCandidate(candidate);
+
+	}
+	
+	@PostMapping("/create")
+	public Response<?> createCandidate(
+			@RequestBody Candidate cand
+			) {
+
+		log.info("Ricevuta richiesta di creazione nuovo candidato");
+		log.info("cand");
+		log.info(cand.toString());
+
+		Candidate candidate= new Candidate();
+		candidate.setName(cand.getName());
+		log.info("nome");
+		log.info(cand.getName());
+		candidate.setSurname(cand.getSurname());
+		log.info("cognome");
+		log.info(cand.getSurname());
+		candidate.setDataTest(new Date());
+		candidate.setIdSeniority(cand.getIdSeniority());
+		candidate.setNCorrectAnswer(cand.getNCorrectAnswer());
+		candidate.setWeightedScore(cand.getWeightedScore());
+		candidate.setTime(cand.getTime());
+
+		return candidateService.createCandidate(cand);
+
+	}*/
+	
+	@PostMapping("/create")
+	public Response<?> createCandidate(
+			@RequestBody Candidate candidate
+			) {
 
 		return candidateService.createCandidate(candidate);
 
