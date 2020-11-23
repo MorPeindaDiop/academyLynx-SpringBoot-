@@ -85,6 +85,8 @@ public class CandidateRestController {
 	public Response<?> createCandidate(
 			@RequestBody Candidate candidate
 			) {
+		
+		candidate.setDataTest(new Date());
 
 		return candidateService.createCandidate(candidate);
 

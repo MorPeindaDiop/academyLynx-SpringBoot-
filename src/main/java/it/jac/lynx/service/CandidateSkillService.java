@@ -19,15 +19,15 @@ public class CandidateSkillService {
 	@Autowired
 	private CandidateSkillRepository candidateSkillRepository;
 
-	public Response<Boolean> createCandidateSkill(CandidateSkill candidateSkill) {
+	public Response<CandidateSkill> createCandidateSkill(CandidateSkill candidateSkill) {
 
-		Response<Boolean> response = new Response<Boolean>();
+		Response<CandidateSkill> response = new Response<CandidateSkill>();
 
 		try {
 
 			this.candidateSkillRepository.save(candidateSkill);
 
-			response.setResult(true);
+			response.setResult(candidateSkill);
 			response.setResultTest(true);
 
 		} catch (Exception e) {

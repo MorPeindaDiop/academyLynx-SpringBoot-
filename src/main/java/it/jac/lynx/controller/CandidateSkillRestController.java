@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,16 +26,26 @@ public class CandidateSkillRestController {
 	@Autowired
 	private CandidateSkillService candidateSkillService;
 
+//	@PostMapping("/create")
+//	public Response<?> createCandidateSkill(
+//			@RequestParam int idCandidate,
+//			@RequestParam int idSkill) {
+//
+//		log.info("Ricevuta richiesta di creazione nuova domanda candidato");
+//
+//		CandidateSkill candidateSkill= new CandidateSkill();
+//		candidateSkill.setIdCandidate(idCandidate);
+//		candidateSkill.setIdSkill(idSkill);
+//
+//		return candidateSkillService.createCandidateSkill(candidateSkill);
+//
+//	}
+	
 	@PostMapping("/create")
 	public Response<?> createCandidateSkill(
-			@RequestParam int idCandidate,
-			@RequestParam int idSkill) {
+			@RequestBody CandidateSkill candidateSkill) {
 
 		log.info("Ricevuta richiesta di creazione nuova domanda candidato");
-
-		CandidateSkill candidateSkill= new CandidateSkill();
-		candidateSkill.setIdCandidate(idCandidate);
-		candidateSkill.setIdSkill(idSkill);
 
 		return candidateSkillService.createCandidateSkill(candidateSkill);
 
