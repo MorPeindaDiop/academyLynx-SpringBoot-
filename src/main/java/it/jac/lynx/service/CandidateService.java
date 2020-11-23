@@ -27,15 +27,15 @@ public class CandidateService {
 	@Autowired
 	private CandidateRepository candidateRepository;
 
-	public Response<Boolean> createCandidate(Candidate candidate) {
+	public Response<Candidate> createCandidate(Candidate candidate) {
 
-		Response<Boolean> response = new Response<Boolean>();
+		Response<Candidate> response = new Response<Candidate>();
 
 		try {
 
 			this.candidateRepository.save(candidate);
 
-			response.setResult(true);
+			response.setResult(candidate);
 			response.setResultTest(true);
 
 		}catch(Exception e) {
