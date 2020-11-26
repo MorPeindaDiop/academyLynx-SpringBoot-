@@ -1,13 +1,8 @@
 package it.jac.lynx.service;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +15,6 @@ import it.jac.lynx.entity.CandidateAnswer;
 
 @Service
 public class ScoreService {
-	private static Logger log = LoggerFactory.getLogger(ScoreService.class);
 
 	@Autowired
 	private QuestionService questionService;
@@ -31,7 +25,7 @@ public class ScoreService {
 	@Autowired
 	private CandidateService candidateService;	
 
-	public Response<List<CandidateAnswerDTO>> setCandidateResponse(int idCandidate, List<CandidateResponseDTO> lista){
+	public Response<List<CandidateAnswerDTO>> setCandidateResponse(List<CandidateResponseDTO> candidateResponse){
 
 		Response<List<CandidateAnswerDTO>> response = new Response <List<CandidateAnswerDTO>>();
 
@@ -39,11 +33,11 @@ public class ScoreService {
 
 		try {
 
-			for (CandidateResponseDTO candidateResponseDTO : lista) {
+			for (CandidateResponseDTO candidateResponseDTO : candidateResponse) {
 
 				CandidateAnswer ca = new CandidateAnswer();
-				QuestionDTO qDTO=questionService.findQuestionById(candidateResponseDTO.getIdQuestion()).getResult();
-				ca.setIdCandidate(idCandidate);
+				QuestionDTO qDTO = questionService.findQuestionById(candidateResponseDTO.getIdQuestion()).getResult();
+				ca.setIdCandidate(candidateResponseDTO.getIdCandidate());
 				ca.setIdQuestion(qDTO.getId());
 
 				switch (qDTO.getType()) {
@@ -78,7 +72,7 @@ public class ScoreService {
 	}
 
 	public Response<CandidateDTO> setScoreCandidate(int idCandidate) {
-		
+
 		Response<CandidateDTO> response = new Response <CandidateDTO>();
 
 		List<CandidateAnswerDTO> candidateTest = new ArrayList<CandidateAnswerDTO>();
@@ -102,7 +96,7 @@ public class ScoreService {
 				QuestionDTO question = questionService.findQuestionById(answer.getIdQuestion()).getResult();
 
 				totalWeightedScoreTest += question.getDifficulty();
-				
+
 				if (answer.isAnswer()) {
 
 					nCorrectAnswer += 1;
@@ -114,7 +108,7 @@ public class ScoreService {
 			}
 
 			arithmeticScore =  (( nCorrectAnswer / (double) candidateTest.size() ) * 100);
-			
+
 			weightedScore =  (( weightedScore / totalWeightedScoreTest ) * 100);
 
 			candidateService.setCandidateScoreAndTime(candidate.getId(), (int) nCorrectAnswer, (int) weightedScore, (int) arithmeticScore, 50);

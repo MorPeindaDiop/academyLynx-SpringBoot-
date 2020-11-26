@@ -36,12 +36,11 @@ public class CandidateAnswerRestController {
 
 	@PostMapping("/create")
 	public Response<?> createCandidateAnswer(
-			@RequestBody int idCandidate,
 			@RequestBody List<CandidateResponseDTO> lista) {
 
 		log.info("Ricevuta richiesta di creazione nuova domanda candidato");
 
-		return scoreService.setCandidateResponse(idCandidate, lista);
+		return scoreService.setCandidateResponse(lista);
 
 	}
 
