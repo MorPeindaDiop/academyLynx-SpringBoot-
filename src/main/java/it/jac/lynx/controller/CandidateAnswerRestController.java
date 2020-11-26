@@ -27,7 +27,7 @@ import it.jac.lynx.service.ScoreService;
 public class CandidateAnswerRestController {
 
 	private static Logger log = LoggerFactory.getLogger(CandidateAnswerRestController.class);
-
+ 
 	@Autowired
 	private CandidateAnswerService candidateAnswerService;
 	
