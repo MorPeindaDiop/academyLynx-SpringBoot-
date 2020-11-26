@@ -25,9 +25,9 @@ public class ScoreService {
 	@Autowired
 	private CandidateService candidateService;	
 
-	public Response<List<CandidateAnswerDTO>> setCandidateResponse(List<CandidateResponseDTO> candidateResponse){
+	public Response<Integer> setCandidateResponse(List<CandidateResponseDTO> candidateResponse){
 
-		Response<List<CandidateAnswerDTO>> response = new Response <List<CandidateAnswerDTO>>();
+		Response<Integer> response = new Response <Integer>();
 
 		List<CandidateAnswerDTO> listaReturn= new ArrayList<CandidateAnswerDTO>();
 
@@ -58,7 +58,7 @@ public class ScoreService {
 
 			}
 
-			response.setResult(listaReturn);
+			response.setResult(listaReturn.get(0).getIdCandidate());
 			response.setResultTest(true);
 
 		} catch (Exception e ) {
