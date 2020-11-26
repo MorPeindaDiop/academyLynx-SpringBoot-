@@ -37,7 +37,7 @@ public class ScoreServiceTest {
 		lista.add(candidateResponse2);
 		lista.add(candidateResponse3);
 		
-		assertEquals(true, scoreService.setCandidateResponse(lista, 1).isResultTest());
+		assertEquals(true, scoreService.setCandidateResponse(1, lista).isResultTest());
 	
 	}
 	
