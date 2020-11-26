@@ -3,9 +3,9 @@ package it.jac.lynx.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import it.jac.lynx.dto.Response;
@@ -20,8 +20,8 @@ public class ScoreRestController {
 	@Autowired
 	private ScoreService scoreService;
 	
-	@GetMapping(path = "/createScore")
-	public Response<?> createCandidateScore(@RequestParam int idCandidate) {
+	@PostMapping(path = "/createScore")
+	public Response<?> createCandidateScore(@RequestBody int idCandidate) {
 		
 		return scoreService.setScoreCandidate(idCandidate);
 		
