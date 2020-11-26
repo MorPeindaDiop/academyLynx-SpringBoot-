@@ -31,7 +31,7 @@ public class ScoreService {
 	@Autowired
 	private CandidateService candidateService;	
 
-	public Response<List<CandidateAnswerDTO>> setCandidateResponse(List<CandidateResponseDTO> lista, int idCandidate){
+	public Response<List<CandidateAnswerDTO>> setCandidateResponse(int idCandidate, List<CandidateResponseDTO> lista){
 
 		Response<List<CandidateAnswerDTO>> response = new Response <List<CandidateAnswerDTO>>();
 

@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import it.jac.lynx.dto.CandidateDTO;
 import it.jac.lynx.dto.Response;
 import it.jac.lynx.entity.Candidate;
 

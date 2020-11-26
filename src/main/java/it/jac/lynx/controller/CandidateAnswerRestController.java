@@ -1,5 +1,7 @@
 package it.jac.lynx.controller;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,16 +9,18 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import it.jac.lynx.dto.CandidateResponseDTO;
 import it.jac.lynx.dto.Response;
-import it.jac.lynx.entity.CandidateAnswer;
 import it.jac.lynx.pk.PkCandidateAnswer;
 
 
 import it.jac.lynx.service.CandidateAnswerService;
+import it.jac.lynx.service.ScoreService;
 
 @RestController
 @RequestMapping("/rest/candidateAnswer")
@@ -26,21 +30,18 @@ public class CandidateAnswerRestController {
 
 	@Autowired
 	private CandidateAnswerService candidateAnswerService;
+	
+	@Autowired
+	private ScoreService scoreService;
 
 	@PostMapping("/create")
 	public Response<?> createCandidateAnswer(
-			@RequestParam int idCandidate,
-			@RequestParam int idQuestion,
-			@RequestParam boolean answer) {
+			@RequestBody int idCandidate,
+			@RequestBody List<CandidateResponseDTO> lista) {
 
 		log.info("Ricevuta richiesta di creazione nuova domanda candidato");
 
-		CandidateAnswer candidateAnswer= new CandidateAnswer();
-		candidateAnswer.setIdCandidate(idCandidate);
-		candidateAnswer.setIdQuestion(idQuestion);
-		candidateAnswer.setAnswer(answer);
-
-		return candidateAnswerService.createCandidateAnswer(candidateAnswer);
+		return scoreService.setCandidateResponse(idCandidate, lista);
 
 	}
 
