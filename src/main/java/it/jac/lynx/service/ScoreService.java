@@ -85,7 +85,7 @@ public class ScoreService {
 
 		double totalWeightedScoreTest = 0;
 
-		try {
+		try { 
 
 			CandidateDTO candidate = candidateService.findCandidateById(idCandidate).getResult();
 
@@ -112,8 +112,10 @@ public class ScoreService {
 			weightedScore =  (( weightedScore / totalWeightedScoreTest ) * 100);
 
 			candidateService.setCandidateScoreAndTime(candidate.getId(), (int) nCorrectAnswer, (int) weightedScore, (int) arithmeticScore, 50);
-
-			response.setResult(candidate);
+			
+			CandidateDTO candidate2 = candidateService.findCandidateById(idCandidate).getResult();
+			
+			response.setResult(candidate2);
 			response.setResultTest(true);
 
 		} catch (Exception e ) {
