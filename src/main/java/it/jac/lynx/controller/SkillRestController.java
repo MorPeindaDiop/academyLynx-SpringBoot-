@@ -1,7 +1,5 @@
 package it.jac.lynx.controller;
 
-
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,19 +32,17 @@ public class SkillRestController {
 
 	@PostMapping("/create")
 	public Response<?> createSkill(
-			@RequestParam String description) {
+			@RequestBody Skill skill) {
 
 		log.info("Ricevuta richiesta di creazione nuova skill");
-
-		Skill skill = new Skill();
-		skill.setDescription(description);
 
 		return skillService.createSkill(skill);
 
 	}
 
-	@DeleteMapping(path = "/delete/{id}")
-	public Response<?> deleteSkillById(@PathVariable(name = "id") int id) {
+	@PostMapping(path = "/delete")
+	public Response<?> deleteSkillById(
+			@RequestBody int id) {
 
 		log.info("Richiesta delete.");
 
@@ -62,12 +59,12 @@ public class SkillRestController {
 
 	}
 
-	@GetMapping(path="/detail/{id}")
-	public Response<?> findSkillById(@PathVariable(name = "id") Integer id){log.info("trova da id");
-
-	return skillService.findSkillById(id);
-
-	}
+//	@GetMapping(path="/detail/{id}")
+//	public Response<?> findSkillById(@PathVariable(name = "id") Integer id){log.info("trova da id");
+//
+//	return skillService.findSkillById(id);
+//
+//	}
 
 	@GetMapping(path="/findByDescription/{descriprion}")
 	public Response<?> findSkillByDescription(@PathVariable String description){
@@ -78,13 +75,13 @@ public class SkillRestController {
 
 	}
 
-	@PutMapping(path = "/update/{id}")
-	public Response<?> updateSkill(
-			@PathVariable(name = "id") int id,
-			@RequestParam (required = false) String description) {
-
-		return skillService.updateSkill(id, description);
-		
-	}
+//	@PutMapping(path = "/update/{id}")
+//	public Response<?> updateSkill(
+//			@PathVariable(name = "id") int id,
+//			@RequestParam (required = false) String description) {
+//
+//		return skillService.updateSkill(id, description);
+//		
+//	}
 
 }

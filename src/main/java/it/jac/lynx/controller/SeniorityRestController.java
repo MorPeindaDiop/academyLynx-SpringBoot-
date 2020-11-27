@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,38 +31,21 @@ public class SeniorityRestController {
 
 	@PostMapping("/create")
 	public Response<?> createSeniority(
-			@RequestParam String description,
-			@RequestParam int minDifficulty,
-			@RequestParam int maxDifficulty) {
+			@RequestBody Seniority seniority) {
 
 		log.info("Ricevuta richiesta di creazione nuova seniority");
-
-		Seniority seniority= new Seniority();
-		seniority.setDescription(description);
-		seniority.setMinDifficulty(minDifficulty);
-		seniority.setMaxDifficulty(maxDifficulty);
 
 		return seniorityService.createSeniority(seniority);
 
 	}
 	
-	@DeleteMapping(path = "/delete/{id}")
-	public Response<?> deleteSeniorityById(@PathVariable(name = "id") int id) {
+	@PostMapping(path = "/delete")
+	public Response<?> deleteSeniorityById(
+			@RequestBody int id) {
 
 		log.info("Richiesta delete.");
 
 		return seniorityService.deleteSeniorityById(id);
-	}
-	
-	@PutMapping(path = "/update/{id}")
-	public Response<?> update(
-			@PathVariable(name = "id") int id,
-			@RequestParam (required = false) String description,
-			@RequestParam (required = false) int minDifficulty,
-			@RequestParam (required = false) int maxDifficulty) {
-
-		return seniorityService.updateSeniority(id, description, minDifficulty, maxDifficulty);
-	
 	}
 	
 	@GetMapping(path="/findAll")

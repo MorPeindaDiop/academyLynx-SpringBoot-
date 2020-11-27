@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,22 +37,9 @@ public class QuestionRestController {
 	
 	@PostMapping("/create")
 	public Response<?> createQuestion(
-			@RequestParam String type,
-			@RequestParam String questionText,
-			@RequestParam (required = false) String correctAnswerBoolean,
-			@RequestParam (required = false) String correctAnswerText,
-			@RequestParam (required = false) String wrongAnswers,
-			@RequestParam int difficulty) {
+			@RequestBody Question question) {
 		
 		log.info("Ricevuta richiesta di creazione nuovo prodotto");
-		
-		Question question = new Question();
-		question.setType(type);
-		question.setDifficulty(difficulty);
-		question.setQuestionText(questionText);
-		question.setCorrectAnswerBoolean(correctAnswerBoolean.equalsIgnoreCase("true") ? true : false);
-		question.setCorrectAnswerText(correctAnswerText);
-		question.setWrongAnswers(wrongAnswers);
 		
 		return questionService.createQuestion(question);
 		
@@ -80,8 +68,9 @@ public class QuestionRestController {
 	
 	}
 	
-	@DeleteMapping(path = "/delete/{id}")
-	public Response<?> deleteQuestion(@PathVariable(name = "id") Integer id) {
+	@PostMapping(path = "/delete")
+	public Response<?> deleteQuestion(
+			@RequestBody int id) {
 
 		log.info("Ricevuta richiesta di eliminazione di un prodotto");
 
