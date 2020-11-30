@@ -23,9 +23,9 @@ public class CandidateDTO {
 
 	private int nCorrectAnswer;
 
-	private int weightedScore;
+	private Integer weightedScore;
 	
-	private int arithmeticScore;
+	private Integer arithmeticScore;
 
 	private int time;
 	

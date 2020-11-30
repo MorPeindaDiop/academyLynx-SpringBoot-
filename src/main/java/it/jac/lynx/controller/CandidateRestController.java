@@ -30,56 +30,6 @@ public class CandidateRestController {
 	@Autowired
 	private CandidateService candidateService;
 	
-	/*@PostMapping("/create")
-	public Response<?> createCandidate(
-			@RequestParam String name,
-			@RequestParam String surname,
-			@RequestParam int idSeniority,
-			@RequestParam (required = false) int nCorrectAnswer,
-			@RequestParam (required = false) int weightedScore,
-			@RequestParam (required = false) int time*) {
-
-		log.info("Ricevuta richiesta di creazione nuovo candidato");
-
-		Candidate candidate= new Candidate();
-		candidate.setName(surname);
-		candidate.setSurname(surname);
-		candidate.setDataTest(new Date());
-		candidate.setIdSeniority(idSeniority);
-		candidate.setNCorrectAnswer(nCorrectAnswer);
-		candidate.setWeightedScore(weightedScore);
-		candidate.setTime(time);
-
-		return candidateService.createCandidate(candidate);
-
-	}
-	
-	@PostMapping("/create")
-	public Response<?> createCandidate(
-			@RequestBody Candidate cand
-			) {
-
-		log.info("Ricevuta richiesta di creazione nuovo candidato");
-		log.info("cand");
-		log.info(cand.toString());
-
-		Candidate candidate= new Candidate();
-		candidate.setName(cand.getName());
-		log.info("nome");
-		log.info(cand.getName());
-		candidate.setSurname(cand.getSurname());
-		log.info("cognome");
-		log.info(cand.getSurname());
-		candidate.setDataTest(new Date());
-		candidate.setIdSeniority(cand.getIdSeniority());
-		candidate.setNCorrectAnswer(cand.getNCorrectAnswer());
-		candidate.setWeightedScore(cand.getWeightedScore());
-		candidate.setTime(cand.getTime());
-
-		return candidateService.createCandidate(cand);
-
-	}*/
-	
 	@PostMapping("/create")
 	public Response<?> createCandidate(
 			@RequestBody Candidate candidate
@@ -91,8 +41,9 @@ public class CandidateRestController {
 
 	}
 	
-	@DeleteMapping(path = "/delete/{id}")
-	public Response<?> deleteCandidateById(@PathVariable(name = "id") int id) {
+	@PostMapping(path = "/delete")
+	public Response<?> deleteCandidateById(
+			@RequestBody int id) {
 
 		log.info("Richiesta delete.");
 

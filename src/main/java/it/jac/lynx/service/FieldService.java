@@ -118,8 +118,8 @@ public class FieldService {
 
 	public Response<FieldDTO> updateField(
 			int id,
-			String page,
-			String fieldName,
+			//String page,
+			String description,
 			String reg_exp,
 			boolean enabled) {
 
@@ -128,11 +128,11 @@ public class FieldService {
 		try {
 			Field field = this.fieldRepository.findById(id).get();
 
-			if (page != null)
-				field.setPage(page);
+//			if (page != null)
+//				field.setPage(page);
 			
-			if (fieldName != null)
-				field.setFieldName(fieldName);
+			if (description != null)
+				field.setDescription(description);
 			
 			if (reg_exp != null)
 				field.setReg_exp(reg_exp);

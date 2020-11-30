@@ -3,14 +3,11 @@ package it.jac.lynx.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import it.jac.lynx.dto.Response;
@@ -56,31 +53,31 @@ public class SeniorityRestController {
 		return seniorityService.findAllSeniorities();
 	}
 	
-	@GetMapping(path="/detail/{id}")
-	public Response<?> findSeniorityById(@PathVariable(name = "id") int id) {
-		
-		log.info("trova da id");
-		
-		return seniorityService.findSeniorityById(id);
-	
-	}
-	
-	@GetMapping(path="/findByMinDifficulty/{minDifficulty}")
-	public Response<?> findSeniorityByMinDifficulty(@PathVariable(name = "minDifficulty") int minDifficulty) {
-		
-		log.info("ricerca da minima difficoltà");
-		
-		return seniorityService.findSeniorityByMinDifficuly(minDifficulty);
-	
-	}
-	
-	@GetMapping(path="/findByMaxDifficulty/{maxDifficulty}")
-	public Response<?> findSeniorityByMaxnDifficulty(@PathVariable(name = "maxDifficulty") int maxDifficulty){
-		
-		log.info("ricerca da massima difficoltà");
-		
-		return seniorityService.findSeniorityByMaxDifficuly(maxDifficulty);
-	
-	}
+//	@GetMapping(path="/detail/{id}")
+//	public Response<?> findSeniorityById(@PathVariable(name = "id") int id) {
+//		
+//		log.info("trova da id");
+//		
+//		return seniorityService.findSeniorityById(id);
+//	
+//	}
+//	
+//	@GetMapping(path="/findByMinDifficulty/{minDifficulty}")
+//	public Response<?> findSeniorityByMinDifficulty(@PathVariable(name = "minDifficulty") int minDifficulty) {
+//		
+//		log.info("ricerca da minima difficoltà");
+//		
+//		return seniorityService.findSeniorityByMinDifficuly(minDifficulty);
+//	
+//	}
+//	
+//	@GetMapping(path="/findByMaxDifficulty/{maxDifficulty}")
+//	public Response<?> findSeniorityByMaxnDifficulty(@PathVariable(name = "maxDifficulty") int maxDifficulty){
+//		
+//		log.info("ricerca da massima difficoltà");
+//		
+//		return seniorityService.findSeniorityByMaxDifficuly(maxDifficulty);
+//	
+//	}
 
 }

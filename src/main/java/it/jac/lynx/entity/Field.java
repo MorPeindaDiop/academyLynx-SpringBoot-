@@ -19,11 +19,11 @@ public class Field {
 	@Column(name = "id")
 	private int id;
 
-	@Column(name = "page")
-	private String page;
+//	@Column(name = "page")
+//	private String page;
 
-	@Column(name = "field_name")
-	private String fieldName;
+	@Column(name = "description")
+	private String description;
 	
 	@Column(name = "reg_exp")
 	private String reg_exp;
@@ -33,7 +33,7 @@ public class Field {
 
 	@Override
 	public String toString() {
-		return "Field [id=" + id + ", field name=" + fieldName + ", enabled=" + isEnabled + "]";
+		return "Field [id=" + id + ", field name=" + description + ", enabled=" + isEnabled + "]";
 	}
 
 }

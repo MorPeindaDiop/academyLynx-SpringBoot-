@@ -10,9 +10,9 @@ public class FieldDTO {
 
 	private int id;
 	
-	private String page;
+	//private String page;
 
-	private String fieldName;
+	private String description;
 
 	private String reg_exp;
 	
