@@ -13,4 +13,6 @@ public interface CandidateAnswerRepository extends CrudRepository<CandidateAnswe
 	
 	public List<CandidateAnswer> findByIdCandidate(int idCandidate);
 	
+	//public void deleteByIdCandidate(int idCandidate);
+	
 }

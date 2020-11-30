@@ -11,12 +11,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+import it.jac.lynx.dao.CandidateAnswerRepository;
 import it.jac.lynx.dao.CandidateRepository;
+import it.jac.lynx.dao.CandidateSkillRepository;
 import it.jac.lynx.dto.CandidateDTO;
 import it.jac.lynx.dto.Response;
 
 import it.jac.lynx.entity.Candidate;
+import it.jac.lynx.entity.CandidateAnswer;
+import it.jac.lynx.entity.CandidateSkill;
 
 
 @Service
@@ -27,6 +30,12 @@ public class CandidateService {
 	@Autowired
 	private CandidateRepository candidateRepository;
 
+	@Autowired
+	private CandidateAnswerRepository candidateAnswerRepository;
+	
+	@Autowired
+	private CandidateSkillRepository candidateSkillRepository;
+	
 	public Response<Candidate> createCandidate(Candidate candidate) {
 
 		Response<Candidate> response = new Response<Candidate>();
@@ -52,10 +61,36 @@ public class CandidateService {
 	public Response<String> deleteCandidateById(int id) {
 
 		Response<String> response = new Response<String>();
+		
+		List<CandidateAnswer> candidateAnswers = new ArrayList<CandidateAnswer>();
+		
+		List<CandidateSkill> candidateSkills = new ArrayList<CandidateSkill>();
 
 		try {
 
-			this.candidateRepository.deleteById(id);
+			candidateAnswers = this.candidateAnswerRepository.findByIdCandidate(id);
+			if (candidateAnswers != null) {
+				
+				for (CandidateAnswer ca: candidateAnswers) {
+					
+					this.candidateAnswerRepository.delete(ca);
+					
+				}
+				
+			}
+			
+			candidateSkills = this.candidateSkillRepository.findByIdCandidate(id);
+			if (candidateSkills != null) {
+				
+				for (CandidateSkill cs: candidateSkills) {
+					
+					this.candidateSkillRepository.delete(cs);
+					
+				}
+				
+			}
+			
+			this.candidateRepository.deleteById(id);			
 
 			response.setResult("Candidato eliminato.");
 			response.setResultTest(true);
