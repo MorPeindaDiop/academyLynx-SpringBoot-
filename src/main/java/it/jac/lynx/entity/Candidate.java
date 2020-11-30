@@ -41,10 +41,10 @@ public class Candidate {
 	private int nCorrectAnswer;
 	
 	@Column(name = "weightedScore")
-	private Integer weightedScore = null;
+	private int weightedScore;
 	
 	@Column(name = "arithmeticScore")
-	private Integer arithmeticScore = null;
+	private int arithmeticScore;
 
 	@Column(name = "time")
 	private int time;
