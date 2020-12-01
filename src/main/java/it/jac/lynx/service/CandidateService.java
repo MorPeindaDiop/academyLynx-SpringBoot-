@@ -11,15 +11,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import it.jac.lynx.dao.CandidateAnswerRepository;
+
 import it.jac.lynx.dao.CandidateRepository;
-import it.jac.lynx.dao.CandidateSkillRepository;
 import it.jac.lynx.dto.CandidateDTO;
 import it.jac.lynx.dto.Response;
 
 import it.jac.lynx.entity.Candidate;
-import it.jac.lynx.entity.CandidateAnswer;
-import it.jac.lynx.entity.CandidateSkill;
 
 
 @Service
@@ -30,12 +27,6 @@ public class CandidateService {
 	@Autowired
 	private CandidateRepository candidateRepository;
 
-	@Autowired
-	private CandidateAnswerRepository candidateAnswerRepository;
-	
-	@Autowired
-	private CandidateSkillRepository candidateSkillRepository;
-	
 	public Response<Candidate> createCandidate(Candidate candidate) {
 
 		Response<Candidate> response = new Response<Candidate>();
@@ -61,36 +52,10 @@ public class CandidateService {
 	public Response<String> deleteCandidateById(int id) {
 
 		Response<String> response = new Response<String>();
-		
-		List<CandidateAnswer> candidateAnswers = new ArrayList<CandidateAnswer>();
-		
-		List<CandidateSkill> candidateSkills = new ArrayList<CandidateSkill>();
 
 		try {
 
-			candidateAnswers = this.candidateAnswerRepository.findByIdCandidate(id);
-			if (candidateAnswers != null) {
-				
-				for (CandidateAnswer ca: candidateAnswers) {
-					
-					this.candidateAnswerRepository.delete(ca);
-					
-				}
-				
-			}
-			
-			candidateSkills = this.candidateSkillRepository.findByIdCandidate(id);
-			if (candidateSkills != null) {
-				
-				for (CandidateSkill cs: candidateSkills) {
-					
-					this.candidateSkillRepository.delete(cs);
-					
-				}
-				
-			}
-			
-			this.candidateRepository.deleteById(id);			
+			this.candidateRepository.deleteById(id);
 
 			response.setResult("Candidato eliminato.");
 			response.setResultTest(true);
@@ -245,29 +210,41 @@ public class CandidateService {
 	}
 	
 	public Response<CandidateDTO> setCandidateScoreAndTime(
-			int id
-			) {
+			int id,
+			int nCorrectAnswer,
+			int weightedScore,
+			int arithmeticScore,
+			int time) {
 		
 		log.info("PRIMO STEP DEL METODO");
 		Response<CandidateDTO> response = new Response<CandidateDTO>();
-		Candidate candidate = this.candidateRepository.findById(id).get();
+
 		try {
 			
 			log.info("ENTRA NEL TRY");
 			log.info("id "+id);
-			log.info("n correct answer "+candidate.getNCorrectAnswer());
-			log.info("weightedScore "+candidate.getWeightedScore());
-			log.info("arithmeticScore "+candidate.getArithmeticScore());
+			log.info("n correct answer "+nCorrectAnswer);
+			log.info("weightedScore "+weightedScore);
+			log.info("arithmeticScore "+arithmeticScore);
+			log.info("time "+time);
 			
-			
-			
+			Candidate candidate = this.candidateRepository.findById(id).get();
 			log.info("TROVA CANDIDATO DA CANDIDATE REPOSITORY");
-		
+			if (nCorrectAnswer > 0)
+				candidate.setNCorrectAnswer(nCorrectAnswer);
 			
+			if (weightedScore > 0)
+				candidate.setWeightedScore(weightedScore);
+			
+			if (arithmeticScore > 0)
+				candidate.setArithmeticScore(arithmeticScore);
+			
+			
+				log.info("ENTRA IN TIME");
 				Calendar c = Calendar.getInstance();
 				double millsTime=c.getTime().getMinutes();
 				log.info("MILLIS: "+millsTime);
-				double testStart=candidate.getDataTest().getMinutes();
+				long testStart=candidate.getDataTest().getMinutes();
 				log.info("TEST START: "+testStart);
 				int effecctiveTime=(int)(millsTime-testStart);
 				log.info("EFFECTIVE TIME: "+effecctiveTime);
