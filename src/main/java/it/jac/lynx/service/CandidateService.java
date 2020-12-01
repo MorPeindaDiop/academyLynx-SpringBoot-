@@ -274,17 +274,17 @@ public class CandidateService {
 			if (arithmeticScore > 0)
 				candidate.setArithmeticScore(arithmeticScore);
 			
-			if (time > 0) {	
+			
 				log.info("ENTRA IN TIME");
 				Calendar c = Calendar.getInstance();
 				double millsTime=c.getTime().getMinutes();
 				log.info("MILLIS: "+millsTime);
 				long testStart=candidate.getDataTest().getMinutes();
 				log.info("TEST START: "+testStart);
-				int effecctiveTime=(int)(testStart-millsTime);
+				int effecctiveTime=(int)(millsTime-testStart);
 				log.info("EFFECTIVE TIME: "+effecctiveTime);
 				candidate.setTime(effecctiveTime);
-			}
+			
 				
 			
 			this.candidateRepository.save(candidate);
@@ -302,5 +302,4 @@ public class CandidateService {
 		return response;
 
 	}
-
 }
