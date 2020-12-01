@@ -94,12 +94,6 @@ public class CandidateRestController {
 		
 	}
 	
-	@GetMapping(path = "/updateDataTest/{id}")
-	public Response<?> setCandidateScoreAndTime(
-			@PathVariable(name = "id") int id) {
-
-		return candidateService.setCandidateScoreAndTime(id);
 	
-	}
 	
 }
