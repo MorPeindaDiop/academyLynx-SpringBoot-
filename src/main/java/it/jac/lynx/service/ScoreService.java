@@ -111,7 +111,7 @@ public class ScoreService {
 
 			weightedScore =  (( weightedScore / totalWeightedScoreTest ) * 100);
 
-			candidateService.setCandidateScoreAndTime(candidate.getId());
+			candidateService.setCandidateScoreAndTime(candidate.getId(), (int) nCorrectAnswer, (int) weightedScore, (int) arithmeticScore, 50);
 			
 			CandidateDTO candidate2 = candidateService.findCandidateById(idCandidate).getResult();
 			
