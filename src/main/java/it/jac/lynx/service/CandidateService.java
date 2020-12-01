@@ -245,46 +245,43 @@ public class CandidateService {
 	}
 	
 	public Response<CandidateDTO> setCandidateScoreAndTime(
-			int id,
-			int nCorrectAnswer,
-			int weightedScore,
-			int arithmeticScore,
-			int time) {
+			int id
+			) {
 		
 		log.info("PRIMO STEP DEL METODO");
 		Response<CandidateDTO> response = new Response<CandidateDTO>();
-
+		Candidate candidate = this.candidateRepository.findById(id).get();
 		try {
 			
 			log.info("ENTRA NEL TRY");
 			log.info("id "+id);
-			log.info("n correct answer "+nCorrectAnswer);
-			log.info("weightedScore "+weightedScore);
-			log.info("arithmeticScore "+arithmeticScore);
-			log.info("time "+time);
+			log.info("n correct answer "+candidate.getNCorrectAnswer());
+			log.info("weightedScore "+candidate.getWeightedScore());
+			log.info("arithmeticScore "+candidate.getArithmeticScore());
 			
-			Candidate candidate = this.candidateRepository.findById(id).get();
+			
+			
 			log.info("TROVA CANDIDATO DA CANDIDATE REPOSITORY");
-			if (nCorrectAnswer > 0)
-				candidate.setNCorrectAnswer(nCorrectAnswer);
+			if (candidate.getNCorrectAnswer() > 0)
+				candidate.setNCorrectAnswer(candidate.getNCorrectAnswer());
 			
-			if (weightedScore > 0)
-				candidate.setWeightedScore(weightedScore);
+			if (candidate.getWeightedScore() > 0)
+				candidate.setWeightedScore(candidate.getWeightedScore());
 			
-			if (arithmeticScore > 0)
-				candidate.setArithmeticScore(arithmeticScore);
+			if (candidate.getArithmeticScore() > 0)
+				candidate.setArithmeticScore(candidate.getArithmeticScore());
 			
-			if (time > 0) {	
-				log.info("ENTRA IN TIME");
+			
+			
 				Calendar c = Calendar.getInstance();
 				double millsTime=c.getTime().getMinutes();
 				log.info("MILLIS: "+millsTime);
-				long testStart=candidate.getDataTest().getMinutes();
+				double testStart=candidate.getDataTest().getMinutes();
 				log.info("TEST START: "+testStart);
-				int effecctiveTime=(int)(testStart-millsTime);
+				int effecctiveTime=(int)(millsTime-testStart);
 				log.info("EFFECTIVE TIME: "+effecctiveTime);
 				candidate.setTime(effecctiveTime);
-			}
+			
 				
 			
 			this.candidateRepository.save(candidate);

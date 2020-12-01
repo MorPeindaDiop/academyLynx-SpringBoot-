@@ -94,15 +94,11 @@ public class CandidateRestController {
 		
 	}
 	
-	@PutMapping(path = "/updateDataTest/{id}")
+	@GetMapping(path = "/updateDataTest/{id}")
 	public Response<?> setCandidateScoreAndTime(
-			@PathVariable(name = "id") int id,
-			@RequestParam int nCorrectAnswer,
-			@RequestParam int weightedScore,
-			@RequestParam int arithmeticScore,
-			@RequestParam int time) {
+			@PathVariable(name = "id") int id) {
 
-		return candidateService.setCandidateScoreAndTime(id, nCorrectAnswer, weightedScore, arithmeticScore, time);
+		return candidateService.setCandidateScoreAndTime(id);
 	
 	}
 	
