@@ -262,16 +262,7 @@ public class CandidateService {
 			
 			
 			log.info("TROVA CANDIDATO DA CANDIDATE REPOSITORY");
-			if (candidate.getNCorrectAnswer() > 0)
-				candidate.setNCorrectAnswer(candidate.getNCorrectAnswer());
-			
-			if (candidate.getWeightedScore() > 0)
-				candidate.setWeightedScore(candidate.getWeightedScore());
-			
-			if (candidate.getArithmeticScore() > 0)
-				candidate.setArithmeticScore(candidate.getArithmeticScore());
-			
-			
+		
 			
 				Calendar c = Calendar.getInstance();
 				double millsTime=c.getTime().getMinutes();
