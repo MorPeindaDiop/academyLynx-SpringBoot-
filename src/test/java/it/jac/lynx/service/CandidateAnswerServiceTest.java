@@ -22,7 +22,8 @@ public class CandidateAnswerServiceTest {
 		CandidateAnswer candidateAnswer = new CandidateAnswer();
 		candidateAnswer.setIdCandidate(3);
 		candidateAnswer.setIdQuestion(8);
-		candidateAnswer.setAnswer(true);
+		candidateAnswer.setAnswer("ciao");
+		candidateAnswer.setCorrect(true);
 
 		assertEquals(true, candidateAnswerService.createCandidateAnswer(candidateAnswer).isResultTest());
 
@@ -55,17 +56,6 @@ public class CandidateAnswerServiceTest {
 
 		assertEquals(true, candidateAnswerService.findCandidateAnswerById(pk).getResult());
 
-	}
-	
-	@Test
-	public void updateCandidateAnswerTest() {
-		
-		PkCandidateAnswer pk = new PkCandidateAnswer();
-		pk.setIdQuestion(1);
-		pk.setIdCandidate(2);
-
-		assertEquals(true, candidateAnswerService.updateCandidateAnswer(pk, false).getResult());
-	
 	}
 
 }

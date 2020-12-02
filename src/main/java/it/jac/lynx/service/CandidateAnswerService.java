@@ -113,32 +113,6 @@ public class CandidateAnswerService {
 		return response;
 
 	}
-
-	public Response<CandidateAnswerDTO> updateCandidateAnswer(PkCandidateAnswer id, boolean answer) {
-
-		Response<CandidateAnswerDTO> response = new Response<CandidateAnswerDTO>();
-
-		try {
-
-			CandidateAnswer candidateAnswer = this.candidateAnswerRepository.findById(id).get();
-
-			if (answer != candidateAnswer.isAnswer())
-				candidateAnswer.setAnswer(answer);
-
-			this.candidateAnswerRepository.save(candidateAnswer);
-
-			response.setResult(CandidateAnswerDTO.build(candidateAnswer));
-			response.setResultTest(true);
-
-		} catch (Exception e) {
-
-			response.setError("Nessun elemento trovato.");
-
-		}
-
-		return response;
-
-	}
 	
 	public Response<List<CandidateAnswerDTO>> findCandidateAnswerByIdCandidate(int idCandidate) {
 

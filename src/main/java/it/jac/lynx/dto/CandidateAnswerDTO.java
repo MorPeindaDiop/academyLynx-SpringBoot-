@@ -12,7 +12,9 @@ public class CandidateAnswerDTO {
 
 	private int idQuestion;
 
-	private boolean answer;
+	private String answer;
+	
+	private boolean isCorrect;
 
 	public static CandidateAnswerDTO build(CandidateAnswer candidateAnswer) {
 

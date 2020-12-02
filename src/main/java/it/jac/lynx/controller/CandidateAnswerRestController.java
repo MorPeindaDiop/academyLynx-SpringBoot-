@@ -84,21 +84,6 @@ public class CandidateAnswerRestController {
 		return candidateAnswerService.findCandidateAnswerById(id);
 
 	}
-
-	@PutMapping(path = "/update")
-	public Response<?> updateCandidateAnswer(
-			@RequestParam int idCandidate,
-			@RequestParam int idQuestion,
-			@RequestParam (required = false) boolean answer) {
-
-		PkCandidateAnswer id = new PkCandidateAnswer();
-
-		id.setIdCandidate(idCandidate);
-		id.setIdQuestion(idQuestion);
-
-		return candidateAnswerService.updateCandidateAnswer(id, answer);
-
-	}
 	
 	@GetMapping(path="/currentCandidateAnswer")
 	public Response<?> findCandidateAnswerByIdCandidate(

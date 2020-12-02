@@ -39,17 +39,18 @@ public class ScoreService {
 				QuestionDTO qDTO = questionService.findQuestionById(candidateResponseDTO.getIdQuestion()).getResult();
 				ca.setIdCandidate(candidateResponseDTO.getIdCandidate());
 				ca.setIdQuestion(qDTO.getId());
+				ca.setAnswer(candidateResponseDTO.getCandidateResponse());
 
 				switch (qDTO.getType()) {
 				case "aperta":
-					ca.setAnswer(candidateResponseDTO.getCandidateResponse().equalsIgnoreCase(qDTO.getCorrectAnswerText()) ? true : false);
+					ca.setCorrect(candidateResponseDTO.getCandidateResponse().equalsIgnoreCase(qDTO.getCorrectAnswerText()) ? true : false);
 					break;
 				case "vf":
 					Boolean answer = candidateResponseDTO.getCandidateResponse().equalsIgnoreCase("true") ? true : false;
-					ca.setAnswer(answer ? true : false);
+					ca.setCorrect(answer);
 					break;
 				case "crocette":
-					ca.setAnswer(candidateResponseDTO.getCandidateResponse().equalsIgnoreCase(qDTO.getCorrectAnswerText()) ? true : false);
+					ca.setCorrect(candidateResponseDTO.getCandidateResponse().equalsIgnoreCase(qDTO.getCorrectAnswerText()) ? true : false);
 					break;
 				}
 
@@ -97,7 +98,7 @@ public class ScoreService {
 
 				totalWeightedScoreTest += question.getDifficulty();
 
-				if (answer.isAnswer()) {
+				if (answer.isCorrect()) {
 
 					nCorrectAnswer += 1;
 
