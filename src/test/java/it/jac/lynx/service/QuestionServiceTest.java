@@ -18,6 +18,7 @@ public class QuestionServiceTest {
 	public void createQuestionApertaTest() {
 		
 		Question question = new Question();
+		
 		question.setType("aperta");
 		question.setQuestionText("ciao");
 		question.setCorrectAnswerText("hola");
@@ -31,10 +32,11 @@ public class QuestionServiceTest {
 	public void createQuestionVFTest() {
 		
 		Question question = new Question();
+	
 		question.setType("vf");
-		question.setQuestionText("ciao1");
+		question.setQuestionText("html è un linguaggio di programmazione");
 		question.setCorrectAnswerBoolean(true);
-		question.setDifficulty(3);
+		question.setDifficulty(10);
 		
 		assertEquals(true, questionService.createQuestion(question).getResult());
 	

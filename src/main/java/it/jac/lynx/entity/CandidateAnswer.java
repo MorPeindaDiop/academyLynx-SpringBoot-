@@ -24,12 +24,15 @@ public class CandidateAnswer {
 	@Column(name = "id_question")
 	private int idQuestion;
 
-	@Column(name = "answer")
-	private boolean answer;
+	@Column(name = "isCorrect")
+	private boolean isCorrect;
+	
+	@Column(name="risposta")
+	private String risposta;
 	
 	@Override
 	public String toString() {
-		return "Candidate Answer [id candidate=" + idCandidate + ", id question=" + idQuestion + ", answer=" + answer +  "]";
+		return "Candidate Answer [id candidate=" + idCandidate + ", id question=" + idQuestion + ", answer=" + isCorrect +  "]";
 	}
 	
 }

@@ -122,8 +122,10 @@ public class CandidateAnswerService {
 
 			CandidateAnswer candidateAnswer = this.candidateAnswerRepository.findById(id).get();
 
-			if (answer != candidateAnswer.isAnswer())
-				candidateAnswer.setAnswer(answer);
+			if (answer != candidateAnswer.isCorrect()) {
+				candidateAnswer.setCorrect(answer);
+				}
+				
 
 			this.candidateAnswerRepository.save(candidateAnswer);
 

@@ -89,14 +89,14 @@ public class CandidateAnswerRestController {
 	public Response<?> updateCandidateAnswer(
 			@RequestParam int idCandidate,
 			@RequestParam int idQuestion,
-			@RequestParam (required = false) boolean answer) {
+			@RequestParam (required = false) boolean isCorrect) {
 
 		PkCandidateAnswer id = new PkCandidateAnswer();
 
 		id.setIdCandidate(idCandidate);
 		id.setIdQuestion(idQuestion);
-
-		return candidateAnswerService.updateCandidateAnswer(id, answer);
+		
+		return candidateAnswerService.updateCandidateAnswer(id, isCorrect);
 
 	}
 	
