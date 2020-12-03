@@ -55,6 +55,11 @@ public class Question {
 	@Column(name = "update_user")
 	private String updateUser;
 	
+	
+	@Column(name = "img_url")
+	private String imgUrl;
+	
+	
 	@Override
 	public String toString() {
 		return "Question [id=" + id + ", question type=" + type + ", question text=" + questionText + ", correct answer=" + (correctAnswerText != "" ? correctAnswerText : correctAnswerBoolean) + ", difficulty=" + difficulty + "]";

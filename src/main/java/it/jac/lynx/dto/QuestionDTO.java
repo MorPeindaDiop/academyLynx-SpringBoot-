@@ -33,6 +33,8 @@ public class QuestionDTO {
 	private String creationUser;
 
 	private String updateUser;
+	
+	private String imgUrl;
 
 	public static QuestionDTO build(Question question) {
 
