@@ -141,6 +141,42 @@ public class UserService {
 		return response;
 		
 	}
+	
+
+	public Response<List<UserDTO>> findUserByUsernamePassword(String username, String password) {
+
+		Response<List<UserDTO>> response = new Response<List<UserDTO>>();
+		
+		List<UserDTO> result = new ArrayList<>();
+
+		try {
+			
+			Iterator<User> iterator = this.userRepository.findByUsername(username).iterator();
+			
+			while (iterator.hasNext()) {
+
+				User user = iterator.next();
+				if(user.getPassword().equals(password)) {
+					result.add(UserDTO.build(user));	
+					response.setResult(result);
+					response.setResultTest(true);
+
+				}
+				
+			
+			}
+
+			
+		} catch (Exception e ) {
+			
+			response.setError("Nessun elemento trovato.");
+		
+		}
+
+		return response;
+		
+	}
+	
 
 	public Response<UserDTO> updateUserUsernameById(int id, String newUsername) {
 
