@@ -16,6 +16,8 @@ public class CandidateDTO {
 	private String name;
 
 	private String surname;
+	
+	private String email;
 
 	private int idSeniority;
 
