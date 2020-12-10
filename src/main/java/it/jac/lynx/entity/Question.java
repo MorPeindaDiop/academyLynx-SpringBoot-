@@ -1,6 +1,5 @@
 package it.jac.lynx.entity;
 
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,8 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import lombok.Data;
 
@@ -55,9 +52,12 @@ public class Question {
 //	@Column(name = "update_user")
 //	private String updateUser;
 //	
-	
+
 	@Column(name = "img_url")
 	private String imgUrl;
+	
+	@Column(name = "id_skill")
+	private int idSkill;
 	
 	
 	@Override

@@ -1,4 +1,4 @@
- package it.jac.lynx.entity;
+package it.jac.lynx.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,15 +19,12 @@ public class Field {
 	@Column(name = "id")
 	private int id;
 
-//	@Column(name = "page")
-//	private String page;
-
 	@Column(name = "description")
 	private String description;
-	
+
 	@Column(name = "reg_exp")
 	private String reg_exp;
-	
+
 	@Column(name = "isEnabled")
 	private boolean isEnabled;
 

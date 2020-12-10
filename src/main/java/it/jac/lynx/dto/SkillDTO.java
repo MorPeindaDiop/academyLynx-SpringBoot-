@@ -11,14 +11,6 @@ public @Data class SkillDTO {
 	private int id;
 
 	private String description;
-	
-	private Date creationTime;
-
-	private Date updateTime;
-
-	private String creationUser;
-
-	private String updateUser;
 
 	public static SkillDTO build(Skill skill) {
 

@@ -18,14 +18,6 @@ public @Data class SeniorityDTO {
 	
 	private int maxDifficulty;
 
-	private Date creationTime;
-
-	private Date updateTime;
-
-	private String creationUser;
-
-	private String updateUser;
-
 	public static SeniorityDTO build(Seniority seniority) {
 
 		SeniorityDTO result = new SeniorityDTO();
