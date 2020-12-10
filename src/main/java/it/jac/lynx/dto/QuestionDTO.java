@@ -25,16 +25,10 @@ public class QuestionDTO {
 	//per le checkbox
 
 	private int difficulty;
-
-	private Date creationTime;
-
-	private Date updateTime;
-
-	private String creationUser;
-
-	private String updateUser;
 	
 	private String imgUrl;
+	
+	private int idSkill;
 
 	public static QuestionDTO build(Question question) {
 

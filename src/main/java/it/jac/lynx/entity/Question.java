@@ -39,25 +39,13 @@ public class Question {
 	private String wrongAnswers;
 
 	@Column(name = "difficulty")
-	private int difficulty;
-
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "creation_time")
-	private Date creationTime;
-	
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "update_time")
-	private Date updateTime;
-	
-	@Column(name = "creation_user")
-	private String creationUser;
-	
-	@Column(name = "update_user")
-	private String updateUser;
-	
+	private int difficulty;	
 	
 	@Column(name = "img_url")
 	private String imgUrl;
+	
+	@Column(name = "id_skill")
+	private int idSkill;
 	
 	
 	@Override
