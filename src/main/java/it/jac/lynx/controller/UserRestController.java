@@ -53,6 +53,13 @@ public class UserRestController {
 		
 		return userService.findAllUsers();
 	}
+	@GetMapping(path="/findUsersPassword/{}")
+	public Response<?> findAllUsersPassword(){
+		
+		log.info("richiesta di find all.");
+		
+		return userService.findAllUsers();
+	}
 	
 	
 	@GetMapping(path="/findById/{id}")
@@ -68,5 +75,14 @@ public class UserRestController {
 		
 		return userService.findUserByUsername(name);
 	}
+	
+	@PostMapping(path="/signIn/{username}&{password}")
+	public Response<?> findUserByUsernamePassword(@PathVariable String name, @PathVariable String password){
+		log.info("trova da id");
+		
+		return userService.findUserByUsernamePassword(name, password);
+	}
+	
+	
 
 }
