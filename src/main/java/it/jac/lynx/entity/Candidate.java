@@ -30,6 +30,9 @@ public class Candidate {
 	@Column(name = "surname")
 	private String surname;
 	
+	@Column(name = "email")
+	private String email;
+	
 	@Column(name = "id_seniority")
 	private int idSeniority;
 	
