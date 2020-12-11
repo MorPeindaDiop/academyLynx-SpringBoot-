@@ -38,7 +38,7 @@ public class SendEmailSMTPService {
 		prop.put("mail.smtp.auth", "true");
 		prop.put("mail.smtp.port", "587"); //port 25-465-587-2525
 		prop.put("mail.smtp.starttls.enable", "true"); //TLS
-		prop.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+		prop.put("mail.smtp.ssl.trust", mail.getSmtpServer());
 		log.info("SETTA COSE SERVER");
 		
 		

@@ -26,8 +26,8 @@ public class SendEmailSMTPServiceTest {
 		mail.setMittente("gruppolynx@gmail.com");
 		mail.setDestinatario("pietro.locatelli00@gmail.com");
 		
-		mail.setOggetto("prova java");
-		mail.setTesto("testo email bello");
+		mail.setOggetto("prova java aggiornato");
+		mail.setTesto("testo email bello aggiornato");
 		
 		assertEquals(true, sendEmailSMTPService.send(mail).isResultTest());
 		
