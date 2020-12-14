@@ -19,7 +19,7 @@ public class TestServiceTest {
 		TestQuestion test=new TestQuestion();
 		
 		test.setIdTest(1);
-		test.setIdQuestion(4);
+		test.setIdCandidate(4);
 		assertEquals(true, testService.createTest(test).isResultTest());
 	}
 
