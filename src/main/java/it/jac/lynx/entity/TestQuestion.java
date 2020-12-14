@@ -18,9 +18,11 @@ public class TestQuestion {
 	@Id
 	@Column(name = "id_test")
 	private int idTest;
+	
 	@Id
-	@Column(name = "id_question")
-	private int idQuestion;
+	@Column(name = "id_candidate")
+	private int idCandidate;
+	
 	
 	
 

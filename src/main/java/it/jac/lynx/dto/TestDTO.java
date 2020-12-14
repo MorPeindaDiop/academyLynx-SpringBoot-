@@ -10,7 +10,7 @@ public class TestDTO {
 	
 	
 	private int idTest;
-	private int idQuestion;
+	private int idCandidate;
 	
 	
 	public static TestDTO build(TestQuestion test) {

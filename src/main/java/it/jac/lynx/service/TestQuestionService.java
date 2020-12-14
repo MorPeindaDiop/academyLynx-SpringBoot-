@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import it.jac.lynx.dto.CandidateDTO;
 import it.jac.lynx.dto.QuestionDTO;
 import it.jac.lynx.dto.Response;
 import it.jac.lynx.dto.TestDTO;
@@ -27,6 +28,9 @@ public class TestQuestionService {
 	@Autowired
 	private QuestionService questionService;
 	
+	@Autowired
+	private CandidateService candidateService;
+	
 	public Response<Integer>createTestFromControler(List<TestDTO> test){
 		Response<Integer> response = new Response <Integer>();
 		List<TestDTO> listaReturn=new ArrayList<TestDTO>();
@@ -34,8 +38,8 @@ public class TestQuestionService {
 		try {
 			for(TestDTO testDTO: test) {
 				TestQuestion t=new TestQuestion();
-				QuestionDTO qDTO = questionService.findQuestionById(testDTO.getIdQuestion()).getResult();
-				t.setIdQuestion(qDTO.getId());
+				CandidateDTO cDTO= candidateService.findCandidateById(testDTO.getIdCandidate()).getResult();
+				t.setIdCandidate(cDTO.getId());
 				t.setIdTest(testDTO.getIdTest());
 				this.createTest(t);
 				listaReturn.add(testDTO.build(t));
