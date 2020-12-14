@@ -13,6 +13,8 @@ public class CandidateDTO {
 
 	private int id;
 
+	private int idTest;
+	
 	private String name;
 
 	private String surname;
