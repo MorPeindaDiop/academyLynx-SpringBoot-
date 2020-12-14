@@ -109,98 +109,79 @@ public class UserService {
 		}
 
 		return response;
-		
+
 	}
 
-	public Response<List<UserDTO>> findUserByUsername(String username) {
 
-		Response<List<UserDTO>> response = new Response<List<UserDTO>>();
-		
-		List<UserDTO> result = new ArrayList<>();
+	public Response<UserDTO> findUserByUsernameAndPassword(String username, String password) {
 
-		try {
-			
-			Iterator<User> iterator = this.userRepository.findByUsername(username).iterator();
-			
-			while (iterator.hasNext()) {
-
-				User user = iterator.next();
-				result.add(UserDTO.build(user));
-			
-			}
-
-			response.setResult(result);
-			response.setResultTest(true);
-
-		} catch (Exception e ) {
-			
-			response.setError("Nessun elemento trovato.");
-		
-		}
-
-		return response;
-		
-	}
-	
-
-	public Response<List<UserDTO>> findUserByUsernamePassword(String username, String password) {
-
-		Response<List<UserDTO>> response = new Response<List<UserDTO>>();
-		
-		List<UserDTO> result = new ArrayList<>();
+		Response<UserDTO> response = new Response<UserDTO>();
 
 		try {
-			
-			Iterator<User> iterator = this.userRepository.findByUsername(username).iterator();
-			
-			while (iterator.hasNext()) {
 
-				User user = iterator.next();
-				if(user.getPassword().equals(password)) {
-					result.add(UserDTO.build(user));	
-					response.setResult(result);
-					response.setResultTest(true);
+			User user = this.userRepository.findByUsername(username);
 
-				}
+			if(user.getPassword().equals(password)) {
 				
-			
+				response.setResult(UserDTO.build(user));
+				response.setResultTest(true);
+
 			}
 
-			
+
 		} catch (Exception e ) {
-			
+
 			response.setError("Nessun elemento trovato.");
-		
+
 		}
 
 		return response;
-		
+
 	}
 	
+	public Response<User> findUserByUsername(String username) {
+
+		Response<User> response = new Response<User>();
+
+		try {
+
+			User user = this.userRepository.findByUsername(username);
+			response.setResult(user);
+
+		} catch (Exception e ) {
+
+			response.setError("Nessun elemento trovato.");
+
+		}
+
+		return response;
+
+	}
+
 
 	public Response<UserDTO> updateUserUsernameById(int id, String newUsername) {
 
 		Response<UserDTO> response = new Response<UserDTO>();
 
 		try {
-			
+
 			User user = this.userRepository.findById(id).get();
 
 			if (user != null)
 				user.setUsername(newUsername);
 
 			this.userRepository.save(user);
-			
+
 			response.setResult(UserDTO.build(user));
 			response.setResultTest(true);
 
 		} catch (Exception e) {
-			
+
 			response.setError("Nessun elemento trovato.");
 		}	
 
 		return response;
-		
+
 	}
 
 	public Response<UserDTO> updateUserPasswordById(int id, String newPassword) {
@@ -208,25 +189,25 @@ public class UserService {
 		Response<UserDTO> response = new Response<UserDTO>();
 
 		try {
-			
+
 			User user = this.userRepository.findById(id).get();
 
 			if (user != null)
 				user.setPassword(newPassword);
 
 			this.userRepository.save(user);
-			
+
 			response.setResult(UserDTO.build(user));
 			response.setResultTest(true);
 
 		} catch (Exception e) {
-			
+
 			response.setError("Nessun elemento trovato.");
-			
+
 		}	
 
 		return response;
-		
+
 	}
 
 }

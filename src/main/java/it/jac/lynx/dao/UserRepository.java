@@ -10,7 +10,7 @@ import it.jac.lynx.entity.User;
 @Repository
 public interface UserRepository extends CrudRepository<User, Integer> {
 
-	public List<User> findByUsername(String username);
+	public User findByUsername(String username);
 	
 	
 }

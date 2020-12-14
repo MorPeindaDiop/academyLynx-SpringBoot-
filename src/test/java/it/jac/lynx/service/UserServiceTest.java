@@ -40,13 +40,8 @@ public class UserServiceTest {
 	}
 	
 	@Test
-	public void findUserByUsername() {
-		assertEquals(true, userService.findUserByUsername("pippo").isResultTest());
-	}
-	
-	@Test
 	public void findByUsernamePassword() {
-		assertEquals(true, userService.findUserByUsernamePassword("pippo","pippo").isResultTest());
+		assertEquals(true, userService.findUserByUsernameAndPassword("pippo","pippo").isResultTest());
 	}
 	
 
