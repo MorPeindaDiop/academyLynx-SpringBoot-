@@ -77,6 +77,8 @@ public class TestQuestionService {
 	
 	public Response<TestQuestion> createTestQuestion(TestQuestion test){
 		Response<TestQuestion> response = new Response<TestQuestion>();
+		
+		log.info("\n\n\n\nTEST RICEVUTO\n\n\n\n\n"+test+"\n\n\n\n\n");
 		try {
 
 			this.testRepository.save(test);

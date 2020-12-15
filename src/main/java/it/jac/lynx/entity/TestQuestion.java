@@ -18,7 +18,8 @@ import lombok.Data;
 public class TestQuestion {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//non va messo questo senno esplode
+	//@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	@Column(name = "id_test")
 	private int idTest;
 	

@@ -27,6 +27,11 @@ public class TestQuestionController {
 	@PostMapping("/create")
 	public Response<?> createTestQuestion(@RequestBody TestQuestion test){
 		log.info("creazione test BRO");
+		
+		
+		log.info("TEST --->"+test);
+
+		
 		return testQuestionService.createTestQuestion(test);
 		
 	}

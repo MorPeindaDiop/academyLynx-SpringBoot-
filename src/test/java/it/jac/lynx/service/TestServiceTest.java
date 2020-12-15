@@ -15,12 +15,12 @@ public class TestServiceTest {
 	private TestQuestionService testService;
 	
 	@Test
-	public void findQuestionByDifficulty() {
+	public void createTest() {
 		TestQuestion test=new TestQuestion();
 		
 		test.setIdTest(1);
 		test.setIdCandidate(4);
-		assertEquals(true, testService.createTest(test).isResultTest());
+		assertEquals(true, testService.createTestQuestion(test).isResultTest());
 	}
 
 }
