@@ -78,6 +78,17 @@ public class TestQuestionService {
 	public Response<TestQuestion> createTestQuestion(TestQuestion test){
 		Response<TestQuestion> response = new Response<TestQuestion>();
 		
+		
+		int lastId=this.findAllTestsByIdCandidate(test.getIdCandidate()).getResult().size();
+		
+		
+		//se non c'è l'id test incrementa di 1 l'ultimo nel db (per lo stesso candidato)
+		if(test.getIdTest()==0) {
+			test.setIdTest(lastId);
+		}
+		
+		
+		
 		log.info("\n\n\n\nTEST RICEVUTO\n\n\n\n\n"+test+"\n\n\n\n\n");
 		try {
 
@@ -110,6 +121,38 @@ public class TestQuestionService {
 
 				TestQuestion testQuestion = iterator.next();
 				result.add(TestDTO.build(testQuestion));
+
+			}
+
+			response.setResult(result);
+			response.setResultTest(true);
+
+		} catch (Exception e) {
+
+			response.setError("Nessun elemento trovato.");
+
+		}
+
+		return response;
+
+	}
+	public Response<List<TestDTO>> findAllTestsByIdCandidate(int idCandidate) {
+
+		Response<List<TestDTO>> response = new Response<List<TestDTO>>();
+
+		List<TestDTO> result = new ArrayList<>();
+
+		try {
+
+			Iterator<TestQuestion> iterator = this.testRepository.findAll().iterator();
+
+			while(iterator.hasNext()) {
+				
+				
+				TestQuestion testQuestion = iterator.next();
+				if(testQuestion.getIdCandidate()==idCandidate) {					
+					result.add(TestDTO.build(testQuestion));
+				}
 
 			}
 
