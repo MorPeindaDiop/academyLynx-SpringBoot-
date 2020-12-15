@@ -17,7 +17,7 @@ import lombok.Data;
 public class CandidateAnswer {
 
 	@Id
-	@Column(name = "id_candidate")
+	@Column(name = "id_test")
 	private int idCandidate;
 
 	@Id

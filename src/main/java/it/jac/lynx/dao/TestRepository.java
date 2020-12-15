@@ -9,5 +9,6 @@ import it.jac.lynx.entity.TestQuestion;
 
 public interface TestRepository extends CrudRepository<TestQuestion, Integer>{
 
+	public TestQuestion findByIdCandidate(int idCandidate);
 
 }

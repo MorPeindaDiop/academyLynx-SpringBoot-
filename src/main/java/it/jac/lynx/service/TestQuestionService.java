@@ -1,6 +1,7 @@
 package it.jac.lynx.service;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -10,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import it.jac.lynx.dto.CandidateDTO;
-import it.jac.lynx.dto.QuestionDTO;
 import it.jac.lynx.dto.Response;
 import it.jac.lynx.dto.TestDTO;
 import it.jac.lynx.entity.TestQuestion;
@@ -68,6 +68,55 @@ public class TestQuestionService {
 		} catch (Exception e) {
 
 			response.setError("Test non creato");
+
+		}
+
+		return response;
+
+	}
+	
+	public Response<TestQuestion> createTestQuestion(TestQuestion test){
+		Response<TestQuestion> response = new Response<TestQuestion>();
+		try {
+
+			this.testRepository.save(test);
+
+			response.setResult(test);
+			response.setResultTest(true);
+
+		} catch (Exception e) {
+
+			response.setError("Test non creato");
+
+		}
+
+		return response;
+
+	}
+	
+	public Response<List<TestDTO>> findAllTests() {
+
+		Response<List<TestDTO>> response = new Response<List<TestDTO>>();
+
+		List<TestDTO> result = new ArrayList<>();
+
+		try {
+
+			Iterator<TestQuestion> iterator = this.testRepository.findAll().iterator();
+
+			while(iterator.hasNext()) {
+
+				TestQuestion testQuestion = iterator.next();
+				result.add(TestDTO.build(testQuestion));
+
+			}
+
+			response.setResult(result);
+			response.setResultTest(true);
+
+		} catch (Exception e) {
+
+			response.setError("Nessun elemento trovato.");
 
 		}
 
