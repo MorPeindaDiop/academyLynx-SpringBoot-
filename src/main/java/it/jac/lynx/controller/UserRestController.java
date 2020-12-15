@@ -80,46 +80,47 @@ public class UserRestController {
 	public Response<?> findUserByUsernamePassword(
 			@RequestBody String username){
 		log.info("trova da id");
-		log.info(username);
+		log.info("USERNAME --->"+username);
 		
-//		JSONObject jsonObject1;
-//		String value1 = null;
-//        String value2 = null;
-//        log.info(username.substring(2,username.length()-2));
-//		
-//		JSONArray jsonArray = new JSONArray(username.substring(2,username.length()-3));
-//		
-//		for(int i=0;i<jsonArray.length();i++)
-//        {
-//            jsonObject1 = jsonArray.getJSONObject(i);
-//            value1 = jsonObject1.optString("username");
-//            value2 = jsonObject1.optString("password");
-//        }
-//		log.info(value1);
-//		username.optString("username");
+		String user=null;
+		int pos1 = 0, pos2 = 0;//user
+		String passw=null;
+		int pos3=0, pos4=0;
 		
-		JSONParser parser = new JSONParser();
-        JSONObject json = null;
-        try {
-            json = (JSONObject) parser.parse(username);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+		
+		log.info("lunghezza: "+username.length());
+		
+		int[] array=new int[9];
+		int conta=0;
+		for(int i=0; i<username.length(); i++) {
+			if(username.charAt(i)=='"') {
+				array[conta]=i;
+				log.info("array di conta->"+array[conta]);
+				conta++;
+			}
+			log.info("i vale-->"+i);
+		}
+		log.info("pos1: "+array[4]+"\n"+
+				"pos2: "+array[5]+"\n"+
+				"pos3: "+array[6]+"\n"+
+				"pos4: "+array[8]+"\n");
+		log.info("\n\n\n\nLA MADONNA\n\n\n\n");
+		
+		
+		
+		user=username.substring(array[2]+1,array[3]);
+		passw=username.substring(array[6]+1,array[7]);
+		
+		
+		log.info("dato1-->"+username.substring(array[2]+1,array[3]));
+		log.info("dato2-->"+username.substring(array[6]+1,array[7]));
+
         
-        log.info(json.toString());
+        log.info("USERNAME: "+user+" PASSWORD: "+passw);
 		
-		return userService.findUserByUsernameAndPassword(json.toString(), json.toString());
+		return userService.findUserByUsernameAndPassword(user, passw);
 	}
 	
-//	@PostMapping(path="/signIn")
-//	public Response<?> findUserByUsername(
-//			@RequestBody String username){
-//		log.info("trova da id");
-//		log.info(username);
-//		
-//		return userService.findUserByUsername(username);
-//	}
-	
-	
+
 
 }
