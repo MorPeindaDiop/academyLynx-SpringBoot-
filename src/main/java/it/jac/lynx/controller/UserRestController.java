@@ -26,11 +26,11 @@ import org.json.simple.parser.ParseException;
 @RequestMapping("/rest/user")
 public class UserRestController {
 	private static Logger log = LoggerFactory.getLogger(UserRestController.class);
-	
-	
+
+
 	@Autowired
 	private UserService userService;
-	
+
 	@PostMapping("/create")
 	public Response<?> createUser(@RequestParam int id){
 
@@ -41,9 +41,9 @@ public class UserRestController {
 
 		return userService.createUser(user);
 	}
-	
-	
-	
+
+
+
 	@DeleteMapping(path = "/delete/{id}")
 	public Response<?> deleteUserById(@PathVariable int id) {
 
@@ -51,76 +51,59 @@ public class UserRestController {
 
 		return userService.deleteUserById(id);
 	}
-	
-	
+
+
 	@GetMapping(path="/findAll")
 	public Response<?> findAllUsers(){
-		
+
 		log.info("richiesta di find all.");
-		
+
 		return userService.findAllUsers();
 	}
 	@GetMapping(path="/findUsersPassword/{}")
 	public Response<?> findAllUsersPassword(){
-		
+
 		log.info("richiesta di find all.");
-		
+
 		return userService.findAllUsers();
 	}
-	
-	
+
+
 	@GetMapping(path="/findById/{id}")
 	public Response<?> findUserById(@PathVariable int id){
 		log.info("trova da id");
-		
+
 		return userService.findUserById(id);
 	}
-	
+
 	@PostMapping(path="/signIn")
 	public Response<?> findUserByUsernamePassword(
 			@RequestBody String username){
-		log.info("trova da id");
-		log.info("USERNAME --->"+username);
-		
+
+		log.info("JSON --->"+username);
+
 		String user=null;
-		int pos1 = 0, pos2 = 0;//user
 		String passw=null;
-		int pos3=0, pos4=0;
-		
-		
-		log.info("lunghezza: "+username.length());
-		
+
+
 		int[] array=new int[9];
 		int conta=0;
 		for(int i=0; i<username.length(); i++) {
 			if(username.charAt(i)=='"') {
 				array[conta]=i;
-				log.info("array di conta->"+array[conta]);
 				conta++;
 			}
-			log.info("i vale-->"+i);
 		}
-		log.info("pos1: "+array[4]+"\n"+
-				"pos2: "+array[5]+"\n"+
-				"pos3: "+array[6]+"\n"+
-				"pos4: "+array[8]+"\n");
-		log.info("\n\n\n\nLA MADONNA\n\n\n\n");
-		
-		
-		
+
 		user=username.substring(array[2]+1,array[3]);
 		passw=username.substring(array[6]+1,array[7]);
-		
-		
-		log.info("dato1-->"+username.substring(array[2]+1,array[3]));
-		log.info("dato2-->"+username.substring(array[6]+1,array[7]));
 
-        
-        log.info("USERNAME: "+user+" PASSWORD: "+passw);
-		
+
+		log.info("USERNAME: "+user+" PASSWORD: "+passw);
+
 		return userService.findUserByUsernameAndPassword(user, passw);
 	}
-	
+
 
 
 }
