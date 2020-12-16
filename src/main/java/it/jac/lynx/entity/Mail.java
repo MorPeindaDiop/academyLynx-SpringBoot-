@@ -34,6 +34,7 @@ public class Mail {
 	@Column(name = "cc")
 	private String cc;
 
+	
 	//mail 
 	@Column(name = "oggetto")
 	private String oggetto;
