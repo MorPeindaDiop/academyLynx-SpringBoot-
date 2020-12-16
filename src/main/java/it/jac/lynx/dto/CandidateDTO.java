@@ -20,7 +20,9 @@ public class CandidateDTO {
 	private String surname;
 	
 	private String email;
-
+	
+	private String password;
+	
 	private int idSeniority;
 
 	private Date dataTest;
