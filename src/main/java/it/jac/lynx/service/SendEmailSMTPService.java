@@ -51,7 +51,7 @@ public class SendEmailSMTPService {
 		try {
 
             Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(mail.getMittente()));
+            message.setFrom(new InternetAddress(mail.getUsername()));
             message.setRecipients(
                     Message.RecipientType.TO,
                     InternetAddress.parse(mail.getDestinatario())

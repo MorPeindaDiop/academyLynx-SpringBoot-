@@ -27,7 +27,7 @@ public class SendEmailSMTPController {
 	@PostMapping("/send")
 	public Response<?> sendMail(@RequestBody Mail mail) {
 
-		log.info("Ricevuta richiesta di creazione nuova domanda candidato");
+		log.info("Ricevuta richiesta di creazione nuova mail\n\n\n"+mail+"\n\n\n\n");
 
 		return sendEmailSMTPService.send(mail);
 

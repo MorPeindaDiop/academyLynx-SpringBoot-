@@ -30,8 +30,6 @@ public class Mail {
 
 
 	//user
-	@Column(name = "mittente")
-	private String mittente;
 	@Column(name = "destinatario")
 	private String destinatario;
 	@Column(name = "cc")

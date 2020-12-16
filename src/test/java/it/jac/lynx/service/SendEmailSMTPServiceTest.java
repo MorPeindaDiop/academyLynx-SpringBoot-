@@ -22,7 +22,7 @@ public class SendEmailSMTPServiceTest {
 		mail.setUsername("gruppolynx@gmail.com");
 		mail.setPassword("Gruppolynx1234!");
 		
-		mail.setMittente("gruppolynx@gmail.com");
+		
 		mail.setDestinatario("pietro.locatelli00@gmail.com");
 		
 		mail.setOggetto("prova java aggiornato");
