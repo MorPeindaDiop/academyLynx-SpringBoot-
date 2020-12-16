@@ -28,7 +28,6 @@ public class Mail {
 	@Column(name = "password")
 	private String password;
 
-
 	//user
 	@Column(name = "destinatario")
 	private String destinatario;
@@ -36,7 +35,6 @@ public class Mail {
 	private String cc;
 
 	//mail
-	
 	@Column(name = "oggetto")
 	private String oggetto;
 	@Column(name = "testo")
