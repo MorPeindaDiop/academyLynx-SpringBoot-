@@ -11,6 +11,8 @@ public class CandidateAnswerDTO {
 	private int idCandidate;
 
 	private int idQuestion;
+	
+	private int idTest;
 
 	private String answer;
 	
