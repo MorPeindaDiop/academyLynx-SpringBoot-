@@ -34,7 +34,7 @@ public class Mail {
 	@Column(name = "cc")
 	private String cc;
 
-	//mail
+	//mail 
 	@Column(name = "oggetto")
 	private String oggetto;
 	@Column(name = "testo")
