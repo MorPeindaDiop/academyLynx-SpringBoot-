@@ -23,12 +23,13 @@ public class Mail {
 	//server data
 	@Column(name = "smtpServer")
 	private String smtpServer;
+	@Column(name = "porta")
+	private String porta;
 	@Column(name = "username")
 	private String username;
 	@Column(name = "password")
 	private String password;
-	@Column(name = "port")
-	private String port;
+	
 
 	//user
 	@Column(name = "destinatario")
