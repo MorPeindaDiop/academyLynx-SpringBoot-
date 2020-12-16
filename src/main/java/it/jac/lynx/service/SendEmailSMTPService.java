@@ -36,7 +36,7 @@ public class SendEmailSMTPService {
 		Properties prop = System.getProperties();
 		prop.put("mail.smtp.host", mail.getSmtpServer()); //optional, defined in SMTPTransport
 		prop.put("mail.smtp.auth", "true");
-		prop.put("mail.smtp.port", "587"); //port 25-465-587-2525
+		prop.put("mail.smtp.port", mail.getPort()); //port 25-465-587-2525
 		prop.put("mail.smtp.starttls.enable", "true"); //TLS
 		prop.put("mail.smtp.ssl.trust", mail.getSmtpServer());
 		log.info("SETTA COSE SERVER");

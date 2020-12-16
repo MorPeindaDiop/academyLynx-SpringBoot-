@@ -27,6 +27,8 @@ public class Mail {
 	private String username;
 	@Column(name = "password")
 	private String password;
+	@Column(name = "port")
+	private String port;
 
 	//user
 	@Column(name = "destinatario")
