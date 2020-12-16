@@ -35,8 +35,7 @@ public class SendEmailSMTPService {
 		
 		/*
 		++++++++++++++++++++++++++++++++++++++++++++ 
-		+ PORTA E USERNAME SONO INVERTITI LO SO MA +
-		+ NON FUNZIONEREBBE ALTRIMENTI, KISSINI    +
+		+ PORTA NON VIENE SALVATA SUL SERVER LO SO +
 		++++++++++++++++++++++++++++++++++++++++++++
 		*/
 		
@@ -45,7 +44,7 @@ public class SendEmailSMTPService {
 		Properties prop = System.getProperties();
 		prop.put("mail.smtp.host", mail.getSmtpServer()); //optional, defined in SMTPTransport
 		prop.put("mail.smtp.auth", "true");
-		prop.put("mail.smtp.port", mail.getUsername()); //port 25-465-587-2525
+		prop.put("mail.smtp.port", mail.getPorta()); //port 25-465-587-2525
 		prop.put("mail.smtp.starttls.enable", "true"); //TLS
 		prop.put("mail.smtp.ssl.trust", mail.getSmtpServer());
 		log.info("SETTA COSE SERVER");
@@ -54,13 +53,13 @@ public class SendEmailSMTPService {
 		Session session = Session.getInstance(prop,
                 new javax.mail.Authenticator() {
                     protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication(mail.getPorta(), mail.getPassword());
+                        return new PasswordAuthentication(mail.getUsername(), mail.getPassword());
                     }
                 });
 		try {
 
             Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(mail.getPorta()));
+            message.setFrom(new InternetAddress(mail.getUsername()));
             message.setRecipients(
                     Message.RecipientType.TO,
                     InternetAddress.parse(mail.getDestinatario())
