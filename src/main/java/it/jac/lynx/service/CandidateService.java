@@ -72,6 +72,7 @@ public class CandidateService {
 			cand.setEmail(cDTO.getEmail());
 			cand.setPassword(cDTO.getPassword());
 			cand.setIdSeniority(cDTO.getIdSeniority());
+			cand.setIdTest(cDTO.getIdTest());
 			cand.setId(intIdCandidate);
 			response.setResult(CandidateDTO.build(cand));
 			log.info("\n\n\n\n GESU CRISTO \n\n\n\n");
