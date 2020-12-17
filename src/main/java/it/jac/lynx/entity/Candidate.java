@@ -23,7 +23,10 @@ public class Candidate {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
-
+	
+	@Column(name = "id_test")
+	private int idTest;
+	
 	@Column(name = "name")
 	private String name;
 

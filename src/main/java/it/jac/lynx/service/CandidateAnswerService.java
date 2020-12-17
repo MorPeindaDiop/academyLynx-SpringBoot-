@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import it.jac.lynx.dao.CandidateAnswerRepository;
 import it.jac.lynx.dto.CandidateAnswerDTO;
+import it.jac.lynx.dto.CandidateDTO;
 import it.jac.lynx.dto.Response;
 import it.jac.lynx.entity.CandidateAnswer;
 import it.jac.lynx.pk.PkCandidateAnswer;
@@ -21,7 +21,7 @@ public class CandidateAnswerService {
 	private CandidateAnswerRepository candidateAnswerRepository;
 
 	public Response<Integer> createCandidateAnswer(CandidateAnswer candidateAnswer) {
-
+		CandidateDTO cDTO =new CandidateDTO();
 		Response<Integer> response = new Response<Integer>();
 
 		try {
