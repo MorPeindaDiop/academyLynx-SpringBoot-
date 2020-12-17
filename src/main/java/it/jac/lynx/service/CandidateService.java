@@ -16,7 +16,7 @@ import it.jac.lynx.dao.CandidateRepository;
 import it.jac.lynx.dao.CandidateSkillRepository;
 import it.jac.lynx.dto.CandidateDTO;
 import it.jac.lynx.dto.Response;
-
+import it.jac.lynx.dto.UserDTO;
 import it.jac.lynx.entity.Candidate;
 import it.jac.lynx.entity.CandidateAnswer;
 import it.jac.lynx.entity.CandidateSkill;
@@ -35,6 +35,54 @@ public class CandidateService {
 	
 	@Autowired
 	private CandidateSkillRepository candidateSkillRepository;
+	
+	
+	public Response<CandidateDTO> signInCandidate(String candidate){
+		CandidateDTO cDTO=new CandidateDTO();
+		Candidate cand=new Candidate();
+		Response<CandidateDTO> response=new Response<CandidateDTO>();
+		
+		log.info("CANDIDATE RESULT ----->\n\n\n\n\n"+candidate+"\n\n\n\n\n");
+		
+		String user=null;
+		String passw=null;
+		String idCandidate=null;
+
+
+		int[] array=new int[12];
+		int conta=0;
+		for(int i=0; i<candidate.length(); i++) {
+			if(candidate.charAt(i)=='"') {
+				array[conta]=i;
+				conta++;
+			}
+		}
+
+		user=candidate.substring(array[2]+1,array[3]);
+		passw=candidate.substring(array[6]+1,array[7]);
+		idCandidate=candidate.substring(array[10]+1, array[11]);
+		int intIdCandidate=Integer.parseInt(idCandidate);
+		
+		
+		cDTO=this.findCandidateById(intIdCandidate).getResult();
+		if(cDTO.getEmail().equals(user)&&cDTO.getPassword().equals(passw)) {
+			response.setResultTest(true);
+			cand.setName(cDTO.getName());
+			cand.setSurname(cDTO.getSurname());
+			cand.setEmail(cDTO.getEmail());
+			cand.setPassword(cDTO.getPassword());
+			cand.setIdSeniority(cDTO.getIdSeniority());
+			cand.setIdTest(cDTO.getIdTest());
+			cand.setId(intIdCandidate);
+			response.setResult(CandidateDTO.build(cand));
+			log.info("\n\n\n\n GESU CRISTO \n\n\n\n");
+		}else {
+			response.setResultTest(false);
+		}
+		
+		return response;
+		
+	}
 	
 	public Response<Candidate> createCandidate(Candidate candidate) {
 

@@ -3,15 +3,20 @@ package it.jac.lynx.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import it.jac.lynx.dao.CandidateRepository;
 import it.jac.lynx.dto.CandidateAnswerDTO;
 import it.jac.lynx.dto.CandidateDTO;
 import it.jac.lynx.dto.CandidateResponseDTO;
 import it.jac.lynx.dto.QuestionDTO;
 import it.jac.lynx.dto.Response;
+import it.jac.lynx.entity.Candidate;
 import it.jac.lynx.entity.CandidateAnswer;
+import jdk.internal.org.jline.utils.Log;
 
 @Service
 public class ScoreService {
@@ -24,23 +29,36 @@ public class ScoreService {
 
 	@Autowired
 	private CandidateService candidateService;	
+	
+	@Autowired
+	private CandidateRepository candidateRepository;
 
+	
+	private static Logger log = LoggerFactory.getLogger(ScoreService.class);
+	
 	public Response<Integer> setCandidateResponse(List<CandidateResponseDTO> candidateResponse){
 
 		Response<Integer> response = new Response <Integer>();
 
 		List<CandidateAnswerDTO> listaReturn= new ArrayList<CandidateAnswerDTO>();
-
+		
+		
+		CandidateDTO cand=new CandidateDTO();
+		
 		try {
 
 			for (CandidateResponseDTO candidateResponseDTO : candidateResponse) {
-
+				
 				CandidateAnswer ca = new CandidateAnswer();
+				cand.setId(candidateService.findCandidateById(candidateResponseDTO.getIdCandidate()).getResult().getId());
+				Candidate candidato=candidateRepository.findById(cand.getId()).get();
 				QuestionDTO qDTO = questionService.findQuestionById(candidateResponseDTO.getIdQuestion()).getResult();
 				ca.setIdCandidate(candidateResponseDTO.getIdCandidate());
 				ca.setIdQuestion(qDTO.getId());
+				ca.setIdTest(candidato.getIdTest());			
 				ca.setAnswer(candidateResponseDTO.getCandidateResponse());
-
+				
+				
 				switch (qDTO.getType()) {
 				case "aperta":
 					ca.setCorrect(candidateResponseDTO.getCandidateResponse().equalsIgnoreCase(qDTO.getCorrectAnswerText()) ? true : false);
@@ -58,7 +76,8 @@ public class ScoreService {
 				listaReturn.add(CandidateAnswerDTO.build(ca));
 
 			}
-
+			log.info("ID CAND: \n\n\n\n"+cand.getId()+"\n\n\n\n");
+			log.info("ID TEST: \n\n\n\n"+cand.getIdTest()+"\n\n\n\n");
 			response.setResult(listaReturn.get(0).getIdCandidate());
 			response.setResultTest(true);
 

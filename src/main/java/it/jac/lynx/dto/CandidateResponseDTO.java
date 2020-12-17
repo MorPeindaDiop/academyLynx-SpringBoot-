@@ -9,6 +9,8 @@ public class CandidateResponseDTO {
 	
 	private int idQuestion;
 	
+
+	
 	private String candidateResponse;
 
 }

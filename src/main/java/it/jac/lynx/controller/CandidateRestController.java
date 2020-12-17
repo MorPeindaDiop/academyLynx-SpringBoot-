@@ -29,6 +29,17 @@ public class CandidateRestController {
 	@Autowired
 	private CandidateService candidateService;
 	
+	
+	
+	@PostMapping("/signIn")
+	public Response<?> signInCandidate(@RequestBody String candidate){
+		
+		return candidateService.signInCandidate(candidate);
+		
+	}
+	
+	
+	
 	@PostMapping("/create")
 	public Response<?> createCandidate(
 			@RequestBody Candidate candidate

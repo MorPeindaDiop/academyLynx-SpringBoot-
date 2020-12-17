@@ -10,5 +10,6 @@ public  class PkCandidateAnswer implements Serializable {
 	private int idCandidate;
 
 	private int idQuestion;
+	
 
 }

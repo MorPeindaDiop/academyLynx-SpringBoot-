@@ -17,12 +17,15 @@ import lombok.Data;
 public class CandidateAnswer {
 
 	@Id
-	@Column(name = "id_test")
+	@Column(name = "id_candidate")
 	private int idCandidate;
 
 	@Id
 	@Column(name = "id_question")
 	private int idQuestion;
+	
+	@Column(name = "id_test")
+	private int idTest;
 
 	@Column(name = "answer")
 	private String answer;
