@@ -40,6 +40,28 @@ public class CandidateAnswerService {
 		return response;
 
 	}
+	
+	public Response<List<CandidateAnswer>> createCandidateTest(List<CandidateAnswer> candidateAnswerList) {
+
+		Response<List<CandidateAnswer>> response = new Response<List<CandidateAnswer>>();
+
+		try {
+			for (CandidateAnswer candidateAnswer: candidateAnswerList) {
+				this.candidateAnswerRepository.save(candidateAnswer);				
+			}
+
+			response.setResult(candidateAnswerList);
+			response.setResultTest(true);
+
+		} catch (Exception e) {
+
+			response.setError("Answer non creata");
+
+		}
+
+		return response;
+
+	}
 
 	public Response<String> deleteCandidateAnswerById(PkCandidateAnswer id) {
 

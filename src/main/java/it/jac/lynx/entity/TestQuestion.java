@@ -18,16 +18,11 @@ import lombok.Data;
 public class TestQuestion {
 	
 	@Id
-	//non va messo questo senno esplode
-	//@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	@Column(name = "id_test")
 	private int idTest;
 	
 	@Id
 	@Column(name = "id_candidate")
 	private int idCandidate;
-	
-	
-	
 
 }

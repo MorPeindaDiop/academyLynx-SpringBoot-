@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import it.jac.lynx.dto.CandidateResponseDTO;
 import it.jac.lynx.dto.Response;
+import it.jac.lynx.entity.CandidateAnswer;
 import it.jac.lynx.pk.PkCandidateAnswer;
 
 
@@ -42,6 +43,16 @@ public class CandidateAnswerRestController {
 		log.info("Ricevuta richiesta di creazione nuova domanda candidato");
 
 		return scoreService.setCandidateResponse(lista);
+
+	}
+	
+	@PostMapping("/createTest")
+	public Response<?> setTestQuestion(
+			@RequestBody List<CandidateAnswer> candidateAnswer) {
+
+		log.info("Ricevuta richiesta di creazione nuova domanda candidato");
+
+		return candidateAnswerService.createCandidateTest(candidateAnswer);
 
 	}
 
