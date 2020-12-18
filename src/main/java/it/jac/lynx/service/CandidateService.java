@@ -16,10 +16,10 @@ import it.jac.lynx.dao.CandidateRepository;
 import it.jac.lynx.dao.CandidateSkillRepository;
 import it.jac.lynx.dto.CandidateDTO;
 import it.jac.lynx.dto.Response;
-import it.jac.lynx.dto.UserDTO;
 import it.jac.lynx.entity.Candidate;
 import it.jac.lynx.entity.CandidateAnswer;
 import it.jac.lynx.entity.CandidateSkill;
+import it.jac.lynx.entity.TestQuestion;
 
 
 @Service
@@ -36,6 +36,9 @@ public class CandidateService {
 	@Autowired
 	private CandidateSkillRepository candidateSkillRepository;
 	
+	@Autowired
+	private TestQuestionService testQuestionService;
+	
 	
 	public Response<CandidateDTO> signInCandidate(String candidate){
 		CandidateDTO cDTO=new CandidateDTO();
@@ -47,9 +50,10 @@ public class CandidateService {
 		String user=null;
 		String passw=null;
 		String idCandidate=null;
+		String idTest=null;
 
 
-		int[] array=new int[12];
+		int[] array=new int[16];
 		int conta=0;
 		for(int i=0; i<candidate.length(); i++) {
 			if(candidate.charAt(i)=='"') {
@@ -61,27 +65,33 @@ public class CandidateService {
 		user=candidate.substring(array[2]+1,array[3]);
 		passw=candidate.substring(array[6]+1,array[7]);
 		idCandidate=candidate.substring(array[10]+1, array[11]);
+		idTest=candidate.substring(array[14]+1, array[15]);
+		log.info("TEST RESULT ----->\n\n\n\n\n"+idTest+"\n\n\n\n\n");
 		int intIdCandidate=Integer.parseInt(idCandidate);
+		int intIdTest=Integer.parseInt(idTest);
 		
 		
 		cDTO=this.findCandidateById(intIdCandidate).getResult();
-		if(cDTO.getEmail().equals(user)&&cDTO.getPassword().equals(passw)) {
+		if(cDTO.getEmail().equals(user)&&cDTO.getPassword().equals(passw)&&cDTO.getIdTest()==(intIdTest)) {
 			response.setResultTest(true);
 			cand.setName(cDTO.getName());
 			cand.setSurname(cDTO.getSurname());
 			cand.setEmail(cDTO.getEmail());
 			cand.setPassword(cDTO.getPassword());
 			cand.setIdSeniority(cDTO.getIdSeniority());
-			cand.setIdTest(cDTO.getIdTest());
+			cand.setIdTest(intIdTest);
 			cand.setId(intIdCandidate);
 			response.setResult(CandidateDTO.build(cand));
 			log.info("\n\n\n\n GESU CRISTO \n\n\n\n");
+			TestQuestion t=new TestQuestion();
+			t.setIdCandidate(intIdCandidate);
+			t.setIdTest(intIdTest);
+			testQuestionService.createTest(t);
 		}else {
 			response.setResultTest(false);
 		}
 		
 		return response;
-		
 	}
 	
 	public Response<Candidate> createCandidate(Candidate candidate) {
@@ -203,6 +213,36 @@ public class CandidateService {
 		}
 
 		return response;
+		
+	}
+	public Response<List<CandidateDTO>> findCandidateByIdTest(int idTest) {
+
+		Response<List<CandidateDTO>> response = new Response<List<CandidateDTO>>();
+		
+		List<CandidateDTO> result = new ArrayList<>();
+
+		try {
+			
+			Iterator<Candidate> iterator = this.candidateRepository.findByidSeniority(idTest).iterator();
+			
+			while(iterator.hasNext()) {
+
+				Candidate candidate = iterator.next();
+				result.add(CandidateDTO.build(candidate));
+				
+			}
+
+			response.setResult(result);
+			response.setResultTest(true);
+
+		} catch (Exception e ) {
+			
+			response.setError("Nessun elemento trovato.");
+			
+		}
+
+		return response;
+		
 		
 	}
 
