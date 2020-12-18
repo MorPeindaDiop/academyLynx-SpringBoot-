@@ -16,7 +16,6 @@ import it.jac.lynx.dto.QuestionDTO;
 import it.jac.lynx.dto.Response;
 import it.jac.lynx.entity.Candidate;
 import it.jac.lynx.entity.CandidateAnswer;
-import jdk.internal.org.jline.utils.Log;
 
 @Service
 public class ScoreService {

@@ -85,13 +85,14 @@ public class CandidateAnswerRestController {
 
 	}
 	
-	@GetMapping(path="/currentCandidateAnswer")
+	@PostMapping(path="/currentCandidateAnswer")
 	public Response<?> findCandidateAnswerByIdCandidate(
-			@PathVariable(name = "idCandidate") int idCandidate) {
+			@RequestBody String idCandidate) {
 
+		log.info(idCandidate);
 		log.info("trova da id");
 		
-		return candidateAnswerService.findCandidateAnswerByIdCandidate(idCandidate);
+		return candidateAnswerService.findCandidateAnswerByIdCandidate(Integer.parseInt(idCandidate));
 
 	}
 
