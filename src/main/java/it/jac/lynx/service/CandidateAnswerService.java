@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,8 @@ import it.jac.lynx.pk.PkCandidateAnswer;
 @Service
 public class CandidateAnswerService {
 
+	private static Logger log = LoggerFactory.getLogger(CandidateAnswerService.class);
+	
 	@Autowired
 	private CandidateAnswerRepository candidateAnswerRepository;
 
@@ -123,6 +127,7 @@ public class CandidateAnswerService {
 		try {
 
 			List<CandidateAnswer> candidateAnswerList = this.candidateAnswerRepository.findByIdCandidate(idCandidate);
+			log.info(candidateAnswerList.toString());
 
 			for (CandidateAnswer candidateAnswer: candidateAnswerList) {
 				
