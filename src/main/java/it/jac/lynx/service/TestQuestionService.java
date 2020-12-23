@@ -12,9 +12,9 @@ import org.springframework.stereotype.Service;
 
 import it.jac.lynx.dto.CandidateDTO;
 import it.jac.lynx.dto.Response;
-import it.jac.lynx.dto.TestDTO;
+import it.jac.lynx.dto.TestQuestionDTO;
 import it.jac.lynx.entity.TestQuestion;
-import it.jac.lynx.dao.TestRepository;
+import it.jac.lynx.dao.TestQuestionRepository;
 
 @Service
 public class TestQuestionService {
@@ -23,7 +23,7 @@ public class TestQuestionService {
 	
 
 	@Autowired
-	private TestRepository testRepository;
+	private TestQuestionRepository testRepository;
 	
 	@Autowired
 	private QuestionService questionService;
@@ -31,12 +31,12 @@ public class TestQuestionService {
 	@Autowired
 	private CandidateService candidateService;
 	
-	public Response<Integer>createTestFromControler(List<TestDTO> test){
+	public Response<Integer>createTestFromControler(List<TestQuestionDTO> test){
 		Response<Integer> response = new Response <Integer>();
-		List<TestDTO> listaReturn=new ArrayList<TestDTO>();
+		List<TestQuestionDTO> listaReturn=new ArrayList<TestQuestionDTO>();
 		
 		try {
-			for(TestDTO testDTO: test) {
+			for(TestQuestionDTO testDTO: test) {
 				TestQuestion t=new TestQuestion();
 				CandidateDTO cDTO= candidateService.findCandidateById(testDTO.getIdCandidate()).getResult();
 				t.setIdCandidate(cDTO.getId());
@@ -107,11 +107,11 @@ public class TestQuestionService {
 
 	}
 	
-	public Response<List<TestDTO>> findAllTests() {
+	public Response<List<TestQuestionDTO>> findAllTests() {
 
-		Response<List<TestDTO>> response = new Response<List<TestDTO>>();
+		Response<List<TestQuestionDTO>> response = new Response<List<TestQuestionDTO>>();
 
-		List<TestDTO> result = new ArrayList<>();
+		List<TestQuestionDTO> result = new ArrayList<>();
 
 		try {
 
@@ -120,7 +120,7 @@ public class TestQuestionService {
 			while(iterator.hasNext()) {
 
 				TestQuestion testQuestion = iterator.next();
-				result.add(TestDTO.build(testQuestion));
+				result.add(TestQuestionDTO.build(testQuestion));
 
 			}
 
@@ -136,11 +136,11 @@ public class TestQuestionService {
 		return response;
 
 	}
-	public Response<List<TestDTO>> findAllTestsByIdCandidate(int idCandidate) {
+	public Response<List<TestQuestionDTO>> findAllTestsByIdCandidate(int idCandidate) {
 
-		Response<List<TestDTO>> response = new Response<List<TestDTO>>();
+		Response<List<TestQuestionDTO>> response = new Response<List<TestQuestionDTO>>();
 
-		List<TestDTO> result = new ArrayList<>();
+		List<TestQuestionDTO> result = new ArrayList<>();
 
 		try {
 
@@ -151,7 +151,7 @@ public class TestQuestionService {
 				
 				TestQuestion testQuestion = iterator.next();
 				if(testQuestion.getIdCandidate()==idCandidate) {					
-					result.add(TestDTO.build(testQuestion));
+					result.add(TestQuestionDTO.build(testQuestion));
 				}
 
 			}

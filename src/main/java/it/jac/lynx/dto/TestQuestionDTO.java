@@ -6,16 +6,16 @@ import it.jac.lynx.entity.TestQuestion;
 import lombok.Data;
 
 @Data
-public class TestDTO {
+public class TestQuestionDTO {
 	
 	
 	private int idTest;
 	private int idCandidate;
 	
 	
-	public static TestDTO build(TestQuestion test) {
+	public static TestQuestionDTO build(TestQuestion test) {
 
-		TestDTO result = new TestDTO();
+		TestQuestionDTO result = new TestQuestionDTO();
 		BeanUtils.copyProperties(test, result);
 
 		return result;
