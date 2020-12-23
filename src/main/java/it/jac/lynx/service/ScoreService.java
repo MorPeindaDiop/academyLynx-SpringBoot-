@@ -53,8 +53,7 @@ public class ScoreService {
 				Candidate candidato=candidateRepository.findById(cand.getId()).get();
 				QuestionDTO qDTO = questionService.findQuestionById(candidateResponseDTO.getIdQuestion()).getResult();
 				ca.setIdCandidate(candidateResponseDTO.getIdCandidate());
-				ca.setIdQuestion(qDTO.getId());
-				ca.setIdTest(candidato.getIdTest());			
+				ca.setIdQuestion(qDTO.getId());			
 				ca.setAnswer(candidateResponseDTO.getCandidateResponse());
 				
 				
@@ -76,7 +75,6 @@ public class ScoreService {
 
 			}
 			log.info("ID CAND: \n\n\n\n"+cand.getId()+"\n\n\n\n");
-			log.info("ID TEST: \n\n\n\n"+cand.getIdTest()+"\n\n\n\n");
 			response.setResult(listaReturn.get(0).getIdCandidate());
 			response.setResultTest(true);
 

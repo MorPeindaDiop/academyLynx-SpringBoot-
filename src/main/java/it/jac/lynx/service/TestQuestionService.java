@@ -14,6 +14,7 @@ import it.jac.lynx.dto.CandidateDTO;
 import it.jac.lynx.dto.Response;
 import it.jac.lynx.dto.TestDTO;
 import it.jac.lynx.entity.TestQuestion;
+import junit.framework.Test;
 import it.jac.lynx.dao.TestRepository;
 
 @Service
@@ -56,13 +57,13 @@ public class TestQuestionService {
 	
 	
 	
-	public Response<Integer> createTest(TestQuestion test){
-		Response<Integer> response = new Response<Integer>();
+	public Response<TestQuestion> createTest(TestQuestion test){
+		Response<TestQuestion> response = new Response<TestQuestion>();
 		try {
 
 			this.testRepository.save(test);
 
-			response.setResult(test.getIdTest());
+			response.setResult(test);
 			response.setResultTest(true);
 
 		} catch (Exception e) {

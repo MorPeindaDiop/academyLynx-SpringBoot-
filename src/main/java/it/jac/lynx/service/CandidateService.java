@@ -64,28 +64,26 @@ public class CandidateService {
 
 		user=candidate.substring(array[2]+1,array[3]);
 		passw=candidate.substring(array[6]+1,array[7]);
-		idCandidate=candidate.substring(array[10]+1, array[11]);
-		idTest=candidate.substring(array[14]+1, array[15]);
+//		idCandidate=candidate.substring(array[10]+1, array[11]);
+//		idTest=candidate.substring(array[14]+1, array[15]);
 		log.info("TEST RESULT ----->\n\n\n\n\n"+idTest+"\n\n\n\n\n");
 		int intIdCandidate=Integer.parseInt(idCandidate);
-		int intIdTest=Integer.parseInt(idTest);
+//		int intIdTest=Integer.parseInt(idTest);
 		
 		
 		cDTO=this.findCandidateById(intIdCandidate).getResult();
-		if(cDTO.getEmail().equals(user)&&cDTO.getPassword().equals(passw)&&cDTO.getIdTest()==(intIdTest)) {
+		if(cDTO.getEmail().equals(user)&&cDTO.getPassword().equals(passw)) {
 			response.setResultTest(true);
 			cand.setName(cDTO.getName());
 			cand.setSurname(cDTO.getSurname());
 			cand.setEmail(cDTO.getEmail());
 			cand.setPassword(cDTO.getPassword());
 			cand.setIdSeniority(cDTO.getIdSeniority());
-			cand.setIdTest(intIdTest);
 			cand.setId(intIdCandidate);
 			response.setResult(CandidateDTO.build(cand));
 			log.info("\n\n\n\n GESU CRISTO \n\n\n\n");
 			TestQuestion t=new TestQuestion();
 			t.setIdCandidate(intIdCandidate);
-			t.setIdTest(intIdTest);
 			testQuestionService.createTest(t);
 		}else {
 			response.setResultTest(false);
