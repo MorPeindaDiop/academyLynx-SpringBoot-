@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import it.jac.lynx.dto.Response;
-import it.jac.lynx.dto.TestDTO;
+import it.jac.lynx.dto.TestQuestionDTO;
 import it.jac.lynx.entity.TestQuestion;
 import it.jac.lynx.service.TestQuestionService;
 
